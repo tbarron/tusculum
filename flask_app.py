@@ -17,7 +17,7 @@ def hello_world():
 
 @app.route('/cal-p-lb')
 def calories_per_pound():
-    return render_template('cal-p-lb.html')
+    return render_template('calorease.html')
     # return 'This is the calories per pound page'
 
 @app.route('/compounding')
