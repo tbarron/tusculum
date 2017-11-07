@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Cal/Lb</title>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+  <script src='calorease.js'></script>
+
+  <link rel="stylesheet" href="calorease.css">
+
+</head>
+
+<body>
+  <center>
+    <h3>Calories per Pound</h3></center>
+
+  <table>
+    <tr>
+      <td width="30%"></td>
+      <td width="40%">
+        <ul>
+        <li><p>Enter calories per serving, servings per package, and ounces (or
+        grams) per package (the pink fields),</p>
+
+        <li><p>OR just enter calories per ounce or gram (the blue field) ,</p>
+
+        <li><p>then press Calculate to compute calories per pound (the
+        lavender field).</p>
+
+        <li><p>Pressing Clear will reset the form.</p>
+
+        <li><p>If you have calories per ounce (or gram), and want calories
+        per pound, leave the first three (pink) fields blank, select the
+        desired weight unit in the calories per ounce/gram selection list,
+        enter the number of calories per unit weight, and press
+        Calculate.</p>
+        </ul>
+    </td><td width="30%"></td></tr></table>
+
+<center>
+  <table class="package" width="360">
+        <tr>
+            <td width="65%">calories per serving:</td>
+            <td>
+                <input type="text" id="cps" tabindex=1>
+            </td>
+        </tr>
+        <tr>
+            <td>servings per package:</td>
+            <td>
+                <input type="text" id="spp" tabindex=2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="unit_pp" tabindex=0>
+                    <option value="16">ounces</option>
+                    <option value="453.6">grams</option>
+                </select> per package:</td>
+            <td>
+                <input type="text" id="wpp" tabindex=3>
+            </td>
+        </tr>
+  </table>
+  <table class="weight" width="360">
+        <tr>
+            <td width="65%">calories per
+                <select id="cp_unit" tabindex=0>
+                    <option value="16">ounce</option>
+                    <option value="453.6">gram</option>
+                </select>:</td>
+            <td>
+                <input type="text" id="cpw">
+            </td>
+        </tr>
+  </table>
+  <table class="result" width="360">
+        <tr>
+            <td width="65%">calories per pound:</td>
+            <td>
+                <input type="text" id="cpp" disabled>
+            </td>
+        </tr>
+  </table>
+  <table width="360">
+        <tr>
+            <td align="center">
+                <input type="submit" id="calc" value="Calculate" tabindex=4>
+            </td>
+            <td align="center">
+                <input type="submit" id="clear" value="Clear">
+            </td>
+        </tr>
+  </table>
+
+</center>
+
+</body>
+</html>
