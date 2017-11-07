@@ -1,2 +1,6 @@
+DODO
 __pycache__
 *.pyc
+*~
+.\#*
+\#*
