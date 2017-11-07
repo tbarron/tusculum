@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>A Pen by  Tom Barron</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <center>
+    <h3>Calories per Pound</h3></center>
+
+<p>Enter calories per serving, servings per package, and ounces (or grams) per package,</p>
+
+<p>OR just enter calories per ounce (or gram),</p>
+
+<p>then press Calculate to compute calories per pound.</p>
+
+<p>Pressing Clear will reset the form.</p>
+
+<p>To compute calories per gram, enter the first three values, select 'Gram' in the Calories per Ounce/Gram selection list, and press Calculate.</p>
+
+<center>
+    <table>
+        <tr>
+            <td>calories per serving (cps):</td>
+            <td>
+                <input type="text" id="cps"><!-- value="10"-->
+            </td>
+        </tr>
+        <tr>
+            <td>servings per package (spp):</td>
+            <td>
+                <input type="text" id="spp"><!-- value="12"-->
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <select id="unit_pp">
+                    <option value="16">ounces</option>
+                    <option value="480">grams</option>
+                </select> per package (wpp):</td>
+            <td>
+                <input type="text" id="wpp"><!-- value="2"-->
+            </td>
+        </tr>
+        <tr>
+            <td>calories per
+                <select id="cp_unit">
+                    <option value="16">ounce</option>
+                    <option value="480">gram</option>
+                </select> (cpw):</td>
+            <td>
+                <input type="text" id="cpw">
+            </td>
+        </tr>
+        <tr>
+            <td>calories per pound (cpp):</td>
+            <td>
+                <input type="text" id="cpp">
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input type="submit" id="calc" value="Calculate">
+            </td>
+            <td align="center">
+                <input type="submit" id="clear" value="Clear">
+            </td>
+        </tr>
+    </table>
+
+</center>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
