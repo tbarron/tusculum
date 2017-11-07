@@ -9,15 +9,16 @@ app = Flask(__name__)
 def hello_world():
     rval = """
     <ul>
-    <li><a href="cal_p_pound">Calories per Pound</a>
+    <li><a href="cal-p-lb">Calories per Pound</a>
     <li><a href="compounding">Compounding Interest</a>
     </ul>
     """
     return rval
 
-@app.route('/cal_p_pound')
+@app.route('/cal-p-lb')
 def calories_per_pound():
-    return 'This is the calories per pound page'
+    return render_template('cal-p-lb.html')
+    # return 'This is the calories per pound page'
 
 @app.route('/compounding')
 def compounding():
