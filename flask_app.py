@@ -6,18 +6,6 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def hello_world():
-    rval = """
-    <ul>
-    <li><a href="cal-p-lb">Calories per Pound</a>
-    <li><a href="compounding">Compounding Interest</a>
-    <li><a href="wandro">wandro - A scrolling, random wikipedia viewer</a>
-    </ul>
-    """
-    return rval
-
-
-@app.route('/xxx')
 def main_page():
     return render_template('index.html')
 
