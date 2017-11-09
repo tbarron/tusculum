@@ -1,10 +1,9 @@
-
-# A very simple Flask Hello World app for you to get started with...
-
 from flask import Flask
 from flask import render_template
 
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def hello_world():
@@ -17,14 +16,21 @@ def hello_world():
     """
     return rval
 
+
+@app.route('/xxx')
+def main_page():
+    return render_template('index.html')
+
+
 @app.route('/cal-p-lb')
 def calories_per_pound():
     return render_template('calorease.html')
-    # return 'This is the calories per pound page'
+
 
 @app.route('/compounding')
 def compounding():
     return "This computes interest compounding over time"
+
 
 @app.route('/wandro')
 def wandro():
