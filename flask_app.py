@@ -12,6 +12,7 @@ def hello_world():
     <ul>
     <li><a href="cal-p-lb">Calories per Pound</a>
     <li><a href="compounding">Compounding Interest</a>
+    <li><a href="wandro">wandro - A scrolling, random wikipedia viewer</a>
     </ul>
     """
     return rval
@@ -24,3 +25,7 @@ def calories_per_pound():
 @app.route('/compounding')
 def compounding():
     return "This computes interest compounding over time"
+
+@app.route('/wandro')
+def wandro():
+    return render_template('wandro.html')
