@@ -1,8 +1,23 @@
-<body>
-  <div class="row">
-<iframe id="my-frame-0" 
-        class="appfrm col-md-12"
-  src="https://en.wikipedia.org/wiki/Special:Random">
-    </iframe>
-  </div>
-</body>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Wandro - A scrolling, random wikipedia viewer</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/wandro.js' }}"></script>
+
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div class="row">
+      <iframe id="my-frame-0"
+              class="appfrm col-md-12"
+              src="https://en.wikipedia.org/wiki/Special:Random">
+      </iframe>
+    </div>
+  </body>
+</html>
