@@ -198,6 +198,11 @@
       function month() {
         var day = 1;
         var rval = "";
+        rval = rval + "<tr>";
+        for (i = 0 ; i < 7 ; i++) {
+          rval = rval + "<td>&nbsp;</td>";
+        }
+        rval = rval + "</tr>";
         for (row = 0 ; row < 5 ; row++) {
           rval = rval + "<tr>";
           for (i = 0 ; i < 7 ; i++) {
