@@ -81,9 +81,9 @@
     <script>
       function month() {
         rval = "<tr>";
-        rval = rval + "<td>";
-        rval = rval + "dumpling";
-        rval = rval + "</td>";
+        for (i = 0 ; i < 7 ; i++) {
+          rval = rval + "<td>" + i + "</td>";
+        }
         rval = rval + "</tr>";
         return rval;
       }
