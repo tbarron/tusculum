@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calendar Mental Hack</title>
+  </head>
+  <body>
+    <ul>
+
+      <li>Every year, 4/4, 6/6, 8/8, 10/10, and 12/12 fall on the same
+        weekday. In 2017, it's Tuesday. In 2018, it's Wednesday. In 2020,
+        it's Saturday. Let's call this the reference day (RD).
+
+      <li>For common years, the RD advances one weekday from one year to
+        the next. So, since the RD for 2017 is Tuesday, the RD for 2018
+        will be Wednesday, and for 2019, it will be Thursday.
+
+      <li>Going from a common year to a leap year (e.g., from 2019 to
+        2020), the RD list skips a weekday. So, since the RD for 2019 is
+        Thursday, in 2020 it will be Saturday (skipping Friday).
+
+      <li>In a common year, the full list of RD dates for each of the
+        months is:
+
+        <ul>
+          <li>1/3, 2/7, 3/7, 4/4, 5/9 (5/2), 6/6, 7/11 (7/4), 8/8 (8/1),
+            9/5, 10/10 (10/3), 11/7, 12/12 (12/5)
+          <li>Note the similar months:
+            <ul>
+              <li>January and October
+              <li>February, March, and November
+              <li>April and July
+              <li>September and December
+            </ul>
+        </ul>
+
+      <li>In a leap year, the full list of RD dates for each of the
+        months is:
+
+        <ul>
+          <li>1/4, 2/8 (2/1), 3/7, 4/4, 5/9 (5/2), 6/6, 7/11 (7/4), 8/8 (8/1),
+            9/5, 10/10 (10/3), 11/7, 12/12 (12/5)
+          <li>Note the similar months:
+            <ul>
+              <li>January, April, and July
+              <li>February and August
+              <li>March and November
+              <li>September and December
+            </ul>
+        </ul>
+
+      <li>Based on modulo 7 arithmetic, this makes it relatively easy to
+        compute the weekday for a given date or the date of a given ordinal
+        day in a month.
+
+      <li>For example, 2018.0428 (i.e., April 28, 2018) will fall on
+        Saturday.
+        <ul>
+          <li>2018.0404 is Wednesday. So are 0411, 0418, and 0425.
+          <li>To get from 0425 to 0428, we add three.
+          <li>Wednesday plus three is Saturday.
+        </ul>
+      <li>The fourth Thursday of November, 2018, will be 2018.1122.
+        <ul>
+          <li>2018.1107 is Wednesday. So 1108 will be the second Thursday
+            (1101 is the first).
+
+          <li>That means 1115 will be the third Thursday and 1122 will be
+            the fourth.
+
+        </ul>
+
+      <li>Consider the following month layout:
+        <br><table id="month"></table>
+    </ul>
+  </body>
+</html>
