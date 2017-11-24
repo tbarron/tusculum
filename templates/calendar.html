@@ -170,27 +170,29 @@
       <li>Based on modulo 7 arithmetic, this makes it relatively easy to
         compute the weekday for a given date or the date of a given ordinal
         day in a month.
-
-      <li>For example, 2018.0428 (i.e., April 28, 2018) will fall on
-        Saturday.
         <ul>
-          <li>2018.0404 is Wednesday. So are 0411, 0418, and 0425.
-          <li>To get from 0425 to 0428, we add three.
-          <li>Wednesday plus three is Saturday.
-        </ul>
-      <li>The fourth Thursday of November, 2018, will be 2018.1122.
-        <ul>
-          <li>2018.1107 is Wednesday. So 1108 will be the second Thursday
-            (1101 is the first).
+          <li>For example, 2018.0428 (i.e., April 28, 2018) will fall on
+            Saturday.
+            <ul>
+              <li>2018.0404 is Wednesday. So are 0411, 0418, and 0425.
+              <li>To get from 0425 to 0428, we add three.
+              <li>Wednesday plus three is Saturday.
+            </ul>
+          <li>The fourth Thursday of November, 2018, will be 2018.1122.
+            <ul>
+              <li>2018.1107 is Wednesday. So 1108 will be the second Thursday
+                (1101 is the first).
 
-          <li>That means 1115 will be the third Thursday and 1122 will be
-            the fourth.
+              <li>That means 1115 will be the third Thursday and 1122 will be
+                the fourth.
 
+            </ul>
         </ul>
 
       <li>Consider the following month layout:
-        <br><table id="month"></table>
+        <br><table id="month" border=1></table>
     </ul>
+
     <!-- Javascript ======================================================= -->
     <script>
       function month() {
