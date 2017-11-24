@@ -1,8 +1,15 @@
 from flask import Flask
 from flask import render_template
+from flask import request
 
 
 app = Flask(__name__)
+
+
+@app.before_request
+def before_request():
+    if 'localhost' in request.host_url:
+        app.jinja_env.cache = {}
 
 
 @app.route('/')
@@ -29,3 +36,4 @@ def wandro():
 def calendar():
     return render_template('calendar.html',
                            title='Mental-Hacking Your Calendar')
+
