@@ -79,8 +79,17 @@
         <br><table id="month"></table>
     </ul>
     <script>
+      function month() {
+        rval = "<tr>";
+        rval = rval + "<td>";
+        rval = rval + "dumpling";
+        rval = rval + "</td>";
+        rval = rval + "</tr>";
+        return rval;
+      }
+
       $(document).ready(function() {
-        $("#month").append("<tr><td>testing</td></tr>")
+        $("#month").append(month());
       });
     </script>
   </body>
