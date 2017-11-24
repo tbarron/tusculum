@@ -190,7 +190,14 @@
         </ul>
 
       <li>Consider the following month layout:
-        <br><table id="month" border=1></table>
+        <br><center><table id="month" border=1></table></center>
+
+        <p>If you click in the heading, you can move the column for
+          "Monday" around to see how the dates and weekdays line up for
+          various starting points.
+
+        <p>This layout may help with visualizing weeks within a month to
+        figure out which weekdays specific dates fall on.
     </ul>
 
     <!-- Javascript ======================================================= -->
@@ -200,7 +207,9 @@
         var rval = "";
         rval = rval + "<tr>";
         for (i = 0 ; i < 7 ; i++) {
-          rval = rval + "<td>&nbsp;</td>";
+          btnid = "btn" + i;
+          btn = "<button id='" + btnid + "'></button>";
+          rval = rval + "<td width='50'>" + btn + "</td>";
         }
         rval = rval + "</tr>";
         for (row = 0 ; row < 5 ; row++) {
@@ -216,7 +225,31 @@
       }
 
       $(document).ready(function() {
+        function set_weekday(objid, idx) {
+          wdl = [ "mon", "tue", "wed", "thu", "fri", "sat", "sun" ];
+          obj = document.getElementById(objid);
+          obj.innerHTML = wdl[idx];
+        }
+
+        function set_weekdays(offset) {
+          wdl = [ "mon", "tue", "wed", "thu", "fri", "sat", "sun" ];
+          for (idx = 0 ; idx < 7 ; idx++) {
+            bdx = (idx + offset) % 7
+            bid = "btn" + bdx;
+            obj = document.getElementById(bid);
+            obj.innerHTML = wdl[idx];
+          }
+        }
+
         $("#month").append(month());
+        $("#btn0").click(function() { set_weekdays(0); })
+        $("#btn1").click(function() { set_weekdays(1); })
+        $("#btn2").click(function() { set_weekdays(2); })
+        $("#btn3").click(function() { set_weekdays(3); })
+        $("#btn4").click(function() { set_weekdays(4); })
+        $("#btn5").click(function() { set_weekdays(5); })
+        $("#btn6").click(function() { set_weekdays(6); })
+        set_weekdays(0);
       });
     </script>
   </body>
