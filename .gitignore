@@ -1,6 +1,8 @@
+.env
 attic
 DODO
 __pycache__
+venv
 *.pyc
 *~
 .\#*
