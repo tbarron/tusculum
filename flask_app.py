@@ -23,3 +23,8 @@ def compounding():
 @app.route('/wandro')
 def wandro():
     return render_template('wandro.html')
+
+
+@app.route('/calendar')
+def calendar():
+    return render_template('calendar.html')
