@@ -44,12 +44,90 @@
 
   </head>
   <body>
-    <ul>
     <center><h1>{{ title }}</h1></center>
+    <ul id="top">
 
-      <li>Every year, 4/4, 6/6, 8/8, 10/10, and 12/12 fall on the same
-        weekday. In 2017, it's Tuesday. In 2018, it's Wednesday. In 2020,
-        it's Saturday. Let's call this the reference day (RD).
+      <li>Every year, the dates 4/4, 6/6, 8/8, 10/10, and 12/12 fall on the
+        same weekday. In 2017, it's Tuesday. In 2018, it's Wednesday. In
+        2020, it's Saturday. Let's call this the reference day (RD).
+
+        <ul>
+
+          <li>For the odd months, RD falls on 3/1, 5/9, 7/11, 9/5, and
+            11/7.
+
+          <li>The remaining months are January and February and they behave
+            differently for common and leap years. In common years, RD
+            falls on 1/3 and 2/1. In leap years, RD falls on 1/4 and 2/7.
+            Here's the full table:
+
+        <center><table id="rd"><tr>
+            <th>&nbsp;
+            <th>Common Year
+            <th>Leap Year
+          </tr><tr>
+            <td>January
+            <td>1/3
+            <td>1/4
+          </tr><tr>
+            <td>February
+            <td>2/1
+            <td>2/7
+          </tr><tr>
+            <td>March
+            <td>3/1
+            <td>3/1
+          </tr><tr>
+            <td>April
+            <td>4/4
+            <td>4/4
+          </tr><tr>
+            <td>May
+            <td>5/9
+            <td>5/9
+          </tr><tr>
+            <td>June
+            <td>6/6
+            <td>6/6
+          </tr><tr>
+            <td>July
+            <td>7/4
+            <td>7/4
+          </tr><tr>
+            <td>August
+            <td>8/8
+            <td>8/8
+          </tr><tr>
+            <td>September
+            <td>9/5
+            <td>9/5
+          </tr><tr>
+            <td>October
+            <td>10/10
+            <td>10/10
+          </tr><tr>
+            <td>November
+            <td>11/7
+            <td>11/7
+          </tr><tr>
+            <td>December
+            <td>12/12
+            <td>12/12
+        </tr></table></center>
+
+        <p>In the table, you can see that all the months from March on
+          behave the same for both common and leap years.
+
+        <p>Notice that in common years, date pairs for odd months reverse
+          each other:
+
+          <ul>
+            <li>1/3 and 3/3
+            <li>5/9 and 9/5
+            <li>7/11 and 11/7
+          </ul>
+
+        </ul>
 
       <li>For common years, the RD advances one weekday from one year to
         the next. So, since the RD for 2017 is Tuesday, the RD for 2018
