@@ -80,11 +80,17 @@
     </ul>
     <script>
       function month() {
-        rval = "<tr>";
-        for (i = 0 ; i < 7 ; i++) {
-          rval = rval + "<td>" + i + "</td>";
+        var day = 1;
+        var rval = "";
+        for (row = 0 ; row < 5 ; row++) {
+          rval = rval + "<tr>";
+          for (i = 0 ; i < 7 ; i++) {
+            pday = (day <= 31) ? "" + day : "&nbsp;"
+            rval = rval + "<td>" + pday + "</td>";
+            day = day + 1;
+          }
+          rval = rval + "</tr>";
         }
-        rval = rval + "</tr>";
         return rval;
       }
 
