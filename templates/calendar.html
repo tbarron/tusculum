@@ -72,6 +72,11 @@
         text-align: right;
         margin-top: 10px;
       }
+
+      #month th {
+        background-color: pink;
+        padding: 5px;
+      }
     </style>
 
   </head>
@@ -241,7 +246,7 @@
         for (i = 0 ; i < 7 ; i++) {
           btnid = "btn" + i;
           btn = "<button id='" + btnid + "'></button>";
-          rval = rval + "<td width='50'>" + btn + "</td>";
+          rval = rval + "<th width='50'>" + btn + "</td>";
         }
         rval = rval + "</tr>";
         for (row = 0 ; row < 5 ; row++) {
