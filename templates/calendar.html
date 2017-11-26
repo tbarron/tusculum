@@ -284,7 +284,32 @@
       }
 
       $(document).ready(function() {
+      function weekday_list() {
+        return(["mon", "tue", "wed", "thu", "fri", "sat", "sun"]);
+      }
+
+      function rotate(list, count) {
+        var rval = [];
+        for (var idx = 0 ; idx < list.length ; idx++) {
+          rval[count] = list[idx];
+          count = (count+1) % list.length;
         }
+        return rval;
+      }
+
+      function rd_by_year() {
+        var now = new Date()
+        var this_year = 1900 + now.getYear() - 5;
+        var wdl = rotate(weekday_list(), 1);
+        var rval = "";
+        for (yr = 0 ; yr < 20 ; yr++) {
+          year = this_year + yr;
+          aug01 = new Date(year, 7, 1, 0, 0, 0, 0);
+          day_name = wdl[aug01.getDay()];
+          rval = rval + "<tr><td>" + year + "<td>" + day_name + "</tr>"
+        }
+        return rval;
+      }
 
         function set_weekdays(offset) {
           wdl = [ "mon", "tue", "wed", "thu", "fri", "sat", "sun" ];
