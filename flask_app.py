@@ -35,5 +35,5 @@ def wandro():
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html',
-                           title='Mental-Hacking Your Calendar')
+                           title='Mind-Hacking Your Calendar')
 
