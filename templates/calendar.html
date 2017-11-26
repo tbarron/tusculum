@@ -283,7 +283,6 @@
         return rval;
       }
 
-      $(document).ready(function() {
       function weekday_list() {
         return(["mon", "tue", "wed", "thu", "fri", "sat", "sun"]);
       }
@@ -311,6 +310,7 @@
         return rval;
       }
 
+      $(document).ready(function() {
         function set_weekdays(offset) {
           wdl = [ "mon", "tue", "wed", "thu", "fri", "sat", "sun" ];
           for (idx = 0 ; idx < 7 ; idx++) {
@@ -330,6 +330,7 @@
         $("#btn4").click(function() { set_weekdays(4); })
         $("#btn5").click(function() { set_weekdays(5); })
         $("#btn6").click(function() { set_weekdays(6); })
+        $("#byear").append(rd_by_year());
       });
     </script>
   </body>
