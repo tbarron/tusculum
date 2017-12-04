@@ -16,6 +16,10 @@ function pkg_calculation(cps, spp, wpp, unit_pp, cpp_id) {
     }
 }
 
+function wgt_calculation(cpw, cp_unit, cpp_id) {
+    $(cpp_id).val(cpw * cp_unit);
+}
+
 function calorease_main() {
     $("#clear").click(function() {
         clear_elements(["#cps", "#spp", "#wpp", "#cpw", "#cpp"]);
@@ -35,7 +39,7 @@ function calorease_main() {
         } else if (!isNaN(cps)) {
             pkg_calculation(cps, spp, wpp, unit_pp, "#cpp");
         } else if (!isNaN(cpw)) {
-            $("#cpp").val(cpw * cp_unit);
+            wgt_calculation(cpw, cp_unit, "#cpp");
         } else {
             alert("Hell has frozen over");
         }
