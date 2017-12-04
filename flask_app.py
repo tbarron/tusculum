@@ -27,6 +27,12 @@ def compounding():
     return "This computes interest compounding over time"
 
 
+@app.route('/mental_hygiene')
+def mental_hygiene():
+    return render_template('mental_hygiene.html',
+                           title="Mental Hygiene")
+
+
 @app.route('/wandro')
 def wandro():
     return render_template('wandro.html')
