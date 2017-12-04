@@ -1,10 +1,6 @@
-$(document).ready(function() {
+function calorease_main() {
     $("#clear").click(function() {
-        $("#cps").val("");
-        $("#spp").val("");
-        $("#wpp").val("");
-        $("#cpw").val("");
-        $("#cpp").val("");
+        clear_elements(["#cps", "#spp", "#wpp", "#cpw", "#cpp"]);
     });
 
     $("#calc").click(function() {
