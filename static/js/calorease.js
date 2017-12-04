@@ -4,6 +4,10 @@ function instruct() {
     alert(msg);
 }
 
+function hell_frozen() {
+    alert("Hell has frozen over");
+}
+
 function pkg_calculation(cps, spp, wpp, unit_pp, cpp_id) {
     if (isNaN(spp)) {
         request_spp();
@@ -41,7 +45,7 @@ function calorease_main() {
         } else if (!isNaN(cpw)) {
             wgt_calculation(cpw, cp_unit, "#cpp");
         } else {
-            alert("Hell has frozen over");
+            hell_frozen();
         }
     })
 }
