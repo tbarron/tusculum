@@ -1,7 +1,40 @@
+function cal_by_weight(cal_p_unit, unit_mult) {
+    return(cal_p_unit * unit_mult);
+}
+
+function clear_elements(elist) {
+    var ename;
+    var idx;
+    for (idx = 0 ; idx < elist.length ; idx++) {
+        ename = elist[idx];
+        $(ename).val("");
+    }
+}
+
+function decide(cps, cpw) {
+    if (isNaN(cps) && isNaN(cpw)) {
+        return 0;
+    } else if (!isNaN(cps)) {
+        return 1;
+    } else if (!isNaN(cpw)) {
+        return 2;
+    } else {
+        return 3;
+    }
+}
+
 function instruct() {
     msg = "Please fill in the first three fields or"
         + " the cal per ounce/gram field";
     alert(msg);
+}
+
+function request_spp() {
+    alert("Please fill in servings per package");
+}
+
+function request_wpp() {
+    alert("Please fill in ounces/grams per package");
 }
 
 function hell_frozen() {
@@ -37,7 +70,7 @@ function calorease_main() {
         var cpw = parseInt($("#cpw").val());
         var unit_pp = parseFloat($("#unit_pp").val());
         var cp_unit = parseFloat($("#cp_unit").val());
-                    
+
         if (isNaN(cps) && isNaN(cpw)) {
             instruct();
         } else if (!isNaN(cps)) {
