@@ -39,32 +39,5 @@ function calorease_main() {
         } else {
             alert("Hell has frozen over");
         }
-
-
-        if (cps != "") {
-            var cps_i = parseInt(cps_s);
-
-        } else if (cpw_s != "") {
-
-
-                        var cps_i = parseInt(cps_s);
-                        var spp = parseInt($("#spp").val());
-                        var wpp = parseInt($("#wpp").val());
-                        var cpw = parseInt($("#cpw").val());
-                        var unit_pp = parseInt($("#unit_pp").val());
-                        var cp_unit = parseInt($("#cp_unit").val());
-                        var cal_per_pkg = cps * spp;
-                        var lb_per_pkg = wpp / unit_pp;
-
-                        if (isNaN(cps) && isNaN(cpw)) {
-                            alert("Please fill in the firest");
-
-                            alert("branch 1 - cps = " + cps);
-                            $("#cpp").val(cal_per_pkg / lb_per_pkg);
-                        } else if (cpw != 0) {
-                            alert("branch 2");
-                            $("#cpp").val(cpw * cp_unit);
-                        }
-                    }
-            })                             
-});
+    })
+}
