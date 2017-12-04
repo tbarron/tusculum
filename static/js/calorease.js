@@ -4,6 +4,18 @@ function instruct() {
     alert(msg);
 }
 
+function pkg_calculation(cps, spp, wpp, unit_pp, cpp_id) {
+    if (isNaN(spp)) {
+        request_spp();
+    } else if (isNaN(wpp)) {
+        request_wpp();
+    } else {
+        var cal_p_pkg = cps * spp;
+        var lb_p_pkg = wpp / unit_pp;
+        $(cpp_id).val(cal_p_pkg / lb_p_pkg);
+    }
+}
+
 function calorease_main() {
     $("#clear").click(function() {
         clear_elements(["#cps", "#spp", "#wpp", "#cpw", "#cpp"]);
@@ -21,15 +33,7 @@ function calorease_main() {
         if (isNaN(cps) && isNaN(cpw)) {
             instruct();
         } else if (!isNaN(cps)) {
-            if (isNaN(spp)) {
-                alert("Please fill in servings per package");
-            }
-            if (isNaN(wpp)) {
-                alert("Please fill in ounces/grams per package");
-            }
-            var cal_p_pkg = cps * spp;
-            var lb_p_pkg = wpp / unit_pp;
-            $("#cpp").val(cal_p_pkg / lb_p_pkg);
+            pkg_calculation(cps, spp, wpp, unit_pp, "#cpp");
         } else if (!isNaN(cpw)) {
             $("#cpp").val(cpw * cp_unit);
         } else {
