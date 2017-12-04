@@ -1,3 +1,9 @@
+function instruct() {
+    msg = "Please fill in the first three fields or"
+        + " the cal per ounce/gram field";
+    alert(msg);
+}
+
 function calorease_main() {
     $("#clear").click(function() {
         clear_elements(["#cps", "#spp", "#wpp", "#cpw", "#cpp"]);
@@ -13,9 +19,7 @@ function calorease_main() {
         var cp_unit = parseFloat($("#cp_unit").val());
                     
         if (isNaN(cps) && isNaN(cpw)) {
-            msg = "Please fill in the first three fields or"
-                  + " the cal per ounce/gram field";
-            alert(msg);
+            instruct();
         } else if (!isNaN(cps)) {
             if (isNaN(spp)) {
                 alert("Please fill in servings per package");
