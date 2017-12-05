@@ -3,25 +3,66 @@
   <head>
     <meta charset="UTF-8">
     <title>tusculum</title>
+
+    <style>
+      body {
+        font-family: arial;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 100px 100px 100px;
+        grid-gap: 5px;
+        padding: 0px;
+        justify-content: center;
+      }
+
+      li {
+        border: solid 1px black;
+        border-radius: 5px;
+        list-style-type: none;
+        text-align: center;
+        padding-top: 25px;
+      }
+
+      #last {
+        grid-row: 1/ span 2;
+      }
+
+      .content {
+        padding-top: 35px;
+      }
+    </style>
+
   </head>
   <body>
     <h1>HTML, CSS, and Javascript Doo-Dads</h1>
-    <ul>
-      <li><a target="_blank" href="cal-p-lb">
+    <ul class="wrapper">
+      <li order=1><a target="_blank" href="cal-p-lb">
           Calories per Pound
         </a>
-      <li><a target="_blank" href="compounding">
-          Compounding Interest
+      <li order=20><a target="_blank" href="compounding">
+          Compounding Interest (placeholder)
         </a>
-      <li><a target="_blank" href="wandro">
-          wandro - A scrolling, random wikipedia viewer
-        </a>
-      <li><a target="_blank" href="calendar">
+      <li order=3><a target="_blank" href="calendar">
           Gregorian Calendar Mental Hack
         </a>
-      <li><a target="_blank" href="mental_hygiene">
+      <li order=3><a target="_blank" href="mental_hygiene">
           Mental Hygiene
         </a>
+      <li id="last" order=99><div class="content"><a target="_blank" href="wandro">
+          wandro - A scrolling, random wikipedia viewer
+        </a></div>
+<!--
+      <li>the next one
+      <li>another
+      <li>some more
+-->
     </ul>
   </body>
 </html>
