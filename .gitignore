@@ -3,6 +3,7 @@ attic
 DODO
 __pycache__
 venv
+jasmine
 *.pyc
 *~
 .\#*
