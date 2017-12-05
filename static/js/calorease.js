@@ -71,13 +71,14 @@ function calorease_main() {
         var unit_pp = parseFloat($("#unit_pp").val());
         var cp_unit = parseFloat($("#cp_unit").val());
 
-        if (isNaN(cps) && isNaN(cpw)) {
+        switch (decide(cps, cpw)) {
+          case 0:
             instruct();
-        } else if (!isNaN(cps)) {
-            pkg_calculation(cps, spp, wpp, unit_pp, "#cpp");
-        } else if (!isNaN(cpw)) {
+          case 1:
+            pkg_calculation(cps, spp, wpp, unit_pp, "#cpp");  
+          case 2:
             wgt_calculation(cpw, cp_unit, "#cpp");
-        } else {
+          case 3:
             hell_frozen();
         }
     })
