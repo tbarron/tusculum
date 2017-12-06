@@ -43,3 +43,10 @@ def calendar():
     return render_template('calendar.html',
                            title='Mind-Hacking Your Calendar')
 
+
+# -----------------------------------------------------------------------------
+@app.route('/tests/<payload>')
+def tests(payload):
+    return render_template('tests/jasmine.html', payload=payload)
+
+
