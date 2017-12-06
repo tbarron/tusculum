@@ -7,7 +7,7 @@ describe("calendar", function() {
     it("weekday_list", function() {
         expect(weekday_list()).toEqual(["mon", "tue", "wed", "thu", "fri",
                                         "sat", "sun"]);
-    })
+    });
 
     it("rotate 1 .. 10", function() {
         mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
