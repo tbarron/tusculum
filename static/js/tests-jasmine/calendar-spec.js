@@ -11,7 +11,7 @@ function yet_another_rotate(list, count) {
     return rval;
 }
 
-describe("calendar", function() {
+describe("calendar no-fixture", function() {
     it("weekday_list", function() {
         expect(weekday_list()).toEqual(["mon", "tue", "wed", "thu", "fri",
                                         "sat", "sun"]);
@@ -48,10 +48,6 @@ describe("calendar", function() {
             apr04 = new Date(start_year+idx, 3, 4, 0, 0, 0, 0);
             expect(wd).toEqual(rwdl[apr04.getDay()]);
         }
-    });
-
-    it("set_weekdays -- construction", function() {
-        expect(true).toBe(false)
     });
 
     function check_for(haystack, needle, exppos) {
@@ -95,6 +91,31 @@ describe("calendar", function() {
         }
         for (let idx = 0 ; idx < 7 ; idx++) {
             check_for(result, "<button id='btn" + idx + "'></button>", -1);
+        }
+    });
+});
+
+describe("calendar with-fixture", function() {
+    beforeEach(function() {
+        $("body").append("<div id='fixture'></div>");
+        for (let idx = 0 ; idx < 7 ; idx++) {
+            $("#fixture").append("<button id='btn" + idx + "'></button>");
+        }
+    });
+
+    afterEach(function() {
+        $("#fixture").remove();
+    });
+
+    it("set_weekdays(0 .. 7)", function() {
+        wdl = weekday_list();
+        for (let idx = 0 ; idx < 7 ; idx++) {
+            set_weekdays(idx);
+            for (let jdx = 0 ; jdx < 7 ; jdx++) {
+                var bdx = (idx + jdx) % 7;
+                btnid = "#btn" + bdx;
+                expect($(btnid).text()).toEqual(wdl[jdx]);
+            }
         }
     });
 });
