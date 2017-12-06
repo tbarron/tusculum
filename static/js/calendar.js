@@ -51,17 +51,16 @@ function rd_by_year() {
     return rval;
 }
 
-$(document).ready(function() {
-    function set_weekdays(offset) {
-        wdl = [ "mon", "tue", "wed", "thu", "fri", "sat", "sun" ];
-        for (idx = 0 ; idx < 7 ; idx++) {
-            bdx = (idx + offset) % 7
-            bid = "btn" + bdx;
-            obj = document.getElementById(bid);
-            obj.innerHTML = wdl[idx];
-        }
+function set_weekdays(offset) {
+    wdl = weekday_list();
+    for (idx = 0 ; idx < 7 ; idx++) {
+        bdx = (idx + offset) % 7
+        sel = "#btn" + bdx;
+        $(sel).text(wdl[idx]);
     }
+}
 
+$(document).ready(function() {
     $("#month").append(month());
     set_weekdays(0);
     $("#btn0").click(function() { set_weekdays(0); })
