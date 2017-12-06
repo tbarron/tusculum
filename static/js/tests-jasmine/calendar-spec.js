@@ -9,10 +9,13 @@ describe("calendar", function() {
                                         "sat", "sun"]);
     })
 
-    it("rotate 1", function() {
-        wdl = weekday_list();
-        rwdl = rotate(wdl, 1);
-        expect(rwdl).toEqual(["sun", "mon", "tue", "wed",
-                              "thu", "fri", "sat"]);
-    })
+    it("rotate 1 .. 10", function() {
+        mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        for (idx = 0 ; idx < mylist.length ; idx++) {
+            result = rotate(mylist, idx);
+            for (jdx = 0 ; jdx < idx ; jdx++) {
+                expect(result).toEqual(slicerate(mylist, idx));
+            }
+        }
+    });
 });
