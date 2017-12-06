@@ -41,4 +41,12 @@ describe("calendar", function() {
             expect(wd).toEqual(rwdl[apr04.getDay()]);
         }
     });
+
+    it("set_weekdays -- construction", function() {
+        expect(true).toBe(false)
+    });
+
+    it("month (or pieces of it) -- construction", function() {
+        expect(true).toBe(false)
+    });
 });
