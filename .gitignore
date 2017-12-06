@@ -4,6 +4,7 @@ DODO
 __pycache__
 venv
 jasmine
+README.html
 *.pyc
 *~
 .\#*
