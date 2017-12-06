@@ -15,11 +15,18 @@ var ifrtag = '<iframe class="appfrm col-md-12" ';
 var ifrtail = '</iframe>';
 var divtail = "</div>";
 
+function segment_text(optid) {
+    var rval = divtag + ifrtag + url + ifrtail + divtail;
+    if (optid != "") {
+        var replacement = "<div id='" + optid + "' ";
+        rval = rval.replace("<div ", replacement);
+    }
+    return rval;
+}
+
 function add_frame() {
-  // Assemble the HTML for the next article frame
-  segment = divtag 
-    + ifrtag + url + ifrtail 
-    + divtail;
+    // Assemble the HTML for the next article frame
+    segment = segment_text("");
 
   // And stick the new frame on the end of the page
   $("body").append(segment);
