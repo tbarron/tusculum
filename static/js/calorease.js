@@ -81,5 +81,5 @@ function calorease_main() {
           case 3:
             hell_frozen();
         }
-    })
+    });
 }
