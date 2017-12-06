@@ -70,36 +70,3 @@ window.onscroll = function() {
     add_frame();
   }
 }
-
-/* ----- attic ---------------------------
-function load_frame(fname) {
-  size_frame(fname);
-  // $(fname).src = "https://en.wikipedia.org/wiki/Special:Random";
-  document.getElementById(fname).src = "https://en.wikipedia.org/wiki/Special:Random";
-}
-
-var frame_num = 0;
-
-function frame_name() {
-  return "my-frame-" + frame_num;
-}
-
-function next_frame() {
-  frame_num++;
-  return frame_name();
-}
-
-function size_frame(fname) {
-  width = $(window).width() - 50;
-  $(fname).css("width", width)
-  //document.getElementById(fname).style.width = "" + width + "px";
-  $(fname).css("height", $(window).height())  
-  //document.getElementById(fname).style.height = "" + $(window).height() + "px";
-}
-
-
-function frame_loaded() {
-  alert("loaded!")  
-}
-
-*/
