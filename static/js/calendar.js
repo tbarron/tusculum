@@ -33,6 +33,12 @@ function rotate(list, count) {
     return rval;
 }
 
+function rd_table_row(year, wdl) {
+    var aug01 = new Date(year, 7, 1, 0, 0, 0, 0);
+    var day_name = wdl[aug01.getDay()];
+    return "<tr><td>" + year + "<td>" + day_name + "</tr>";
+}
+
 function rd_by_year() {
     var now = new Date()
     var this_year = 1900 + now.getYear() - 5;
@@ -40,9 +46,7 @@ function rd_by_year() {
     var rval = "";
     for (yr = 0 ; yr < 20 ; yr++) {
         year = this_year + yr;
-        aug01 = new Date(year, 7, 1, 0, 0, 0, 0);
-        day_name = wdl[aug01.getDay()];
-        rval = rval + "<tr><td>" + year + "<td>" + day_name + "</tr>"
+        rval = rval + rd_table_row(year, wdl);
     }
     return rval;
 }
