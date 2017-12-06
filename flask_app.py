@@ -44,6 +44,14 @@ def mental_hygiene():
 
 
 # -----------------------------------------------------------------------------
+@app.route('/python-best-practices/<chapter>')
+def pybp(chapter):
+    raw = read_file("pybp/{}.md".format(chapter))
+    html = Markup(markdown.markdown(raw))
+    return render_template("markdown.html", title=chapter, html=html)
+
+
+# -----------------------------------------------------------------------------
 @app.route('/wandro')
 def wandro():
     return render_template('wandro.html')
