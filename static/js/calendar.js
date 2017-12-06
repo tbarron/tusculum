@@ -41,11 +41,10 @@ function rd_table_row(year, wdl) {
 
 function rd_by_year() {
     var now = new Date()
-    var this_year = 1900 + now.getYear() - 5;
+    var start_year = now.getYear() + 1900 - 5;
     var wdl = rotate(weekday_list(), 1);
     var rval = "";
-    for (yr = 0 ; yr < 20 ; yr++) {
-        year = this_year + yr;
+    for (var year = start_year ; year < start_year + 20 ; year++) {
         rval = rval + rd_table_row(year, wdl);
     }
     return rval;
