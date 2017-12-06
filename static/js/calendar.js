@@ -1,13 +1,18 @@
+function month_header() {
+    var rval = "<tr>";
+    var btn;
+
+    for (let idx = 0 ; idx < 7 ; idx++) {
+        btn = "<button id='btn" + idx + "'></button>";
+        rval += "<th width='50'>" + btn + "</th>";
+    }
+    rval += "</tr>";
+    return rval;
+}
+
 function month() {
     var day = 1;
-    var rval = "";
-    rval = rval + "<tr>";
-    for (i = 0 ; i < 7 ; i++) {
-        btnid = "btn" + i;
-        btn = "<button id='" + btnid + "'></button>";
-        rval = rval + "<th width='50'>" + btn + "</td>";
-    }
-    rval = rval + "</tr>";
+    var rval = month_header();
     for (row = 0 ; row < 5 ; row++) {
         rval = rval + "<tr>";
         for (i = 0 ; i < 7 ; i++) {
