@@ -1,8 +1,11 @@
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import Markup
 
 import glob
+import markdown
+import pdb
 
 app = Flask(__name__)
 
@@ -56,6 +59,23 @@ def calendar():
 @app.route('/tests/<payload>')
 def tests(payload):
     return render_template('tests/jasmine.html', payload=payload)
+
+
+# -----------------------------------------------------------------------------
+@app.route('/readme')
+def readme():
+    pdb.set_trace()
+    raw = read_file("README.md")
+    html = Markup(markdown.markdown(raw))
+    return render_template("markdown.html",
+                           title="README",
+                           html=html)
+
+
+# -----------------------------------------------------------------------------
+def read_file(filename):
+    with open(filename, 'r') as f:
+        return f.read()
 
 
 # -----------------------------------------------------------------------------
