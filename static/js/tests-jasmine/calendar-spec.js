@@ -18,4 +18,10 @@ describe("calendar", function() {
             }
         }
     });
+
+    it("rd_table_row", function() {
+        var result = rd_table_row(2017, rotate(weekday_list(), 1));
+        expect(result).toEqual("<tr><td>2017<td>tue</tr>")
+    });
+
 });
