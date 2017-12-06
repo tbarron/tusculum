@@ -10,17 +10,25 @@ function month_header() {
     return rval;
 }
 
+function month_row(day) {
+    var rval = "<tr>";
+    var pday;
+
+    for (let idx = 0 ; idx < 7 ; idx++) {
+        pday = (day <= 31) ? "" + day : "&nbsp;";
+        rval += "<td>" + pday + "</td>";
+        day++;
+    }
+    rval += "</tr>";
+    return rval;
+}
+
 function month() {
     var day = 1;
     var rval = month_header();
     for (row = 0 ; row < 5 ; row++) {
-        rval = rval + "<tr>";
-        for (i = 0 ; i < 7 ; i++) {
-            pday = (day <= 31) ? "" + day : "&nbsp;"
-            rval = rval + "<td>" + pday + "</td>";
-            day = day + 1;
-        }
-        rval = rval + "</tr>";
+        rval += month_row(day);
+        day += 7;
     }
     return rval;
 }
