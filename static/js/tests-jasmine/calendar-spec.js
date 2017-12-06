@@ -56,5 +56,13 @@ describe("calendar", function() {
 
     it("month (or pieces of it) -- construction", function() {
         expect(true).toBe(false)
+    function check_for(haystack, needle, exppos) {
+        var rgx = new RegExp(needle);
+        var rval = haystack.match(rgx);
+        expect(rval).toContain(needle);
+        if (0 <= exppos) {
+            expect(rval['index']).toEqual(exppos);
+        }
+    }
     });
 });
