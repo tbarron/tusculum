@@ -3,6 +3,14 @@ function slicerate(list, count) {
     return list.slice(n).concat(list.slice(0, n));
 }
 
+function yet_another_rotate(list, count) {
+    var rval = list;
+    for ( ; 0 < count ; count--) {
+        rval = rval.unshift(rval.pop());
+    }
+    return rval;
+}
+
 describe("calendar", function() {
     it("weekday_list", function() {
         expect(weekday_list()).toEqual(["mon", "tue", "wed", "thu", "fri",
