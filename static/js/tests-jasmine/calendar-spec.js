@@ -1,3 +1,8 @@
+function slicerate(list, count) {
+    var n = list.length - count;
+    return list.slice(n).concat(list.slice(0, n));
+}
+
 describe("calendar", function() {
     it("weekday_list", function() {
         expect(weekday_list()).toEqual(["mon", "tue", "wed", "thu", "fri",
