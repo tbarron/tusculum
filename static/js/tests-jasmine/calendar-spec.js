@@ -64,5 +64,18 @@ describe("calendar", function() {
             expect(rval['index']).toEqual(exppos);
         }
     }
+
+    it("month_header", function() {
+        var result = month_header();
+        for (let idx = 0 ; idx < 7 ; idx++) {
+            check_for(result,
+                      "<th width='50'><button id='btn"
+                      + idx
+                      + "'></button></th>",
+                      -1);
+        }
+        check_for(result, "<tr>", 0);
+        check_for(result, "</tr>", result.length - 5);
+    });
     });
 });
