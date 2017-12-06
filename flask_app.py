@@ -6,6 +6,7 @@ from flask import Markup
 import glob
 import markdown
 import pdb
+import sys
 
 app = Flask(__name__)
 
@@ -64,7 +65,6 @@ def tests(payload):
 # -----------------------------------------------------------------------------
 @app.route('/readme')
 def readme():
-    pdb.set_trace()
     raw = read_file("README.md")
     html = Markup(markdown.markdown(raw))
     return render_template("markdown.html",
@@ -94,6 +94,8 @@ def generate_file_list():
 
 # -----------------------------------------------------------------------------
 if __name__ == '__main__':
+    if '-d' in sys.argv:
+        pdb.set_trace()
     flist = generate_file_list()
     print(flist)
     app.run(extra_files=flist)
