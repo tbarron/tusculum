@@ -77,5 +77,18 @@ describe("calendar", function() {
         check_for(result, "<tr>", 0);
         check_for(result, "</tr>", result.length - 5);
     });
+
+    it("month_row", function() {
+        var result = month_row(5);
+        check_for(result, "<tr>", 0);
+        var pos = 4;
+        for (let idx = 5 ; idx < 12 ; idx++) {
+            var stridx = "" + idx;
+            check_for(result, "<td>" + stridx + "</td>", pos);
+            pos += 9 + stridx.length;
+        }
+        check_for(result, "</tr>", result.length - 5);
+    });
+
     });
 });
