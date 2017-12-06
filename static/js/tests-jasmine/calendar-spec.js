@@ -54,8 +54,6 @@ describe("calendar", function() {
         expect(true).toBe(false)
     });
 
-    it("month (or pieces of it) -- construction", function() {
-        expect(true).toBe(false)
     function check_for(haystack, needle, exppos) {
         var rgx = new RegExp(needle);
         var rval = haystack.match(rgx);
@@ -90,5 +88,13 @@ describe("calendar", function() {
         check_for(result, "</tr>", result.length - 5);
     });
 
+    it("month", function() {
+        var result = month();
+        for (let day = 1 ; day <= 31 ; day++) {
+            check_for(result, "<td>" + day + "</td>", -1);
+        }
+        for (let idx = 0 ; idx < 7 ; idx++) {
+            check_for(result, "<button id='btn" + idx + "'></button>", -1);
+        }
     });
 });
