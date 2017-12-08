@@ -1,0 +1,30 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    line-height: 2em;
+}
+
+#tools {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    line-height: 3em;
+}
+
+div {
+    border: solid black 1px;
+}
