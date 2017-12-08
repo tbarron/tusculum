@@ -44,6 +44,13 @@ def mental_hygiene():
 
 
 # -----------------------------------------------------------------------------
+@app.route('/head')
+def head():
+    return render_template('head.html',
+                           title="Tusculum")
+
+
+# -----------------------------------------------------------------------------
 @app.route('/python-best-practices/<chapter>')
 def pybp(chapter):
     raw = read_file("pybp/{}.md".format(chapter))
