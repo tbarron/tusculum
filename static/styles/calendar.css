@@ -5,7 +5,8 @@
     * line spacing between bullets for readability
 */
 body {
-    font-family: Courier;
+    font-family: monospace;
+    font-size: 1.25em;
 }
 
 #top {
