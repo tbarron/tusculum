@@ -2,67 +2,50 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>tusculum</title>
+    <title>{{ title }}</title>
 
-    <style>
-      body {
-        font-family: arial;
-      }
-
-      h1 {
-        text-align: center;
-      }
-
-      .wrapper {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 100px 100px 100px;
-        grid-gap: 5px;
-        padding: 0px;
-        justify-content: center;
-      }
-
-      li {
-        border: solid 1px black;
-        border-radius: 5px;
-        list-style-type: none;
-        text-align: center;
-        padding-top: 25px;
-      }
-
-      #last {
-        grid-row: 1/ span 2;
-      }
-
-      .content {
-        padding-top: 35px;
-      }
-    </style>
+    <!-- CSS ============================================================== -->
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='styles/head.css') }}">
 
   </head>
   <body>
-    <h1>HTML, CSS, and Javascript Doo-Dads</h1>
-    <ul class="wrapper">
-      <li order=1><a target="_blank" href="cal-p-lb">
-          Calories per Pound
-        </a>
-      <li order=20><a target="_blank" href="compounding">
-          Compounding Interest (placeholder)
-        </a>
-      <li order=3><a target="_blank" href="calendar">
-          Gregorian Calendar Mental Hack
-        </a>
-      <li order=3><a target="_blank" href="mental_hygiene">
-          Mental Hygiene
-        </a>
-      <li id="last" order=99><div class="content"><a target="_blank" href="wandro">
-          wandro - A scrolling, random wikipedia viewer
-        </a></div>
-<!--
-      <li>the next one
-      <li>another
-      <li>some more
--->
-    </ul>
-  </body>
+    <div id="container">
+      <div id="header">
+
+        <div id="lgrav">
+          <img src="https://s.gravatar.com/avatar/0694d753f7e2b3839c9d4dce5feff668?s=80"/>
+        </div>
+        <div id="title"><h1>{{ title }}</h1></div>
+        <div id="rgrav">
+          <img src="https://s.gravatar.com/avatar/0f0a2a863234b72a801c689bf4bec6c0?s=80"/>
+        </div>
+
+      </div>
+      <div id="content">
+        <div id="lcol">
+          <h2>Writing</h2>
+          <br>tech blog
+          <br>opinion blog
+          <br>...
+          <br>&nbsp;
+        </div>
+        <div id="rcol">
+          <h2>Projects</h2>
+          <br>protoduction
+          <br>sausage factory
+          <br><a href="/jach" target="_blank">Javascript, CSS, and HTML (JaCH) Doo-dads</a>
+          <br>...
+          <br>&nbsp;
+        </div>
+      </div>
+
+      <div id="tools">
+        <div>[github]</div>
+        <div>[travis]</div>
+        <div>[bitbucket]</div>
+        <div>...</div>
+      </div>
+    </div>
+</body>
 </html>
