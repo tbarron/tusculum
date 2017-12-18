@@ -4,6 +4,7 @@ from flask import request
 from flask import Markup
 
 import glob
+import logging
 import markdown
 import pdb
 import sys
@@ -112,5 +113,6 @@ if __name__ == '__main__':
     if '-d' in sys.argv:
         pdb.set_trace()
     flist = generate_file_list()
-    print(flist)
+    logging.basicConfig(filename="flask.log", level=logging.DEBUG)
+    logging.info(flist)
     app.run(extra_files=flist)
