@@ -22,7 +22,7 @@ def before_request():
 # -----------------------------------------------------------------------------
 @app.route('/')
 def main_page():
-    return render_template('index.html')
+    return render_template('index.html', title="Tusculum")
 
 
 # -----------------------------------------------------------------------------
