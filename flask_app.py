@@ -66,6 +66,13 @@ def wandro():
 
 
 # -----------------------------------------------------------------------------
+@app.route('/shutdown')
+def shutdown():
+    logging.info('shutting down')
+    sys.exit()
+
+
+# -----------------------------------------------------------------------------
 @app.route('/calendar')
 def calendar():
     return render_template('calendar.html',
