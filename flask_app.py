@@ -7,6 +7,7 @@ import glob
 import logging
 import markdown
 import pdb
+import subprocess
 import sys
 
 app = Flask(__name__)
@@ -122,6 +123,13 @@ def readme():
 def read_file(filename):
     with open(filename, 'r') as f:
         return f.read()
+# -----------------------------------------------------------------------------
+def relaunch():
+    """
+    Relaunch myself as a detached process with logging set up
+    """
+    subprocess.Popen("python flask_app.py --logging".split())
+    sys.exit()
 
 
 # -----------------------------------------------------------------------------
