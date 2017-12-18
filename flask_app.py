@@ -58,29 +58,49 @@ def main_page():
 
 
 # -----------------------------------------------------------------------------
+@app.route('/calendar')
+def calendar():
+    """
+    Render the calendar page
+    """
+    return(render_template('calendar.html',
+                           title='Mind-Hacking Your Calendar'))
+
+
+# -----------------------------------------------------------------------------
 @app.route('/cal-p-lb')
 def calories_per_pound():
-    return render_template('calorease.html')
+    """
+    Render the calories per pound page
+    """
+    return(render_template('calorease.html'))
 
 
 # -----------------------------------------------------------------------------
 @app.route('/compounding')
 def compounding():
-    return "This computes interest compounding over time"
+    """
+    This is a placeholder. Not sure this will ever get implemented
+    """
+    return("This computes interest compounding over time")
 
 
 # -----------------------------------------------------------------------------
 @app.route('/mental_hygiene')
 def mental_hygiene():
-    return render_template('mental_hygiene.html',
-                           title="Mental Hygiene")
+    """
+    Render the mental hygiene page
+    """
+    return(render_template('mental_hygiene.html', title="Mental Hygiene"))
 
 
 # -----------------------------------------------------------------------------
 @app.route('/jach')
 def jach():
-    return render_template('jach.html',
-                           title="Tusculum")
+    """
+    Render the Javascript, CSS, HTML page
+    """
+    return(render_template('jach.html', title="Tusculum"))
 
 
 # -----------------------------------------------------------------------------
@@ -89,12 +109,15 @@ def pybp(chapter):
     raw = read_file("pybp/{}.md".format(chapter))
     html = Markup(markdown.markdown(raw))
     return render_template("markdown.html", title=chapter, html=html)
+@app.route('/wandro')
+def wandro():
+    """
+    Render the wandro page
+    """
+    return(render_template('wandro.html'))
 
 
 # -----------------------------------------------------------------------------
-@app.route('/wandro')
-def wandro():
-    return render_template('wandro.html')
 @app.route('/restart')
 def restart():
     """
@@ -110,37 +133,56 @@ def restart():
 # -----------------------------------------------------------------------------
 @app.route('/shutdown')
 def shutdown():
-    logging.info('shutting down')
-    sys.exit()
+    """
+    Shutdown the server, but only if we're running locally
+    """
+    if 'localhost' in request.headers['Host']:
+        logging.info('shutting down')
+        sys.exit()
+    else:
+        return("", 404)
 
 
 # -----------------------------------------------------------------------------
-@app.route('/calendar')
-def calendar():
-    return render_template('calendar.html',
-                           title='Mind-Hacking Your Calendar')
+@app.route('/debug')
+def debug():
+    """
+    Fire up the debugger. This only works when the flask process is attached to
+    the terminal.
+    """
+    pdb.set_trace()
+    return("debugging done")
 
 
 # -----------------------------------------------------------------------------
 @app.route('/tests/<payload>')
 def tests(payload):
-    return render_template('tests/jasmine.html', payload=payload)
+    """
+    Render Jasmine test pages
+    """
+    return(render_template('tests/jasmine.html', payload=payload))
 
 
 # -----------------------------------------------------------------------------
 @app.route('/readme')
 def readme():
+    """
+    Render the README page
+    """
     raw = read_file("README.md")
     html = Markup(markdown.markdown(raw))
-    return render_template("markdown.html",
-                           title="README",
-                           html=html)
+    return(render_template("markdown.html", title="README", html=html))
 
 
 # -----------------------------------------------------------------------------
 def read_file(filename):
+    """
+    Open a file and return its contents as a string
+    """
     with open(filename, 'r') as f:
-        return f.read()
+        return(f.read())
+
+
 # -----------------------------------------------------------------------------
 def relaunch():
     """
@@ -152,6 +194,9 @@ def relaunch():
 
 # -----------------------------------------------------------------------------
 def generate_file_list():
+    """
+    Make list of the files we want flask to reload when changed
+    """
     glist = ['templates/*.html',
              'templates/tests/*.html',
              'static/js/*.js',
@@ -161,7 +206,7 @@ def generate_file_list():
     for gexpr in glist:
         tmp = glob.glob(gexpr)
         rval.extend(tmp)
-    return rval
+    return(rval)
 
 
 # -----------------------------------------------------------------------------
