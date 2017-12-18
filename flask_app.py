@@ -32,11 +32,13 @@ def main(args):
         logging.info(flist)
         app.run(extra_files=flist)
     elif '--bg' in args:
-        # subprocess.Popen("python flask_app.py --logging".split())
         relaunch()
     else:
         print(flist)
         app.run(extra_files=flist)
+
+
+# -----------------------------------------------------------------------------
 @app.before_request
 def before_request():
     """
