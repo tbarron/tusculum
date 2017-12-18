@@ -46,7 +46,8 @@ cd into $ROOT.
 
 ### The flask app
 
-Flask is installed in the project's virtual environment ($ROOT/venv).
+[Flask](https://github.com/pallets/flask/) is installed in the project's
+virtual environment ($ROOT/venv).
 
 I can fire up a local flask server for testing by running
 
@@ -57,18 +58,15 @@ is the line
 
         alias flask-app="python flask_app.py"
 
-This is how I start up a local flask server for testing. The bottom of
-flask_app.py contains the lines
+The code in flask_app.py checks its command line options for the following:
 
-        if __name__ == '__main__':
-            flist = generate_file_list()
-            print(flist)
-            app.run(extra_files=flist)
+        -d         runs the debugger
+        --bg       runs flask_app in the background
+        --logging  runs the application with logging set up
+        no option  runs the app attached to terminal with no logging
 
 The function generate\_file\_list() creates the list of files I want flask to
 watch and reload itself when one of them changes.
-
-### Directory
 
 ### Tests
 
