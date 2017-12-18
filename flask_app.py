@@ -45,9 +45,9 @@ def mental_hygiene():
 
 
 # -----------------------------------------------------------------------------
-@app.route('/head')
-def head():
-    return render_template('head.html',
+@app.route('/jach')
+def jach():
+    return render_template('jach.html',
                            title="Tusculum")
 
 
