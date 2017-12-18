@@ -13,6 +13,29 @@ app = Flask(__name__)
 
 
 # -----------------------------------------------------------------------------
+def main(args):
+    """
+    Here's where everything starts. We know about the following arguments:
+
+     -d        run the debugger
+     --bg      start a detached process with the --logging argument
+     --logging set up logging to flask.log and run the app
+
+    With no command line option, we run the app attached to the terminal.
+    """
+    if '-d' in args:
+        pdb.set_trace()
+    flist = generate_file_list()
+    if '--logging' in args:
+        logging.basicConfig(filename="flask.log", level=logging.DEBUG)
+        logging.info(flist)
+        app.run(extra_files=flist)
+    elif '--bg' in args:
+        # subprocess.Popen("python flask_app.py --logging".split())
+        relaunch()
+    else:
+        print(flist)
+        app.run(extra_files=flist)
 @app.before_request
 def before_request():
     if 'localhost' in request.host_url:
@@ -117,9 +140,4 @@ def generate_file_list():
 
 # -----------------------------------------------------------------------------
 if __name__ == '__main__':
-    if '-d' in sys.argv:
-        pdb.set_trace()
-    flist = generate_file_list()
-    logging.basicConfig(filename="flask.log", level=logging.DEBUG)
-    logging.info(flist)
-    app.run(extra_files=flist)
+    main(sys.argv)
