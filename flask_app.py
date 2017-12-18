@@ -87,6 +87,16 @@ def pybp(chapter):
 @app.route('/wandro')
 def wandro():
     return render_template('wandro.html')
+@app.route('/restart')
+def restart():
+    """
+    If we're local, relaunch ourselves
+    """
+    if 'localhost' in request.headers['Host']:
+        logging.info('Relaunching')
+        relaunch()
+    else:
+        return("", 404)
 
 
 # -----------------------------------------------------------------------------
