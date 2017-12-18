@@ -39,6 +39,9 @@ def main(args):
         app.run(extra_files=flist)
 @app.before_request
 def before_request():
+    """
+    Clear the jinja cache so that updated HTML will be reflected in the browser
+    """
     if 'localhost' in request.host_url:
         app.jinja_env.cache = {}
 
