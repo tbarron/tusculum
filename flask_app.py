@@ -51,7 +51,10 @@ def before_request():
 # -----------------------------------------------------------------------------
 @app.route('/')
 def main_page():
-    return render_template('index.html', title="Tusculum")
+    """
+    Render the front page
+    """
+    return(render_template('index.html', title="Tusculum"))
 
 
 # -----------------------------------------------------------------------------
