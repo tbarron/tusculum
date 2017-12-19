@@ -27,6 +27,7 @@ def main(args):
     """
     if '-d' in args:
         pdb.set_trace()
+    (x, y) = last_commit()
     flist = generate_file_list()
     if '--logging' in args:
         logging.basicConfig(filename="flask.log", level=logging.DEBUG)
