@@ -24,6 +24,6 @@ body {
 #tools {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    line-height: 3em;
+    line-height: 2em;
     border: solid black 1px;
 }
