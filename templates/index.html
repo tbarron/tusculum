@@ -44,6 +44,13 @@
         <div class="tool">
           <a href="https://bitbucket.org" target="_blank">Bit Bucket</a>
         </div>
+        <div class="tiny tool">
+          {% if uptodate %}
+          <font color='green'>{{ last_update }}</font>
+          {% else %}
+          <font color='red'>{{ last_update }}</font>
+          {% endif %}
+        </div>
       </footer>
     </div>
 </body>

@@ -30,6 +30,10 @@ header {
     flex-grow: 1;
 }
 
+.tiny {
+    font-size: small;
+}
+
 #content {
     display: flex;
     flex: 2;

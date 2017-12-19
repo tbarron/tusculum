@@ -7,6 +7,7 @@ import glob
 import logging
 import markdown
 import pdb
+import pexpect
 import subprocess
 import sys
 
@@ -54,7 +55,12 @@ def main_page():
     """
     Render the front page
     """
-    return(render_template('index.html', title="Tusculum"))
+    (last_update, uptodate) = last_commit()
+    return(render_template('index.html', title="Tusculum",
+                           last_update=last_update,
+                           uptodate=uptodate))
+
+
 # -----------------------------------------------------------------------------
 @app.route('/frame/<panel>')
 def frame(panel):
@@ -175,6 +181,25 @@ def readme():
     raw = read_file("README.md")
     html = Markup(markdown.markdown(raw))
     return(render_template("markdown.html", title="README", html=html))
+
+
+# -----------------------------------------------------------------------------
+def last_commit():
+    """
+    Get the date and time of the last update from git
+    """
+    rval = pexpect.run('git --no-pager show --format="%H %ci"')
+    rval = str(rval).split("\\r\\n")[0]
+    rval = rval.replace("b'", "")
+    rval = rval.replace("-0500", "EST")
+    (hash, date) = rval.split(" ", 1)
+    hash_ts = "{}   {}".format(hash[0:8], date)
+
+    uptodate = False
+    rval = pexpect.run('git status --porc')
+    if rval.strip() == "":
+        uptodate = True
+    return(hash_ts, uptodate)
 
 
 # -----------------------------------------------------------------------------
