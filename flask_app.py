@@ -118,7 +118,7 @@ def restart():
     """
     If we're local, relaunch ourselves
     """
-    if 'localhost' in request.headers['Host']:
+    if 'localhost' in request.host_url:
         logging.info('Relaunching')
         relaunch()
     else:
@@ -131,7 +131,7 @@ def shutdown():
     """
     Shutdown the server, but only if we're running locally
     """
-    if 'localhost' in request.headers['Host']:
+    if 'localhost' in request.host_url:
         logging.info('shutting down')
         sys.exit()
     else:
