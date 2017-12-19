@@ -13,6 +13,17 @@ body {
     grid-template-columns: 10% 80% 10%;
     border-bottom: solid black 3px;
 }
+
+.grav {
+    align-self: auto;
+}
+
+.gravimg {
+    border-radius: 5px;
+}
+
+#title {
+    flex-grow: 1;
 }
 
 #content {
