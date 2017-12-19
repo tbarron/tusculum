@@ -198,7 +198,7 @@ def last_commit():
 
     uptodate = False
     rval = pexpect.run('git status --porc')
-    if rval.strip() == "":
+    if rval.decode() == "":
         uptodate = True
     return(hash_ts, uptodate)
 
