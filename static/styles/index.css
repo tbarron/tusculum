@@ -9,8 +9,10 @@ body {
 }
 
 #header {
-    display: grid;
+    display: flex;
     grid-template-columns: 10% 80% 10%;
+    border-bottom: solid black 3px;
+}
 }
 
 #content {
