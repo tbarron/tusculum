@@ -8,7 +8,7 @@ body {
     text-align: center;
 }
 
-#header {
+header {
     display: flex;
     grid-template-columns: 10% 80% 10%;
     border-bottom: solid black 3px;
@@ -26,13 +26,13 @@ body {
     flex-grow: 1;
 }
 
+footer {
 #content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     line-height: 2em;
 }
 
-#tools {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     line-height: 2em;
