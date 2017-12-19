@@ -3,14 +3,13 @@ body {
 }
 
 #container {
-    display: grid;
-    grid-template-rows: auto auto auto;
+    display: flex;
+    flex-flow: column;
     text-align: center;
 }
 
 header {
     display: flex;
-    grid-template-columns: 10% 80% 10%;
     border-bottom: solid black 3px;
 }
 
@@ -27,14 +26,16 @@ header {
 }
 
 footer {
+    display: flex;
+    justify-content: space-evenly;
 #content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    line-height: 2em;
+    display: flex;
+    flex: 2;
+    overflow: scroll;
 }
 
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
     line-height: 2em;
     border: solid black 1px;
+.tool {
+    flex-grow: 1;
 }
