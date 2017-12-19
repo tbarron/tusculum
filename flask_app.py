@@ -55,6 +55,14 @@ def main_page():
     Render the front page
     """
     return(render_template('index.html', title="Tusculum"))
+# -----------------------------------------------------------------------------
+@app.route('/frame/<panel>')
+def frame(panel):
+    """
+    Render content for a frame
+    """
+    filename = panel + '.html'
+    return(render_template(filename))
 
 
 # -----------------------------------------------------------------------------

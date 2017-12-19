@@ -48,6 +48,12 @@ header {
     border-left: solid black 1px;
 }
 
+.panel {
+    height: 100%;
+    width: 100%;
+    frameborder: 0;
+}
+
 footer {
     display: flex;
     height: 30px;
