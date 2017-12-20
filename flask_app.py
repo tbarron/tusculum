@@ -8,6 +8,7 @@ import logging
 import markdown
 import pdb
 import pexpect
+import re
 import subprocess
 import sys
 
@@ -154,6 +155,25 @@ def shutdown():
 
 
 # -----------------------------------------------------------------------------
+@app.route('/techblog/<entry>')
+def techblog(entry):
+    """
+    If *entry* is empty, we render the blog page. Otherwise, we rende the entry
+    requested.
+    """
+    if entry == "":
+        md, raw = read_file_with_metadata("techblog/front.md")
+        html = Markup(markdown.markdown(raw))
+    else:
+        md, raw = read_file_with_metadata("techblog/{}.md".format(entry))
+        html = Markup(markdown.markdown(raw))
+
+    return(render_template("techblog.html",
+                           html=html,
+                           **md))
+
+
+# -----------------------------------------------------------------------------
 @app.route('/debug')
 def debug():
     """
@@ -201,6 +221,34 @@ def last_commit():
     if rval.decode() == "":
         uptodate = True
     return(hash_ts, uptodate)
+
+
+# -----------------------------------------------------------------------------
+def read_file_with_metadata(filename):
+    """
+    Read a file and parse the metadata (between two lines of dashes) off the
+    front
+    """
+    with open(filename, 'r') as f:
+        data = f.readlines()
+
+    state = 'STARTING'
+    mdata = {}
+    rval = ""
+    for line in data:
+        if state == 'STARTING' and line.startswith('---'):
+            state = 'METADATA'
+        elif state == 'STARTING':
+            state = 'CONTENT'
+            rval = line
+        elif state == 'METADATA' and line.startswith('---'):
+            state = 'CONTENT'
+        elif state == 'METADATA':
+            (key, value) = re.split(":\s*", line, 1)
+            mdata[key] = value
+        elif state == 'CONTENT':
+            rval += line
+    return(mdata, rval)
 
 
 # -----------------------------------------------------------------------------
