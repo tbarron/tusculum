@@ -40,9 +40,9 @@ In the rest of this file, $ROOT refers to this directory.
 
 ### autoenv
 
-I have [autoenv](https://github.com/kennethreitz/autoenv) installed for my
-account. This allows me to put stuff in $ROOT/.env that will get run when I
-cd into $ROOT.
+With [autoenv](https://github.com/kennethreitz/autoenv) installed,
+$ROOT/.env gets run when I cd into $ROOT. This allows for setting up my
+work environment automagically upon entering the work directory.
 
 ### The flask app
 
