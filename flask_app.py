@@ -8,9 +8,11 @@ import logging
 import markdown
 import pdb
 import pexpect
+import py
 import re
 import subprocess
 import sys
+import useful
 
 app = Flask(__name__)
 
@@ -126,6 +128,44 @@ def wandro():
     Render the wandro page
     """
     return(render_template('wandro.html'))
+
+
+# -----------------------------------------------------------------------------
+@app.route('/useful', methods=["GET", "POST"])
+def useful_route():
+    """
+    Render the 'Useful Thoughts' page
+    """
+    # If database does not exist, set it up.
+    db = py.path.local("useful.db")
+    if not db.exists():
+        useful.setup_database()
+
+    # If a thought has been suggested, add it to the database
+    action = request.values.get('action')
+    ttext = request.values.get('thought_text')
+    if action == 'suggest' and ttext != "":
+        useful.store_thought(ttext)
+
+    # Decide how many thoughts to retrieve. The default number is 6. If the
+    # user has clicked "more", pick a larger number. If the user has clicked
+    # "less", pick a smaller number.
+    try:
+        count = int(request.values.get('count')) or 6
+    except:
+        count = 6
+    if action == 'more':
+        count = int(1.5 * count)
+    elif action == 'fewer':
+        count = int(0.66 * count)
+
+    # Retrieve a random selection of thoughts from the database
+    thought_list = useful.random_thoughts(count)
+
+    return(render_template('useful.html',
+                           thoughts=thought_list,
+                           title="Useful Thoughts",
+                           count=count))
 
 
 # -----------------------------------------------------------------------------
