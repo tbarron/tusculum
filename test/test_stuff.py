@@ -48,3 +48,23 @@ def test_find_iframe(web):
     assert justexp == [], "Expected but not in the webpage"
 
 
+# -----------------------------------------------------------------------------
+def test_useful(web):
+    web.get("localhost:5000/useful")
+    elements = web.find_elements_by_xpath("//p[@class='thought']")
+    assert len(elements) == 6
+
+    element = web.find_element_by_xpath("//input[@name='thought_text']")
+    assert element.get_attribute("type") == "text"
+
+    element = web.find_element_by_xpath("//input[@name='suggest']")
+    assert element.get_attribute("type") == "submit"
+
+    element = web.find_element_by_xpath("//input[@name='more_th']")
+    assert element.get_attribute("type") == "submit"
+
+    element = web.find_element_by_xpath("//input[@name='fewer_th']")
+    assert element.get_attribute("type") == "submit"
+
+    element = web.find_element_by_xpath("//input[@name='all_th']")
+    assert element.get_attribute("type") == "submit"
