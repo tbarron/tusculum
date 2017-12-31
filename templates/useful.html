@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='styles/useful.css') }}">
+  </head>
+  <body>
+    <div class="centext"><h1>{{ title }}</h1></div>
+
+    <div id="thoughts">
+      <ul>
+        {% for thought in thoughts %}
+        <li><p class="thought">
+            {{ thought }}
+            </p>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div id="interact">
+      <form action="/useful" method="post">
+        <div class="centext">
+          <button type="submit">
+            Another Set of Thoughts</button>
+          <button type="submit" name="action" value="more">
+            More Thoughts per Page</button>
+          <button type="submit" name="action" value="fewer">
+            Fewer Thoughts per Page</button>
+          <button type="submit" name="action" value="all">
+            ALL the thoughts!</button>
+        </div>
+        <p>&nbsp;
+        <div class="centext">
+          Suggest a thought:
+          <br><input type="text" name="thought_text" size=80>
+          <br><button type="submit" name="action" value="suggest">
+            Suggest</button>
+          <br><input type="hidden" name="count" value={{ count }}>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

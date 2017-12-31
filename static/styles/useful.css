@@ -1,0 +1,74 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+.centext {
+    text-align: center;
+}
+
+#container {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 740px;
+    text-align: center;
+}
+
+header {
+    display: flex;
+}
+
+.grav {
+    align-self: auto;
+}
+
+.gravimg {
+    border-radius: 5px;
+}
+
+#title {
+    flex-grow: 1;
+}
+
+.tiny {
+    font-size: small;
+}
+
+#content {
+    display: flex;
+    flex: 2;
+    overflow: scroll;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+}
+
+#lcol {
+    flex: 1;
+    border-right: solid black 1px;
+}
+
+#rcol {
+    flex: 1;
+    border-left: solid black 1px;
+}
+
+.panel {
+    height: 100%;
+    width: 100%;
+    frameborder: 0;
+}
+
+footer {
+    display: flex;
+    height: 30px;
+    justify-content: space-evenly;
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+}
+
+.tool {
+    flex: 1;
+}
