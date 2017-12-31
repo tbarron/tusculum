@@ -5,9 +5,14 @@ from selenium.common.exceptions import NoSuchElementException
 import time
 
 def test_head_page_verify_elements():
+# -----------------------------------------------------------------------------
+@pytest.fixture(scope="module")
+def web():
     driver = webdriver.Chrome()
-    driver.get("localhost:5000")
-    time.sleep(2)
+    yield driver
+    driver.quit()
+
+
     exp = ["Calories per Pound",
            "Compounding Interest (placeholder)",
            "Gregorian Calendar Mental Hack",
