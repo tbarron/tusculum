@@ -131,11 +131,21 @@ def wandro():
 
 
 # -----------------------------------------------------------------------------
-@app.route('/useful', methods=["GET", "POST"])
-def useful_route():
+@app.route('/useful/<branch>', methods=["GET", "POST"])
+def useful_route(branch):
     """
     Render the 'Useful Thoughts' page
     """
+    if 'thoughts' == branch:
+        return useful_thoughts()
+    elif 'vet' == branch:
+        return useful_vet()
+    elif 'about' == branch:
+        return useful_about()
+
+
+# -----------------------------------------------------------------------------
+def useful_thoughts():
     # If database does not exist, set it up.
     db = py.path.local("useful.db")
     if not db.exists():
@@ -166,7 +176,7 @@ def useful_route():
     # Retrieve a random selection of thoughts from the database
     thought_list = useful.random_thoughts(count)
 
-    return(render_template('useful.html',
+    return(render_template('useful_thoughts.html',
                            thoughts=thought_list,
                            title="Useful Thoughts",
                            suggest_reply=suggest_msg,
