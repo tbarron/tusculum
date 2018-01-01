@@ -145,6 +145,12 @@ def useful_route(branch):
 
 
 # -----------------------------------------------------------------------------
+def useful_about():
+    return(render_template('useful_about.html',
+                           title="About Useful Thoughts"))
+
+
+# -----------------------------------------------------------------------------
 def useful_thoughts():
     # If database does not exist, set it up.
     db = py.path.local("useful.db")
