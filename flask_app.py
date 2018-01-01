@@ -144,8 +144,12 @@ def useful_route():
     # If a thought has been suggested, add it to the database
     action = request.values.get('action')
     ttext = request.values.get('thought_text')
+    suggest_msg = ""
     if action == 'suggest' and ttext != "":
-        useful.store_thought(ttext)
+        if useful.store_thought(ttext):
+            suggest_msg = "Your suggestion has been added. Thank you."
+        else:
+            suggest_msg = "That one is already in the database. Thanks!"
 
     # Decide how many thoughts to retrieve. The default number is 6. If the
     # user has clicked "more", pick a larger number. If the user has clicked
@@ -165,6 +169,7 @@ def useful_route():
     return(render_template('useful.html',
                            thoughts=thought_list,
                            title="Useful Thoughts",
+                           suggest_reply=suggest_msg,
                            count=count))
 
 

@@ -51,8 +51,13 @@ def store_thought(text):
     Define the database of useful thoughts
     """
     S = session()
-    S.add(Thought(th_vetted=0, th_text=text))
+    present = False
+    for z in S.query(Thought).filter_by(th_text=text):
+        present = True
+    if not present:
+        S.add(Thought(th_vetted=0, th_text=text))
     S.commit()
+    return not present
 
 
 # -----------------------------------------------------------------------------
