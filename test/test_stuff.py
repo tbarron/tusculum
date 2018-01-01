@@ -2,6 +2,7 @@ import pdb
 import pytest
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
+import sys
 import time
 
 
@@ -11,6 +12,16 @@ def web():
     driver = webdriver.Chrome()
     yield driver
     driver.quit()
+
+
+# -----------------------------------------------------------------------------
+def test_flask_is_running(web):
+    """
+    Check whether flask is running
+    """
+    web.get("localhost:5000")
+    chunk = "Copyright 2017 The Chromium Authors"
+    assert chunk not in web.page_source, "flask is not running"
 
 
 # -----------------------------------------------------------------------------
@@ -62,14 +73,14 @@ def test_useful(web):
     element = web.find_element_by_xpath("//input[@name='thought_text']")
     assert element.get_attribute("type") == "text"
 
-    element = web.find_element_by_xpath("//input[@name='suggest']")
+    element = web.find_element_by_xpath("//button[@value='suggest']")
     assert element.get_attribute("type") == "submit"
 
-    element = web.find_element_by_xpath("//input[@name='more_th']")
+    element = web.find_element_by_xpath("//button[@value='more']")
     assert element.get_attribute("type") == "submit"
 
-    element = web.find_element_by_xpath("//input[@name='fewer_th']")
+    element = web.find_element_by_xpath("//button[@value='fewer']")
     assert element.get_attribute("type") == "submit"
 
-    element = web.find_element_by_xpath("//input[@name='all_th']")
+    element = web.find_element_by_xpath("//button[@value='all']")
     assert element.get_attribute("type") == "submit"
