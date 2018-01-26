@@ -74,12 +74,16 @@ function calorease_main() {
         switch (decide(cps, cpw)) {
           case 0:
             instruct();
+            break;
           case 1:
             pkg_calculation(cps, spp, wpp, unit_pp, "#cpp");  
+            break;
           case 2:
             wgt_calculation(cpw, cp_unit, "#cpp");
+            break;
           case 3:
             hell_frozen();
+            break;
         }
     });
 }
