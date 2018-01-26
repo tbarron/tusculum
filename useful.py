@@ -1,4 +1,3 @@
-import py
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import func
@@ -22,8 +21,8 @@ class Thought(Base):
 # -----------------------------------------------------------------------------
 def engine():
     if not hasattr(engine, "_eng"):
-        dbname = py.path.local("useful.db")
-        dbselector = "sqlite:///{}".format(dbname.strpath)
+        dbname = "useful.db"
+        dbselector = "sqlite:///{}".format(dbname)
         engine._eng = sql.create_engine(dbselector)
     return engine._eng
 

@@ -6,9 +6,9 @@ from flask import Markup
 import glob
 import logging
 import markdown
+import os
 import pdb
 import pexpect
-import py
 import re
 import subprocess
 import sys
@@ -153,8 +153,7 @@ def useful_about():
 # -----------------------------------------------------------------------------
 def useful_thoughts():
     # If database does not exist, set it up.
-    db = py.path.local("useful.db")
-    if not db.exists():
+    if not os.path.exists("useful.db"):
         useful.setup_database()
 
     # If a thought has been suggested, add it to the database
