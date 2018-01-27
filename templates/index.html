@@ -10,49 +10,54 @@
 
   </head>
   <body>
-    <div id="container">
-      <header id="header">
+    <div class="container">
+      <!-- <header id="header"> -->
 
-        <div class="grav" id="lgrav">
-          <img class="gravimg"
+      <div class="lgrav">
+        <img class="gravimg"
                src="https://s.gravatar.com/avatar/0694d753f7e2b3839c9d4dce5feff668?s=80"/>
-        </div>
-        <div id="title"><h1>{{ title }}</h1></div>
-        <div class="grav" id="rgrav">
-          <img class="gravimg"
-               src="https://s.gravatar.com/avatar/0f0a2a863234b72a801c689bf4bec6c0?s=80"/>
-        </div>
-
-      </header>
-      <div id="content">
-        <div class="contcol" id="lcol">
-          <iframe class="panel" src="/frame/writing" id="writing"
-                  frameborder=0></iframe>
-        </div>
-        <div class="contcol" id="rcol">
-          <iframe class="panel" src="/frame/projects" id="projects"
-                  frameborder=0></iframe>
-        </div>
       </div>
 
-      <footer id="tools">
-        <div class="tool">
-          <a href="https://github.com" target="_blank">Github</a>
-        </div>
-        <div class="tool">
-          <a href="https://travis-ci.org/tbarron" target="_blank">Travis</a>
-        </div>
-        <div class="tool">
-          <a href="https://bitbucket.org" target="_blank">Bit Bucket</a>
-        </div>
-        <div class="tiny tool">
-          {% if uptodate %}
-          <font color='green'>{{ last_update }}</font>
-          {% else %}
-          <font color='red'>{{ last_update }}</font>
-          {% endif %}
-        </div>
-      </footer>
+      <div class="title">
+        <center><h1>{{ title }}</h1></center>
+      </div>
+
+      <div class="rgrav">
+        <img class="gravimg"
+             src="https://s.gravatar.com/avatar/0f0a2a863234b72a801c689bf4bec6c0?s=80"/>
+      </div>
+
+      <!-- </header> -->
+      <div class="writing">
+        <iframe class="panel" src="/frame/writing" id="writing"
+                frameborder=0></iframe>
+      </div>
+
+      <div class="projects">
+        <iframe class="panel" src="/frame/projects" id="projects"
+                frameborder=0></iframe>
+      </div>
+
+      <div class="github">
+        <a href="https://github.com" target="_blank">Github</a>
+      </div>
+
+      <div class="travis">
+        <a href="https://travis-ci.org/tbarron" target="_blank">Travis</a>
+      </div>
+
+      <div class="bitbucket">
+        <a href="https://bitbucket.org" target="_blank">Bitbucket</a>
+      </div>
+
+      <div class="tiny tool commit">
+        {% if uptodate %}
+        <font color='green'>{{ last_update }}</font>
+        {% else %}
+        <font color='red'>{{ last_update }}</font>
+        {% endif %}
+      </div>
+
     </div>
-</body>
+  </body>
 </html>
