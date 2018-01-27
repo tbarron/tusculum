@@ -1,4 +1,9 @@
-## 1.0.1 ... 2018.0127
+## 1.0.2 ...
+
+ * Brought back rounded corners on the gravatar images that was lost
+   temporarily
+
+## 1.0.1 ... 2018.0127 18:26:43
 
  * index.{css,html}: Use CSS grid rather than flex to get component
    responsiveness

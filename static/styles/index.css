@@ -15,6 +15,10 @@ body {
     align-items: stretch;
 }
 
+.gravimg {
+    border-radius: 5px;
+}
+
 .lgrav {
     grid-column: 1 / 2;
 }
