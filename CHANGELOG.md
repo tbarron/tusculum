@@ -1,3 +1,10 @@
+## 1.0.1 ... 2018.0127
+
+ * index.{css,html}: Use CSS grid rather than flex to get component
+   responsiveness
+ * test/test_deploy.py: Add test for deployability
+ * version.py: Add file to define the version
+
 ## 1.0.0 ... 2017.1220 05:46:48
 
  * techblog: Machinery in flask app for serving techblog

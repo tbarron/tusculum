@@ -1,5 +1,7 @@
 import re
 import tbx
+from version import current_version
+
 
 # -----------------------------------------------------------------------------
 def test_deployable():
