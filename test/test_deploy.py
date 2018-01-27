@@ -21,7 +21,7 @@ def test_deployable():
 
     # check the current version against the most recent tag
     result = runcmd("git --no-pager tag")
-    tag_l = result.strip().split("\r\n")
+    tag_l = result.strip().split("\n")
     if 0 < len(tag_l):
         latest_tag = tag_l[-1]
     else:
