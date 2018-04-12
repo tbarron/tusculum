@@ -1,0 +1,130 @@
+/* ----------------------------------------------------------------------
+   General page styling
+    * set the font
+    * wide right and left margins
+    * line spacing between bullets for readability
+*/
+body {
+    font-family: monospace;
+    font-size: 1.25em;
+}
+
+#top {
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+li {
+    margin-top: 10px;
+}
+
+button {
+    background-color: pink;
+    border: none;
+}
+
+.oct {
+    background-color: #99ff99;
+}
+
+.apr {
+    background-color: #ccffff;
+}
+
+.may {
+    background-color: #ffffcc;
+}
+
+.jun {
+    background-color: #cc99ff;
+}
+
+.aug {
+    background-color: #ff9999;
+}
+
+.sep {
+    background-color: #99ccff;
+}
+
+.nov {
+    background-color: #ff99cc;
+}
+
+/* ----------------------------------------------------------------------
+      Style the ref day table
+        * simple borders
+        * colored header row
+        * internal padding for readability
+        * top margin
+        */
+#rd td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#rd th {
+    background-color: pink;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#rd {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.clyr {
+    width: 75px;
+}
+
+/* ----------------------------------------------------------------------
+      Style the ref day by year table
+        * simple borders
+        * colored header row
+        * internal padding
+        * top margin
+        */
+#byear td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#byear th {
+    background-color: pink;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#byear {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ----------------------------------------------------------------------
+      Style the month layout table
+        * simple borders
+        * colored header row (with matching button color)
+        * internal padding
+        * top margin
+        */
+#month td {
+    border: 1px solid black;
+    padding: 5px;
+}
+
+#month {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: right;
+    margin-top: 10px;
+}
+
+#month th {
+    background-color: pink;
+    padding: 5px;
+}

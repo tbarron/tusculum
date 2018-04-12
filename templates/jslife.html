@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <!-- Javascript ======================================================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/calendar.js') }}"></script>
+
+    <!-- CSS ============================================================== -->
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='styles/calendar.css') }}">
+  </head>
+  <body>
+    <center><h1>{{ title }}</h1></center>
+    <ul id="top">
+
+      <li>Every year, the dates 4/4, 6/6, 8/8, 10/10, and 12/12 fall on the
+        same weekday. In 2017, it's Tuesday. In 2018, it's Wednesday. In
+        2020, it's Saturday. Let's call this the reference day (RD).
+
+        <ul>
+
+          <li>For the odd months, RD falls on 3/7, 5/9, 7/11, 9/5, and
+            11/7.
+
+          <li>The remaining months are January and February and they behave
+            differently for common and leap years. In common years, RD
+            falls on 1/3 and 2/1. In leap years, RD falls
+            on 1/4 and 2/7. Here's a table that summarizes where RD falls
+            in each month.
+
+        <center><table id="rd"><tr>
+            <th>&nbsp;
+            <th class="clyr">Leap Year
+            <th class="clyr">Common Year
+            <th>Notes
+          </tr><tr>
+            <td>January
+            <td class="apr">1/4
+            <td class="oct">1/3
+            <td>matches April and July or October
+          </tr><tr>
+            <td>February
+            <td class="aug">2/1
+            <td class="nov">2/7
+            <td>matches August or March and November
+          </tr><tr>
+            <td>March
+            <td class="nov">3/7
+            <td class="nov">3/7
+            <td>matches common Feb and November
+          </tr><tr>
+            <td>April
+            <td class="apr">4/4
+            <td class="apr">4/4
+            <td>matches leap January and July
+          </tr><tr>
+            <td>May
+            <td class="may">5/9
+            <td class="may">5/9
+            <td>reverses September
+          </tr><tr>
+            <td>June
+            <td class="jun">6/6
+            <td class="jun">6/6
+            <td>
+          </tr><tr>
+            <td>July
+            <td class="apr">7/4
+            <td class="apr">7/4
+            <td>matches leap Jan, April<br>7/11 reverses November (11/7)
+          </tr><tr>
+            <td>August
+            <td class="aug">8/8
+            <td class="aug">8/8
+            <td>matches leap February
+          </tr><tr>
+            <td>September
+            <td class="sep">9/5
+            <td class="sep">9/5
+            <td>matches December<br>reverses May
+          </tr><tr>
+            <td>October
+            <td class="oct">10/10
+            <td class="oct">10/10
+            <td>matches common January
+          </tr><tr>
+            <td>November
+            <td class="nov">11/7
+            <td class="nov">11/7
+            <td>matches March, common February<br>reverses July
+          </tr><tr>
+            <td>December
+            <td class="sep">12/12
+            <td class="sep">12/12
+            <td>matches September
+        </tr></table></center>
+
+        <li>In the table, you can see that all the months from March on
+          behave the same for both common and leap years.
+
+        <li>Note that months that are colored the same have similar weekly
+          layouts. For example, consider February and March in a common
+          year. Because February has 28 days and 28 is a multiple of 7, the
+          calendar looks the same for February and March most of the time.
+          Simiarly, although most of us don't notice, November always looks
+          the same as March and usually looks the same as February, even
+          though the three months don't have the same number of days. The
+          7th (and the 10th and 13th and every other day up to 28) falls on
+          the same weekday in all three of these months.
+
+        </ul>
+
+      <li>For common years, the RD advances one weekday from one year to
+        the next. So, since the RD for 2017 is Tuesday, the RD for 2018
+        will be Wednesday, and for 2019, it will be Thursday.
+
+      <li>Going from a common year to a leap year (e.g., from 2019 to
+        2020), the RD list skips a weekday. So, since the RD for 2019 is
+        Thursday, in 2020 it will be Saturday (skipping Friday).
+
+      <center><table id="byear">
+      <tr><th>Year</th><th>Ref Day</th></tr>
+      </table></center>
+
+      <li>Based on modulo 7 arithmetic, knowing the reference day for a
+        given year makes it relatively easy to
+        compute the weekday for a given date or the date of a given ordinal
+        day in a month.
+        <ul>
+          <li>For example, 2018.0428 (i.e., April 28, 2018) will fall on
+            Saturday.
+            <ul>
+              <li>2018.0404 is Wednesday. So are 0411, 0418, and 0425.
+              <li>To get from 0425 to 0428, we add three.
+              <li>Wednesday plus three is Saturday.
+            </ul>
+          <li>The fourth Thursday of November, 2018, will be 2018.1122.
+            <ul>
+              <li>2018.1107 is Wednesday. So 1108 will be the second Thursday
+                (1101 is the first).
+
+              <li>That means 1115 will be the third Thursday and 1122 will be
+                the fourth.
+
+            </ul>
+        </ul>
+
+      <li>Consider the following month layout:
+        <br><center><table id="month" border=1></table></center>
+
+        <p>If you click in the heading, you can move the column for
+          "Monday" around to see how the dates and weekdays line up for
+          various starting points.
+
+        <p>This layout may help with visualizing weeks within a month to
+        figure out which weekdays specific dates fall on.
+    </ul>
+  </body>
+</html>
