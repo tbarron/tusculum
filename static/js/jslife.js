@@ -1,3 +1,4 @@
+/*
 function month_header() {
     var rval = "<tr>";
     var btn;
@@ -73,14 +74,17 @@ function set_weekdays(offset) {
 }
 
 $(document).ready(function() {
-    $("#month").append(month());
-    set_weekdays(0);
-    $("#btn0").click(function() { set_weekdays(0); })
-    $("#btn1").click(function() { set_weekdays(1); })
-    $("#btn2").click(function() { set_weekdays(2); })
-    $("#btn3").click(function() { set_weekdays(3); })
-    $("#btn4").click(function() { set_weekdays(4); })
-    $("#btn5").click(function() { set_weekdays(5); })
-    $("#btn6").click(function() { set_weekdays(6); })
-    $("#byear").append(rd_by_year());
+    var canvas = $(document).getElementById('JSlife');
+    var ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'green';
+    ctx.fillRect(10, 10, 100, 100);
 });
+
+alert('before');
+var blarg = document.getElementById("JSlife");
+var ctx = blarg.getContext("2d");
+alert('after');
+ctx.fillStyle = 'green';
+ctx.fillRect(10, 10, 100, 100);
+ctx.stroke();
+*/

@@ -76,40 +76,68 @@ def frame(panel):
 
 
 # -----------------------------------------------------------------------------
-@app.route('/calendar')
-def calendar():
+@app.route('/widget/<which>')
+def widget(which):
     """
-    Render the calendar page
+    Render a widget based on the URL
     """
-    return(render_template('calendar.html',
-                           title='Mind-Hacking Your Calendar'))
+    widges = {'calendar': {'filename': 'calendar.html',
+                           'title': 'Mind-Hacking Your Calendar'},
+              'jslife': {'filename': 'jslife.html',
+                         'title': "Conway's Life in Javascript"},
+              'cal-p-lb': {'filename': 'calorease.html',
+                           'title': ''},
+              'compounding': {'filename': 'compounding.html',
+                              'title': 'Compounding',
+                              'placeholder': "This computes geometric growth over time"},
+              'mental_hygiene': {'filename': 'mental_hygiene.html',
+                              'title': 'Mental Hygiene',},
+              'wandro': {'filename': 'wandro.html',
+                              'title': 'wandro - A scrolling, random wikipedia viewer'},
+              }
+
+    if "placeholder" in widges[which]:
+        return(widges[which]['placeholder'])
+    else:
+        return(render_template(widges[which]['filename'],
+                               title=widges[which]['title']))
 
 
 # -----------------------------------------------------------------------------
-@app.route('/cal-p-lb')
-def calories_per_pound():
-    """
-    Render the calories per pound page
-    """
-    return(render_template('calorease.html'))
+# @app.route('/calendar')
+# def calendar():
+#     """
+#     Render the calendar page
+#     """
+#     return(render_template('calendar.html',
+#                            title='Mind-Hacking Your Calendar'))
 
 
 # -----------------------------------------------------------------------------
-@app.route('/compounding')
-def compounding():
-    """
-    This is a placeholder. Not sure this will ever get implemented
-    """
-    return("This computes interest compounding over time")
+# @app.route('/cal-p-lb')
+# def calories_per_pound():
+#     """
+#     Render the calories per pound page
+#     """
+#     return(render_template('calorease.html'))
 
 
 # -----------------------------------------------------------------------------
-@app.route('/mental_hygiene')
-def mental_hygiene():
-    """
-    Render the mental hygiene page
-    """
-    return(render_template('mental_hygiene.html', title="Mental Hygiene"))
+# @app.route('/compounding')
+# def compounding():
+#     """
+#     This is a placeholder. Not sure this will ever get implemented
+#     """
+#     return("This computes interest compounding over time")
+
+
+# -----------------------------------------------------------------------------
+# @app.route('/mental_hygiene')
+# def mental_hygiene():
+#     """
+#     Render the mental hygiene page
+#     """
+#     return(render_template('mental_hygiene.html', title="Mental Hygiene"))
 
 
 # -----------------------------------------------------------------------------
@@ -118,16 +146,17 @@ def jach():
     """
     Render the Javascript, CSS, HTML page
     """
-    return(render_template('jach.html', title="Tusculum"))
+    return(render_template('jach.html',
+                           title="Tusculum"))
 
 
 # -----------------------------------------------------------------------------
-@app.route('/wandro')
-def wandro():
-    """
-    Render the wandro page
-    """
-    return(render_template('wandro.html'))
+# @app.route('/wandro')
+# def wandro():
+#     """
+#     Render the wandro page
+#     """
+#     return(render_template('wandro.html'))
 
 
 # -----------------------------------------------------------------------------
