@@ -99,51 +99,119 @@ var rxc;
 var step_count = 0;
 var where = new Loc(0, 0);
 
-    for (let idx = 0 ; idx < 7 ; idx++) {
-        pday = (day <= 31) ? "" + day : "&nbsp;";
-        rval += "<td>" + pday + "</td>";
-        day++;
+// --- Event handlers
+// Handle sclabel mouseover, mouseout
+function sc_mouseover() {
+    $("#sclabel").html("Reset");
+}
+function sc_mouseout() {
+    $("#sclabel").html("Steps:");
+}
+function sc_click() {
+    step_count = 0;
+    $("#stepcount").val(step_count);
+}
+
+// What to do with a click on a matrix cell
+function cell_click() {
+    var rgx = /r(\d+)c(\d+)/;
+    var rowcol = rgx.exec($(this).attr('id'));
+    var cell = new Loc(parseInt(rowcol[1]), parseInt(rowcol[2]));
+    if (cur[cell.row][cell.col] == undefined) {
+        cur[cell.row][cell.col] = 0;
     }
-    rval += "</tr>";
-    return rval;
+    cur[cell.row][cell.col] = 1 - cur[cell.row][cell.col];
+    cell.mark(colors[cur[cell.row][cell.col]]);
 }
 
-function month() {
-    var day = 1;
-    var rval = month_header();
-    for (row = 0 ; row < 5 ; row++) {
-        rval += month_row(day);
-        day += 7;
+// Handle clicks on the Stop/Go button
+function stopgo_click() {
+    if ($("#stopgo").html() == "Stop") {
+        $("#stopgo").html("Run");
+        clearTimeout(tmo);
+    } else {
+        $("#stopgo").html("Stop");
+        tmo = setTimeout(run_it, milliseconds);
     }
-    return rval;
 }
 
-function weekday_list() {
-    return(["mon", "tue", "wed", "thu", "fri", "sat", "sun"]);
-}
-
-function rotate(list, count) {
-    var rval = [];
-    for (var idx = 0 ; idx < list.length ; idx++) {
-        rval[count] = list[idx];
-        count = (count+1) % list.length;
+// Handle clicks on the Clear button
+function clear_click() {
+    for (r = 0 ; r < rows ; r++) {
+        for (c = 0 ; c < cols ; c++) {
+            var cell = new Loc(r, c);
+            cur[r][c] = 0;
+            cell.mark(colors[cur[r][c]]);
+        }
     }
-    return rval;
 }
 
-function rd_table_row(year, wdl) {
-    var aug01 = new Date(year, 7, 1, 0, 0, 0, 0);
-    var day_name = wdl[aug01.getDay()];
-    return "<tr><td>" + year + "<td>" + day_name + "</tr>";
+function apply_start() {
+    which = $("#starts").val()
+    r = Math.floor(rows / 2);
+    c = Math.floor(cols / 2);
+    if (which == "rpent") {
+        offsets = [new Offset(0, 0),   new Offset(-1, 0),   new Offset(1, 0),
+                   new Offset(-1, -1), new Offset(0, 1)];
+    } else if (which == "acorn") {
+        offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(-2, 1),
+                   new Offset(-1, 3),  new Offset(0, 4),    new Offset(0, 5),
+                   new Offset(0, 6)];
+    } else if (which == "diehard") {
+        offsets = [new Offset(0, 0),   new Offset(0, -1),   new Offset(1, 0),
+                   new Offset(1, 4),   new Offset(1, 5),    new Offset(-1, 5),
+                   new Offset(1, 6)];
+    } else if (which == "glider") {
+        r = 5;
+        c = 5;
+        offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
+                   new Offset(-1, 2),  new Offset(-2, 1)];
+    } else if (which == "gun") {
+        r = 5;
+        c = 5;
+        offsets = [new Offset(0, 0), new Offset(0, 1), new Offset(1, 0), new Offset(1, 1),
+                   new Offset(0, 10), new Offset(1, 10), new Offset(2, 10),
+                   new Offset(-1, 11), new Offset(3, 11),
+                   new Offset(-2, 12), new Offset(4, 12),
+                   new Offset(-2, 13), new Offset(4, 13),
+                   new Offset(1, 14),
+                   new Offset(-1, 15), new Offset(3, 15),
+                   new Offset(0, 16),  new Offset(1, 16), new Offset(2, 16),
+                   new Offset(1, 17),
+                   new Offset(0, 20),  new Offset(-1, 20),  new Offset(-2, 20), 
+                   new Offset(0, 21),  new Offset(-1, 21),  new Offset(-2, 21), 
+                   new Offset(1, 22),  new Offset(-3, 22),
+                   new Offset(1, 24),  new Offset(2, 24), new Offset(-3, 24), new Offset(-4, 24),
+                   new Offset(-1, 34), new Offset(-2, 34), new Offset(-1, 35), new Offset(-2, 35)
+                  ];
+    } else if (which == 'ship') {
+        c = 5;
+        offsets = [new Offset(0, 0), new Offset(0, 1), new Offset(0, 2),
+                   new Offset(0, 3), new Offset(1, 3), new Offset(2, 3),
+                   new Offset(1, -1), new Offset(3, -1), new Offset(3, 2)];
+    }
+    for (idx in offsets) {
+        set_cell(cur, r + offsets[idx].roff, c + offsets[idx].coff, 1);
+    }
 }
 
-function rd_by_year() {
-    var now = new Date()
-    var start_year = now.getYear() + 1900 - 5;
-    var wdl = rotate(weekday_list(), 1);
-    var rval = "";
-    for (var year = start_year ; year < start_year + 20 ; year++) {
-        rval = rval + rd_table_row(year, wdl);
+/*
+// Handle clicks on the Start Over button
+function restart_click() {
+    main();
+}
+*/
+
+// Handle clicks on the Step button
+function step_click() {
+    step();
+}
+
+// Handle updates in the interval field
+function interval_set() {
+    milliseconds = parseInt($("#interval").val());
+}
+
     }
     return rval;
 }
