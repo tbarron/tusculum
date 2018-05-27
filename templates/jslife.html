@@ -15,216 +15,29 @@
   <body>
     <!-- <center><h1>{{ title }}</h1></center> -->
 
-    <center>
-    <!-- <canvas id="controls" width="200" height="50"></canvas> -->
-      <canvas id="JSlife"
-              width="200" height="200"
-              style="border:1px solid #000000;">
-    </canvas>
-    </center>
-    <div>
-    <p>
-    <button id="btn_stopgo">Setting Up...</button>
-    <button id="btn_step">Step</button>
-    <button id="btn_show">Show</button>
-    <button id="btn_clear">Clear</button>
+    <div id="controls">
+      <select id="starts" onchange="apply_start()"></select>
+      <!-- <button id="restart" onclick="restart_click()">Start --
+        -- Over</button> -->
+      <button id="step" onclick="step_click()">Step</button>
+      <button id="stopgo" onclick="stopgo_click()">Run</button>
+      <button id="clear" onclick="clear_click()">Clear</button>
+      Interval:
+      <input id="interval" value="100" onfocusout="interval_set()"/>
+      <button id="sclabel"
+              onmouseover="sc_mouseover()"
+              onmouseout="sc_mouseout()"
+              onclick="sc_click()">Steps:</button>
+      <input id="stepcount" type="text" value="0"/>
+      <input id="rxc" type="text"/>
+      <p>
+    </div>
+    <div id='grid-container'>
+      <table id='grid' border=1 width='100%'>
+      </table>
     </div>
 
-    <script>
-// ------------------------------------------------------------------
-var c = document.getElementById("JSlife");
-var btn_stopgo = document.getElementById("btn_stopgo");
-var btn_step = document.getElementById("btn_step");
-var btn_show = document.getElementById("btn_show");
-var btn_clear = document.getElementById("btn_clear");
-
-var ctx = c.getContext("2d");
-var field_width = 0;
-var field_height = 0;
-var cur;
-var next;
-var faded = false;
-var running = false;
-
-window.onresize = setCanvasSize;
-c.onclick = toggleCell;
-btn_stopgo.onclick = toggleStopGo;
-btn_step.onclick = stepOnce;
-btn_show.onclick = showCurrentField;
-btn_clear.onclick = clearCurrentField;
-
-setCanvasSize();
-fadeOut("Conway's Game of Life");
-setTimeout(goForIt, 3000);
-
-
-// ------------------------------------------------------------------
-function fadeOut(text) {
-    var alpha = 1.0,
-        interval = setInterval(function() {
-            c.width = c.width; // Clears the canvas
-            ctx.fillStyle = "rgba(0, 0, 0, " + alpha + ")";
-            ctx.font = "30px Comic Sans MS";
-            ctx.textAlign = "center";
-            ctx.fillText(text, c.width/2, c.height/2);
-            alpha = alpha - 0.02;
-            if (alpha < 0) {
-                c.width = c.width;
-                clearInterval(interval);
-            }
-        }, 50);
-}
-
-// ------------------------------------------------------------------
-function fillBlock(ctx, x, y) {
-    ctx.fillStyle = "black";
-    ctx.fillRect(x, y, 5, 5);
-}
-
-// ------------------------------------------------------------------
-function clearBlock(ctx, x, y) {
-    ctx.fillStyle = "white";
-    ctx.fillRect(x, y, 5, 5);
-}
-
-// ------------------------------------------------------------------
-function fillField() {
-    fillBlock(ctx, 10, 10);
-    fillBlock(ctx, 10, 200);
-    fillBlock(ctx, 200, 10);
-    fillBlock(ctx, 200, 200);
-}
-
-// ------------------------------------------------------------------
-function goForIt() {
-    fillField();
-
-    cur = newField();
-    next = newField();
-    setStopGo("Go");
-}
-
-// ------------------------------------------------------------------
-function newField() {
-    field = [];
-    for (idx = 0 ; idx < field_width ; idx++) {
-        field[idx] = [];
-        for (jdx = 0 ; jdx < field_height ; jdx++) {
-            val = Math.floor(Math.random()*10);
-            if (val < 5) {
-                field[idx][jdx] = 0;
-            } else {
-                field[idx][jdx] = 1;
-            }
-        }
-    }
-    return field;
-}
-
-// ------------------------------------------------------------------
-function setCanvasSize() {
-    c.width = window.innerWidth - 18;
-    c.height = window.innerHeight - 68;
-    field_width = c.width / 5;
-    field_height = c.height / 5;
-}
-
-// ------------------------------------------------------------------
-function setStopGo(value) {
-    btn_stopgo.innerHTML = value;
-}
-
-// ------------------------------------------------------------------
-function stepOnce() {
-    var sum;
-    if (running) {
-        for (x = 0 ; x < field_width ; x++) {
-            for (y = 0 ; y < field_height ; y++) {
-                sum = 0;
-                for (i = -1 ; i < 2 ; i++) {
-                    for (j = -1 ; j < 2 ; j++) {
-                        if ((0 <= x+i) && (x+i < field_width)
-                            && (0 <= y+j) && (y+j < field_height)) {
-                            sum += cur[x+i][y+j];
-                        }
-                    }
-                }
-                sum -= cur[x][y];
-                if (sum == 2) {
-                    next[x][y] = cur[x][y];
-                } else if (sum == 3) {
-                    next[x][y] = 1;
-                } else {
-                    next[x][y] = 0;
-                }
-            }
-        }
-        var tmp = next;
-        next = cur;
-        cur = tmp;
-        showCurrentField();
-    }
-}
-
-// ------------------------------------------------------------------
-function showCurrentField() {
-    for (x = 0 ; x < field_width ; x++) {
-        for (y = 0 ; y < field_height ; y++) {
-            if (cur[x][y]) {
-                fillBlock(ctx, 5*x, 5*y);
-            } else {
-                clearBlock(ctx, 5*x, 5*y);
-            }
-        }
-    }
-}
-
-// ------------------------------------------------------------------
-function clearCurrentField() {
-    for (x = 0 ; x < field_width ; x++) {
-        for (y = 0 ; y < field_height ; y++) {
-            cur[x][y] = 0;
-            clearBlock(ctx, 5*x, 5*y);
-        }
-    }
-}
-
-// ------------------------------------------------------------------
-function getCursorPosition(canvas, event) {
-    var rect = canvas.getBoundingClientRect();
-    var x = event.clientX - rect.left;
-    var y = event.clientY - rect.top;
-    return [x, y];
-    console.log("x: " + x + " y: " + y);
-}
-
-// ------------------------------------------------------------------
-function toggleCell(evt) {
-    result = getCursorPosition(c, evt);
-    x = Math.floor(result[0] / 5);
-    y = Math.floor(result[1] / 5);
-    cur[x][y] = 1 - cur[x][y];
-    if (cur[x][y]) {
-        fillBlock(ctx, 5*x, 5*y);
-    } else {
-        clearBlock(ctx, 5*x, 5*y);
-    }
-}
-
-// ------------------------------------------------------------------
-function toggleStopGo() {
-    var interval;
-    if (running) {
-        running = false;
-        btn_stopgo.innerHTML = "Go";
-        clearInterval(interval);
-    } else {
-        running = true;
-        btn_stopgo.innerHTML = "Stop";
-        interval = setInterval(stepOnce, 100);
-    }
-}
-    </script>
-    
   </body>
 </html>
+
+
