@@ -1,7 +1,7 @@
 ## 1.0.4 ... 2018.xxxx
 
  * Conway's Game of Life in javascript
-   * Sensitive to size of browser window when loaded
+   * Sensitive to size of browser window at load time
    * Selectable starting configurations
    * Step or run
    * User-controllable step interval
