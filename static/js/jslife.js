@@ -304,4 +304,13 @@ function neighbors(r, c) {
     }
 }
 
+// start_init
+function start_init() {
+    $("#starts").append("<option value='rpent'>R-Pentomino</option>")
+    $("#starts").append("<option value='acorn'>Acorn</option>")
+    $("#starts").append("<option value='diehard'>Diehard</option>")
+    $("#starts").append("<option value='glider'>Glider</option>")
+    $("#starts").append("<option value='gun'>Glider Gun</option>")
+    $("#starts").append("<option value='ship'>Spaceship</option>")
+}
 
