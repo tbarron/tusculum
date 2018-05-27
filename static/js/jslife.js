@@ -38,6 +38,45 @@ Next steps
  + how do I get the width of the window?
  + Display the rows and cols in the form "<rows> x <cols>"
 */
+
+// --- Classes
+// The Loc class holds the row and column for a location in the grid/matrix
+class Loc {
+    constructor(row, col) {
+        this.row = row;
+        this.col = col;
+    }
+
+    // Returns the id for this location: "r<row>c<col>"
+    id() {
+        return("r" + this.row + "c" + this.col);
+    }
+
+    // Increment the location: col++ until the end of the row, then row++
+    increment() {
+        this.col = this.col + 1;
+        if (cols <= this.col) {
+            this.col = 0;
+            this.row = this.row + 1;
+        }
+        if (rows <= this.row) {
+            clearTimeout(tmo);
+        }
+    }
+
+    // Returns the location id with '#' in front for jQuery
+    jqid() {
+        return "#" + this.id()
+    }
+
+    // Set the color of the cell at this location
+    mark(color) {
+        var cell_id = this.jqid(row, col);
+        if ($(cell_id).css('background-color') != color) {
+            $(cell_id).css('background-color', color);
+        }
+    }
+}
     }
     rval += "</tr>";
     return rval;
