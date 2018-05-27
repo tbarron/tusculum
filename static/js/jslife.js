@@ -1,11 +1,43 @@
 /*
-function month_header() {
-    var rval = "<tr>";
-    var btn;
+Next steps
+ - Remove reference to file jslife.css in jslife.html
+ - Remove file jslife.css from git
+ - Add a 'Clear' selection in the dropdown that will clear all cells
+ - Remove the 'Clear' button
+ - Add a Random initial state which gives each cell a 10% chance of
+   being alive. If a cell has 2 neighbors, the chance of life
+   increases to 20%. Three neighbors, 30%. Four, 20%. Five, 10%. Six
+   or above, 0%.
 
-    for (let idx = 0 ; idx < 7 ; idx++) {
-        btn = "<button id='btn" + idx + "'></button>";
-        rval += "<th width='50'>" + btn + "</th>";
+ + Replace the Start Over button with a selection box offering
+   different initial states
+ + Should 'Clear' reset the step count to 0?
+ + Remove the parenthesized height and width
+ + Scale the number of rows to the height of the window
+ + Turn off the border on the step count box and the rows x cols box
+ + Move this to ~/prj/github/tusculum
+ + Mark loc 0,0 black and init the program stopped with button set to 'Go'
+ + Add a 'clear' button
+ + A click on a cell should toggle its status from 0/white to 1/black or back
+ + Clicking 'Clear' should set all cells to 0/white
+ + Make the width of the stop/go button be constant, no matter what the text is
+ + make the grid smaller so we can debug the code more easily
+ + need cur and next matrixes
+ + thoroughly debug neighbors()
+ + change the id of the table from 'matrix' to 'grid' (or something) to prevent confusion
+ + update run_it() to implement the life rules
+ + add a 'Step' button
+ + fix the width of the 'Step' button
+ + fill in the right code for 'Step'
+ + go back to the 20 by 80 grid
+ + add an 'Interval' control to set the cycle interval
+ + update 'stepcount' item with the step_count value
+ + get millisecond value from 'interval' input
+ + figure out how to speed up the calculation
+ + how do I get the height of the window?
+ + how do I get the width of the window?
+ + Display the rows and cols in the form "<rows> x <cols>"
+*/
     }
     rval += "</tr>";
     return rval;
