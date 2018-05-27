@@ -301,7 +301,43 @@ function neighbors(r, c) {
     return(total);
 }
 
+// Take one step
+function step() {
+    var cell;
+    var tmp;
+    var colors = ["white", "black"];
+    for (r = 0 ; r < rows ; r++) {
+        for (c = 0 ; c < cols ; c++) {
+            n = neighbors(r, c);
+            if (n == 3) {
+                next[r][c] = 1;
+            } else if (n != 2) {
+                next[r][c] = 0;
+            } else {
+                next[r][c] = cur[r][c];
+            }
+        }
     }
+
+    tmp = cur;
+    cur = next;
+    next = tmp;
+
+    for (r = 0 ; r < rows ; r++) {
+        for (c = 0 ; c < cols ; c++) {
+            cell = new Loc(r, c);
+            var cdx = cur[r][c];
+            cell.mark(colors[cdx]);
+        }
+    }
+
+    $("#stepcount").val(step_count++);
+}
+
+// This winds up being our tick function
+function run_it() {
+    step();
+    tmo = setTimeout("run_it()", milliseconds);
 }
 
 // start_init
@@ -314,3 +350,34 @@ function start_init() {
     $("#starts").append("<option value='ship'>Spaceship</option>")
 }
 
+// main
+function main() {
+    $("#controls").css("font-family", "Arial, Helvetica, sans-serif");
+    $("#controls").css("font-size", "13px");
+    //$("#restart").css("width", "100px");
+    $("#stopgo").css("width", "100px");
+    $("#step").css("width", "100px");
+    $("#sclabel").css("width", "75px");
+    $("#clear").css("width", "100px");
+    $("#rxc").css("border", "none");
+    $("#stepcount").css("border", "none");
+
+    wh = $(window).height();
+    ww = $(window).width();
+    rows = Math.floor((wh / 15) - 6);
+    cols = Math.floor(ww / 15);
+    rxc = "" + rows + " x " + cols;
+    // rxc = "" + rows + " x " + cols + " (" + wh + "/" + ww + ")";
+    $("#rxc").val(rxc);
+
+    start_init();
+    milliseconds = parseInt($("#interval").val());
+    make_grid(rows, cols);
+    cur = make_matrix(rows, cols);
+    next = make_matrix(rows, cols);
+}
+
+// start here
+$( document ).ready(function() {
+    main();
+});
