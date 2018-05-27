@@ -1,3 +1,11 @@
+## 1.0.4 ... 2018.xxxx
+
+ * Conway's Game of Life in javascript
+   * Sensitive to size of browser window when loaded
+   * Selectable starting configurations
+   * Step or run
+   * User-controllable step interval
+
 ## 1.0.3 ... 2018.0127
 
  * Add links to projects page

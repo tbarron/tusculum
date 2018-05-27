@@ -1,13 +1,6 @@
 /*
 Next steps
- - Remove reference to file jslife.css in jslife.html
- - Remove file jslife.css from git
- - Add a 'Clear' selection in the dropdown that will clear all cells
- - Remove the 'Clear' button
- - Add a Random initial state which gives each cell a 10% chance of
-   being alive. If a cell has 2 neighbors, the chance of life
-   increases to 20%. Three neighbors, 30%. Four, 20%. Five, 10%. Six
-   or above, 0%.
+ - see DODO (not in git)
 
  + Replace the Start Over button with a selection box offering
    different initial states

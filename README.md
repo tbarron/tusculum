@@ -11,6 +11,25 @@ account.
 This project is based at $HOME/prj/github/tusculum on my personal machine.
 In the rest of this file, $ROOT refers to this directory.
 
+### Work Cycle
+
+ 1 git checkout master
+ 1 git checkout -b <branch-name>
+ 1 git push -u origin <branch-name>
+   1 track next steps in DODO (not in git)
+   1 ... edit ...
+   1 ... test ...
+   1 update CHANGELOG.md
+   1 git commit
+   1 git push
+ 1 git checkout master
+ 1 [test]
+ 1 git tag -a <next-release>
+ 1 git merge <branch-name>
+ 1 git push
+ 1 back to step 2
+
+
 ### Files and Directory Layout
 
     +- DODO                        development planning (not in git)
