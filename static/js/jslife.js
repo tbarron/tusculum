@@ -77,14 +77,15 @@ class Loc {
         }
     }
 }
+
+// Offset holds a delta for row and col
+class Offset {
+    constructor(roff, coff) {
+        this.roff = roff;
+        this.coff = coff;
     }
-    rval += "</tr>";
-    return rval;
 }
 
-function month_row(day) {
-    var rval = "<tr>";
-    var pday;
 
     for (let idx = 0 ; idx < 7 ; idx++) {
         pday = (day <= 31) ? "" + day : "&nbsp;";
