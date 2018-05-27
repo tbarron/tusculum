@@ -212,7 +212,93 @@ function interval_set() {
     milliseconds = parseInt($("#interval").val());
 }
 
+// --- Initializers, launcher, utilities, etc.
+// Create the two dim array of cells
+function create_array(length) {
+    var arr = new Array(length || 0),
+        i = length;
+    if (arguments.length > 1) {
+        var args = Array.prototype.slice.call(arguments, 1);
+        while(i--) arr[length-1 - i] = create_array.apply(this, args);
     }
+    return arr;
+}
+
+// Initialize the matrix to all zeroes
+function make_matrix(rows, cols) {
+    var arr = create_array(rows, cols);
+    for (r = 0 ; r < rows ; r++) {
+        for (c = 0 ; c < cols ; c++) {
+            arr[r][c] = 0;
+        }
+    }
+    return arr;
+}
+
+// Returns a random integer in the range [low, high)
+function random_int(low, high) {
+    return Math.floor((high - low) * Math.random() + low);
+}
+
+// Create the grid of cells in the table with id 'grid'
+function make_grid(rows, cols) {
+    if (first_time) {
+        first_time = 0;
+    } else {
+        $("#grid-container").removeChild($("#grid"));
+        $("#grid-container").append("<table id='grid' border=1 width='100%'></table>");
+    }
+    var t = $("#grid");
+    for (row = 0 ; row < rows ; row++) {
+        t.append("<tr>");
+        for (col = 0 ; col < cols ; col++) {
+            var cell = new Loc(row, col);
+            var txt = "<td height='12px' width='10px' id='" + cell.id() + "'></td>";
+            t.append(txt);
+            $(cell.jqid()).click(cell_click);
+        }
+        t.append("</tr>");
+    }
+}
+
+// Update the visible table from the invisible matrix
+function update_grid(mtx) {
+    for (rdx = 0 ; rdx < cur.length ; rdx++)  {
+        for (cdx = 0 ; cdx < cur[rdx].length ; cdx++) {
+            var loc = new Loc(rdx, cdx);
+            loc.mark(colors[cur[rdx][cdx]]);
+        }
+    }
+}
+
+// Set a cell
+function set_cell(mtx, row, col, val) {
+    console.log(row, col);
+    mtx[row][col] = val;
+    var loc = new Loc(row, col);
+    loc.mark(colors[val]);
+}
+
+// Clear the grid
+function clear_grid(mtx) {
+    for (rdx = 0 ; rdx < cur.length ; rdx++)  {
+        for (cdx = 0 ; cdx < cur[rdx].length ; cdx++) {
+            set_cell(mtx, rdx, cdx, 0);
+        }
+    }
+}
+
+// Count the number of live neighbors for [r, c]
+function neighbors(r, c) {
+    var total = 0;
+    for (ri = Math.max(r-1, 0) ; ri <= Math.min(r+1, rows-1) ; ri++) {
+        for (ci = Math.max(c-1, 0) ; ci <= Math.min(c+1, cols-1) ; ci++) {
+            total = total + cur[ri][ci];
+        }
+    }
+    total = total - cur[r][c];
+    // console.log("neighbors(" + r + ", " + c + ") => " + total);
+    return(total);
 }
 
     }
