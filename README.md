@@ -19,16 +19,16 @@ In the rest of this file, $ROOT refers to this directory.
       1) track next steps in DODO (not in git)
       2) ... edit ...
       3) ... test ...
-      d. update CHANGELOG.md
-      e. git commit
-      f. git push
-      g. back to a until ready for a release
+      4) update CHANGELOG.md
+      1) git commit
+      1) git push
+      1) back to step i until ready for a release
   4. git checkout master
   5. [test]
   6. git tag -a <next-release>
   7. git merge <branch-name>
   8. git push
-  9. back to step 2
+  9. back to step 2 for next feature
 
 
 ### Files and Directory Layout
