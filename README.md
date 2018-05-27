@@ -16,13 +16,13 @@ In the rest of this file, $ROOT refers to this directory.
   1. git checkout master
   2. git checkout -b <branch-name>
   3. git push -u origin <branch-name>
-     a. track next steps in DODO (not in git)
-     b. ... edit ...
-     c. ... test ...
-     d. update CHANGELOG.md
-     e. git commit
-     f. git push
-     g. back to a until ready for a release
+      a. track next steps in DODO (not in git)
+      b. ... edit ...
+      c. ... test ...
+      d. update CHANGELOG.md
+      e. git commit
+      f. git push
+      g. back to a until ready for a release
   4. git checkout master
   5. [test]
   6. git tag -a <next-release>
