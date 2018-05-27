@@ -213,30 +213,9 @@ function interval_set() {
 }
 
     }
-    return rval;
 }
 
-function set_weekdays(offset) {
-    wdl = weekday_list();
-    for (idx = 0 ; idx < 7 ; idx++) {
-        bdx = (idx + offset) % 7
-        sel = "#btn" + bdx;
-        $(sel).text(wdl[idx]);
     }
 }
 
-$(document).ready(function() {
-    var canvas = $(document).getElementById('JSlife');
-    var ctx = canvas.getContext('2d');
-    ctx.fillStyle = 'green';
-    ctx.fillRect(10, 10, 100, 100);
-});
 
-alert('before');
-var blarg = document.getElementById("JSlife");
-var ctx = blarg.getContext("2d");
-alert('after');
-ctx.fillStyle = 'green';
-ctx.fillRect(10, 10, 100, 100);
-ctx.stroke();
-*/
