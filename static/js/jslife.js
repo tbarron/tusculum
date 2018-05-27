@@ -86,6 +86,18 @@ class Offset {
     }
 }
 
+// --- Data
+var rows = 20;
+var cols = 80;
+var first_time = 1;
+var colors = ["white", "black"];
+var milliseconds = 0;
+var tmo;
+var running = false;
+var cur, next;
+var rxc;
+var step_count = 0;
+var where = new Loc(0, 0);
 
     for (let idx = 0 ; idx < 7 ; idx++) {
         pday = (day <= 31) ? "" + day : "&nbsp;";
