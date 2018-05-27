@@ -13,21 +13,21 @@ In the rest of this file, $ROOT refers to this directory.
 
 ### Work Cycle
 
-  1 git checkout master
-  1 git checkout -b <branch-name>
-  1 git push -u origin <branch-name>
-    1 track next steps in DODO (not in git)
-    1 ... edit ...
-    1 ... test ...
-    1 update CHANGELOG.md
-    1 git commit
-    1 git push
-  1 git checkout master
-  1 [test]
-  1 git tag -a <next-release>
-  1 git merge <branch-name>
-  1 git push
-  1 back to step 2
+  1. git checkout master
+  2. git checkout -b <branch-name>
+  3. git push -u origin <branch-name>
+    1. track next steps in DODO (not in git)
+    2. ... edit ...
+    3. ... test ...
+    4. update CHANGELOG.md
+    5. git commit
+    6. git push
+  4. git checkout master
+  5. [test]
+  6. git tag -a <next-release>
+  7. git merge <branch-name>
+  8. git push
+  9. back to step 2
 
 
 ### Files and Directory Layout
