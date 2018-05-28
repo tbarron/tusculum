@@ -212,6 +212,16 @@ var setter_up = {
         apply_list(r, c, offl, 1);
     },
 
+    // dragon egg
+    'puff': function() {
+        var r = Math.floor(rows/2);
+        var c = Math.floor(cols/2);
+        var offl = [new Offset(0, 0), new Offset(-1, 0), new Offset(1, 0),
+                    new Offset(-1, 1), new Offset(1, 1),
+                    new Offset(-1,2), new Offset(1,2)];
+        apply_list(r, c, offl, 1);
+    },
+
     // r-pentomino
     'rpent': function() {
         var r = Math.floor(rows/2);
@@ -220,28 +230,25 @@ var setter_up = {
                     new Offset(-1, -1), new Offset(0, 1)];
         apply_list(r, c, offl, 1);
     },
+
+    // spaceship
+    'ship': function() {
+        r = Math.floor(rows/2);
+        c = 5;
+        offl = [new Offset(0, 0), new Offset(0, 1), new Offset(0, 2),
+                new Offset(0, 3), new Offset(1, 3), new Offset(2, 3),
+                new Offset(1, -1), new Offset(3, -1), new Offset(3, 2)];
+        apply_list(r, c, offl, 1);
+    },
 };
 
 // Apply the setup function corresponding to the "#starts" selection
 function apply_start() {
     which = $("#starts").val()
-    r = Math.floor(rows / 2);
-    c = Math.floor(cols / 2);
-    offsets = [];
     if (which in setter_up) {
         setter_up[which]();
-    } else if (which == 'ship') {
-        c = 5;
-        offsets = [new Offset(0, 0), new Offset(0, 1), new Offset(0, 2),
-                   new Offset(0, 3), new Offset(1, 3), new Offset(2, 3),
-                   new Offset(1, -1), new Offset(3, -1), new Offset(3, 2)];
-    } else if (which == 'puff') {
-        offsets = [new Offset(0, 0), new Offset(-1, 0), new Offset(1, 0),
-                   new Offset(-1, 1), new Offset(1, 1),
-                   new Offset(-1,2), new Offset(1,2)];
-    }
-    for (idx in offsets) {
-        set_cell(cur, r + offsets[idx].roff, c + offsets[idx].coff, 1);
+    } else {
+        alert("'" + which + "' not found in setter_up");
     }
 }
 
@@ -387,6 +394,7 @@ function start_init() {
     $("#starts").append("<option value='rpent'>R-Pentomino</option>")
     $("#starts").append("<option value='random'>Random</option>")
     $("#starts").append("<option value='ship'>Spaceship</option>")
+    // $("#starts").append("<option value='zippy'>Unknown</option>")
 }
 
 // ----------------------------------------------------------------------------
