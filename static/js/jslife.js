@@ -167,6 +167,17 @@ var setter_up = {
         apply_list(r, c, offl, 1);
     },
 
+    // diehard
+    'diehard': function() {
+        var r = Math.floor(rows/2);
+        var c = Math.floor(cols/2);
+        var offl = [new Offset(0, 0),   new Offset(0, -1),   new Offset(1, 0),
+                    new Offset(1, 4),   new Offset(1, 5),    new Offset(-1, 5),
+                    new Offset(1, 6)];
+        apply_list(r, c, offl, 1);
+    },
+
+    // r-pentomino
     'rpent': function() {
         var r = Math.floor(rows/2);
         var c = Math.floor(cols/2);
@@ -188,16 +199,6 @@ function setup_acorn() {
     var offl = [new Offset(0, 0),   new Offset(0, 1),    new Offset(-2, 1),
                 new Offset(-1, 3),  new Offset(0, 4),    new Offset(0, 5),
                 new Offset(0, 6)];
-    apply_list(r, c, offl, 1);
-}
-
-// Diehard
-function setup_diehard() {
-    var r = Math.floor(rows/2);
-    var c = Math.floor(cols/2);
-    var offl = [new Offset(0, 0),   new Offset(0, -1),   new Offset(1, 0),
-                new Offset(1, 4),   new Offset(1, 5),    new Offset(-1, 5),
-                new Offset(1, 6)];
     apply_list(r, c, offl, 1);
 }
 
@@ -224,8 +225,6 @@ function apply_start() {
     // } else if (which == "rpent") {
     //     offsets = [new Offset(0, 0),   new Offset(-1, 0),   new Offset(1, 0),
     //                new Offset(-1, -1), new Offset(0, 1)];
-    } else if (which == "diehard") {
-        setup_diehard();
     } else if (which == "glider") {
         setup_glider();
         // r = 5;
