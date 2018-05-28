@@ -32,7 +32,8 @@ Next steps
  + Display the rows and cols in the form "<rows> x <cols>"
 */
 
-// --- Classes
+// ----------------------------------------------------------------------------
+// *** Classes
 // The Loc class holds the row and column for a location in the grid/matrix
 class Loc {
     constructor(row, col) {
@@ -79,7 +80,8 @@ class Offset {
     }
 }
 
-// --- Data
+// ----------------------------------------------------------------------------
+// *** Data
 var rows = 20;
 var cols = 80;
 var first_time = 1;
@@ -92,7 +94,8 @@ var rxc;
 var step_count = 0;
 var where = new Loc(0, 0);
 
-// --- Event handlers
+// ----------------------------------------------------------------------------
+// *** Event handlers
 // Handle sclabel mouseover, mouseout
 function sc_mouseover() {
     $("#sclabel").html("Reset");
@@ -138,7 +141,8 @@ function interval_set() {
     milliseconds = parseInt($("#interval").val());
 }
 
-// -- Configuration setup functions
+// ----------------------------------------------------------------------------
+// *** Configuration setup functions
 // Apply a list of offsets
 function apply_list(row, col, offset_list, val) {
     for (idx in offset_list) {
@@ -223,7 +227,8 @@ function apply_start() {
     }
 }
 
-// --- Initializers, launcher, utilities, etc.
+// ----------------------------------------------------------------------------
+// *** Initializers, launcher, utilities, etc.
 // Create the two dim array of cells
 function create_array(length) {
     var arr = new Array(length || 0),
@@ -365,7 +370,8 @@ function start_init() {
     $("#starts").append("<option value='ship'>Spaceship</option>")
 }
 
-// main
+// ----------------------------------------------------------------------------
+// *** main and ready
 function main() {
     $("#controls").css("font-family", "Arial, Helvetica, sans-serif");
     $("#controls").css("font-size", "13px");
