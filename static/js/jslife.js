@@ -168,6 +168,14 @@ function setup_acorn() {
     apply_list(r, c, offl, 1);
 }
 
+// Diehard
+function setup_diehard() {
+    var r = Math.floor(rows/2);
+    var c = Math.floor(cols/2);
+    var offl = [new Offset(0, 0),   new Offset(0, -1),   new Offset(1, 0),
+                new Offset(1, 4),   new Offset(1, 5),    new Offset(-1, 5),
+                new Offset(1, 6)];
+    apply_list(r, c, offl, 1);
 }
 
 // Apply the setup function corresponding to the "#starts" selection
@@ -184,9 +192,7 @@ function apply_start() {
     } else if (which == "clear") {
         setup_clear();
     } else if (which == "diehard") {
-        offsets = [new Offset(0, 0),   new Offset(0, -1),   new Offset(1, 0),
-                   new Offset(1, 4),   new Offset(1, 5),    new Offset(-1, 5),
-                   new Offset(1, 6)];
+        setup_diehard();
     } else if (which == "glider") {
         r = 5;
         c = 5;
