@@ -139,6 +139,7 @@ function clear_click() {
     }
 }
 
+// Implements the various starting configs offered by '#starts'
 function apply_start() {
     which = $("#starts").val()
     r = Math.floor(rows / 2);
@@ -182,18 +183,15 @@ function apply_start() {
         offsets = [new Offset(0, 0), new Offset(0, 1), new Offset(0, 2),
                    new Offset(0, 3), new Offset(1, 3), new Offset(2, 3),
                    new Offset(1, -1), new Offset(3, -1), new Offset(3, 2)];
+    } else if (which == 'puff') {
+        offsets = [new Offset(0, 0), new Offset(-1, 0), new Offset(1, 0),
+                   new Offset(-1, 1), new Offset(1, 1),
+                   new Offset(-1,2), new Offset(1,2)];
     }
     for (idx in offsets) {
         set_cell(cur, r + offsets[idx].roff, c + offsets[idx].coff, 1);
     }
 }
-
-/*
-// Handle clicks on the Start Over button
-function restart_click() {
-    main();
-}
-*/
 
 // Handle clicks on the Step button
 function step_click() {
@@ -333,7 +331,8 @@ function run_it() {
     tmo = setTimeout("run_it()", milliseconds);
 }
 
-// start_init
+// Initializes '#starts', the drop-down selection that provides
+// starting configs
 function start_init() {
     $("#starts").append("<option value='rpent'>R-Pentomino</option>")
     $("#starts").append("<option value='acorn'>Acorn</option>")
@@ -341,6 +340,7 @@ function start_init() {
     $("#starts").append("<option value='glider'>Glider</option>")
     $("#starts").append("<option value='gun'>Glider Gun</option>")
     $("#starts").append("<option value='ship'>Spaceship</option>")
+    $("#starts").append("<option value='puff'>Dragon Egg</option>")
 }
 
 // main
