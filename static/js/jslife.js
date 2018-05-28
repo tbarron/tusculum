@@ -188,6 +188,30 @@ var setter_up = {
         apply_list(r, c, offl, 1);
     },
 
+    // glider gun
+    'gun': function() {
+        var r = 5;
+        var c = 5;
+        var offl = [new Offset(0, 0), new Offset(0, 1), new Offset(1, 0),
+                    new Offset(1, 1),
+                    new Offset(0, 10), new Offset(1, 10), new Offset(2, 10),
+                    new Offset(-1, 11), new Offset(3, 11),
+                    new Offset(-2, 12), new Offset(4, 12),
+                    new Offset(-2, 13), new Offset(4, 13),
+                    new Offset(1, 14),
+                    new Offset(-1, 15), new Offset(3, 15),
+                    new Offset(0, 16),  new Offset(1, 16), new Offset(2, 16),
+                    new Offset(1, 17),
+                    new Offset(0, 20),  new Offset(-1, 20), new Offset(-2, 20),
+                    new Offset(0, 21),  new Offset(-1, 21), new Offset(-2, 21),
+                    new Offset(1, 22),  new Offset(-3, 22),
+                    new Offset(1, 24),  new Offset(2, 24), new Offset(-3, 24),
+                    new Offset(-4, 24),
+                    new Offset(-1, 34), new Offset(-2, 34), new Offset(-1, 35),
+                    new Offset(-2, 35)];
+        apply_list(r, c, offl, 1);
+    },
+
     // r-pentomino
     'rpent': function() {
         var r = Math.floor(rows/2);
@@ -206,24 +230,6 @@ function apply_start() {
     offsets = [];
     if (which in setter_up) {
         setter_up[which]();
-    } else if (which == "gun") {
-        r = 5;
-        c = 5;
-        offsets = [new Offset(0, 0), new Offset(0, 1), new Offset(1, 0), new Offset(1, 1),
-                   new Offset(0, 10), new Offset(1, 10), new Offset(2, 10),
-                   new Offset(-1, 11), new Offset(3, 11),
-                   new Offset(-2, 12), new Offset(4, 12),
-                   new Offset(-2, 13), new Offset(4, 13),
-                   new Offset(1, 14),
-                   new Offset(-1, 15), new Offset(3, 15),
-                   new Offset(0, 16),  new Offset(1, 16), new Offset(2, 16),
-                   new Offset(1, 17),
-                   new Offset(0, 20),  new Offset(-1, 20),  new Offset(-2, 20), 
-                   new Offset(0, 21),  new Offset(-1, 21),  new Offset(-2, 21), 
-                   new Offset(1, 22),  new Offset(-3, 22),
-                   new Offset(1, 24),  new Offset(2, 24), new Offset(-3, 24), new Offset(-4, 24),
-                   new Offset(-1, 34), new Offset(-2, 34), new Offset(-1, 35), new Offset(-2, 35)
-                  ];
     } else if (which == 'ship') {
         c = 5;
         offsets = [new Offset(0, 0), new Offset(0, 1), new Offset(0, 2),
