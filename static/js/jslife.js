@@ -179,10 +179,12 @@ function setup_clear() {
     }
 }
 
+// Apply the setup function corresponding to the "#starts" selection
 function apply_start() {
     which = $("#starts").val()
     r = Math.floor(rows / 2);
     c = Math.floor(cols / 2);
+    offsets = [];
     if (which == "rpent") {
         offsets = [new Offset(0, 0),   new Offset(-1, 0),   new Offset(1, 0),
                    new Offset(-1, -1), new Offset(0, 1)];
