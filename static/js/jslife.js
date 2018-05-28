@@ -154,10 +154,12 @@ function apply_list(row, col, offset_list, val) {
 }
 
 var setter_up = {
+    // clear the grid
     'clear': function() {
         clear_grid(cur);
     },
 
+    // acorn
     'acorn': function() {
         var r = Math.floor(rows/2);
         var c = Math.floor(cols/2);
@@ -187,21 +189,6 @@ var setter_up = {
     },
 };
 
-// Clear
-function setup_clear() {
-    clear_grid(cur);
-}
-
-// Acorn
-function setup_acorn() {
-    var r = Math.floor(rows/2);
-    var c = Math.floor(cols/2);
-    var offl = [new Offset(0, 0),   new Offset(0, 1),    new Offset(-2, 1),
-                new Offset(-1, 3),  new Offset(0, 4),    new Offset(0, 5),
-                new Offset(0, 6)];
-    apply_list(r, c, offl, 1);
-}
-
 // Glider
 function setup_glider() {
     var r = 5;
@@ -217,20 +204,10 @@ function apply_start() {
     r = Math.floor(rows / 2);
     c = Math.floor(cols / 2);
     offsets = [];
-    // var dispatcher = {};
-    // dispatcher['acorn'] = setup_acorn;
-    // dispatcher['clear'] = setup_clear;
     if (which in setter_up) {
         setter_up[which]();
-    // } else if (which == "rpent") {
-    //     offsets = [new Offset(0, 0),   new Offset(-1, 0),   new Offset(1, 0),
-    //                new Offset(-1, -1), new Offset(0, 1)];
     } else if (which == "glider") {
         setup_glider();
-        // r = 5;
-        // c = 5;
-        // offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
-        //            new Offset(-1, 2),  new Offset(-2, 1)];
     } else if (which == "gun") {
         r = 5;
         c = 5;
