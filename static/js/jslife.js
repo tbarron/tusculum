@@ -153,6 +153,11 @@ function apply_list(row, col, offset_list, val) {
     }
 }
 
+// Clear
+function setup_clear() {
+    clear_grid(cur);
+}
+
 // Acorn
 function setup_acorn() {
     var r = Math.floor(rows/2);
@@ -163,9 +168,6 @@ function setup_acorn() {
     apply_list(r, c, offl, 1);
 }
 
-// Clear
-function setup_clear() {
-    clear_grid(cur);
 }
 
 // Apply the setup function corresponding to the "#starts" selection
