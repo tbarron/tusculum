@@ -165,11 +165,7 @@ function setup_acorn() {
 
 // Clear
 function setup_clear() {
-    for (r = 0 ; r < rows ; r++) {
-        for (c = 0 ; c < cols ; c++) {
-            set_cell(cur, r, c, 0);
-        }
-    }
+    clear_grid(cur);
 }
 
 // Apply the setup function corresponding to the "#starts" selection
