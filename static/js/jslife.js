@@ -139,7 +139,16 @@ function clear_click() {
     }
 }
 
-// Implements the various starting configs offered by '#starts'
+// Handle clicks on the Step button
+function step_click() {
+    step();
+}
+
+// Handle updates in the interval field
+function interval_set() {
+    milliseconds = parseInt($("#interval").val());
+}
+
 // -- Configuration setup functions
 // Apply a list of offsets
 function apply_list(row, col, offset_list, val) {
@@ -221,16 +230,6 @@ function apply_start() {
     for (idx in offsets) {
         set_cell(cur, r + offsets[idx].roff, c + offsets[idx].coff, 1);
     }
-}
-
-// Handle clicks on the Step button
-function step_click() {
-    step();
-}
-
-// Handle updates in the interval field
-function interval_set() {
-    milliseconds = parseInt($("#interval").val());
 }
 
 // --- Initializers, launcher, utilities, etc.
