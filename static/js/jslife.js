@@ -179,6 +179,15 @@ var setter_up = {
         apply_list(r, c, offl, 1);
     },
 
+    // glider
+    'glider': function() {
+        var r = 5;
+        var c = 5;
+        var offl = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
+                    new Offset(-1, 2),  new Offset(-2, 1)];
+        apply_list(r, c, offl, 1);
+    },
+
     // r-pentomino
     'rpent': function() {
         var r = Math.floor(rows/2);
@@ -189,15 +198,6 @@ var setter_up = {
     },
 };
 
-// Glider
-function setup_glider() {
-    var r = 5;
-    var c = 5;
-    var offl = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
-                new Offset(-1, 2),  new Offset(-2, 1)];
-    apply_list(r, c, offl, 1);
-}
-
 // Apply the setup function corresponding to the "#starts" selection
 function apply_start() {
     which = $("#starts").val()
@@ -206,8 +206,6 @@ function apply_start() {
     offsets = [];
     if (which in setter_up) {
         setter_up[which]();
-    } else if (which == "glider") {
-        setup_glider();
     } else if (which == "gun") {
         r = 5;
         c = 5;
