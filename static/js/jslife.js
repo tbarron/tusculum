@@ -363,14 +363,15 @@ function run_it() {
 // Initializes '#starts', the drop-down selection that provides
 // starting configs
 function start_init() {
-    $("#starts").append("<option value='rpent'>R-Pentomino</option>")
     $("#starts").append("<option value='acorn'>Acorn</option>")
     $("#starts").append("<option value='clear'>Clear</option>")
     $("#starts").append("<option value='diehard'>Diehard</option>")
+    $("#starts").append("<option value='puff'>Dragon Egg</option>")
     $("#starts").append("<option value='glider'>Glider</option>")
     $("#starts").append("<option value='gun'>Glider Gun</option>")
+    $("#starts").append("<option value='rpent'>R-Pentomino</option>")
+    $("#starts").append("<option value='random'>Random</option>")
     $("#starts").append("<option value='ship'>Spaceship</option>")
-    $("#starts").append("<option value='puff'>Dragon Egg</option>")
 }
 
 // main
