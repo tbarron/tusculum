@@ -193,13 +193,14 @@ function apply_start() {
     r = Math.floor(rows / 2);
     c = Math.floor(cols / 2);
     offsets = [];
-    if (which == "rpent") {
+    var dispatcher = {};
+    dispatcher['acorn'] = setup_acorn;
+    dispatcher['clear'] = setup_clear;
+    if (which in dispatcher) {
+        dispatcher[which]();
+    } else if (which == "rpent") {
         offsets = [new Offset(0, 0),   new Offset(-1, 0),   new Offset(1, 0),
                    new Offset(-1, -1), new Offset(0, 1)];
-    } else if (which == "acorn") {
-        setup_acorn();
-    } else if (which == "clear") {
-        setup_clear();
     } else if (which == "diehard") {
         setup_diehard();
     } else if (which == "glider") {
