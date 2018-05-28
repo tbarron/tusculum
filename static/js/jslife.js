@@ -359,8 +359,9 @@ function run_it() {
 // Initializes '#starts', the drop-down selection that provides
 // starting configs
 function start_init() {
-    $("#starts").append("<option value='acorn'>Acorn</option>")
     $("#starts").append("<option value='clear'>Clear</option>")
+    $("#starts").append("<option disabled>───────────</option>")
+    $("#starts").append("<option value='acorn'>Acorn</option>")
     $("#starts").append("<option value='diehard'>Diehard</option>")
     $("#starts").append("<option value='puff'>Dragon Egg</option>")
     $("#starts").append("<option value='glider'>Glider</option>")
