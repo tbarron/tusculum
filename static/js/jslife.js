@@ -178,6 +178,15 @@ function setup_diehard() {
     apply_list(r, c, offl, 1);
 }
 
+// Glider
+function setup_glider() {
+    var r = 5;
+    var c = 5;
+    var offl = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
+                new Offset(-1, 2),  new Offset(-2, 1)];
+    apply_list(r, c, offl, 1);
+}
+
 // Apply the setup function corresponding to the "#starts" selection
 function apply_start() {
     which = $("#starts").val()
@@ -194,10 +203,11 @@ function apply_start() {
     } else if (which == "diehard") {
         setup_diehard();
     } else if (which == "glider") {
-        r = 5;
-        c = 5;
-        offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
-                   new Offset(-1, 2),  new Offset(-2, 1)];
+        setup_glider();
+        // r = 5;
+        // c = 5;
+        // offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(0, 2),
+        //            new Offset(-1, 2),  new Offset(-2, 1)];
     } else if (which == "gun") {
         r = 5;
         c = 5;
