@@ -128,17 +128,6 @@ function stopgo_click() {
     }
 }
 
-// Handle clicks on the Clear button
-function clear_click() {
-    for (r = 0 ; r < rows ; r++) {
-        for (c = 0 ; c < cols ; c++) {
-            var cell = new Loc(r, c);
-            cur[r][c] = 0;
-            cell.mark(colors[cur[r][c]]);
-        }
-    }
-}
-
 // Handle clicks on the Step button
 function step_click() {
     step();
