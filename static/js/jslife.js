@@ -140,6 +140,15 @@ function clear_click() {
 }
 
 // Implements the various starting configs offered by '#starts'
+// Clear
+function setup_clear() {
+    for (r = 0 ; r < rows ; r++) {
+        for (c = 0 ; c < cols ; c++) {
+            set_cell(cur, r, c, 0);
+        }
+    }
+}
+
 function apply_start() {
     which = $("#starts").val()
     r = Math.floor(rows / 2);
@@ -151,6 +160,8 @@ function apply_start() {
         offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(-2, 1),
                    new Offset(-1, 3),  new Offset(0, 4),    new Offset(0, 5),
                    new Offset(0, 6)];
+    } else if (which == "clear") {
+        setup_clear();
     } else if (which == "diehard") {
         offsets = [new Offset(0, 0),   new Offset(0, -1),   new Offset(1, 0),
                    new Offset(1, 4),   new Offset(1, 5),    new Offset(-1, 5),
@@ -336,6 +347,7 @@ function run_it() {
 function start_init() {
     $("#starts").append("<option value='rpent'>R-Pentomino</option>")
     $("#starts").append("<option value='acorn'>Acorn</option>")
+    $("#starts").append("<option value='clear'>Clear</option>")
     $("#starts").append("<option value='diehard'>Diehard</option>")
     $("#starts").append("<option value='glider'>Glider</option>")
     $("#starts").append("<option value='gun'>Glider Gun</option>")
