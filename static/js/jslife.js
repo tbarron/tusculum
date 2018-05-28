@@ -140,6 +140,27 @@ function clear_click() {
 }
 
 // Implements the various starting configs offered by '#starts'
+// -- Configuration setup functions
+// Apply a list of offsets
+function apply_list(row, col, offset_list, val) {
+    for (idx in offset_list) {
+        set_cell(cur,
+                 row + offset_list[idx].roff,
+                 col + offset_list[idx].coff,
+                 val);
+    }
+}
+
+// Acorn
+function setup_acorn() {
+    var r = Math.floor(rows/2);
+    var c = Math.floor(cols/2);
+    var offl = [new Offset(0, 0),   new Offset(0, 1),    new Offset(-2, 1),
+                new Offset(-1, 3),  new Offset(0, 4),    new Offset(0, 5),
+                new Offset(0, 6)];
+    apply_list(r, c, offl, 1);
+}
+
 // Clear
 function setup_clear() {
     for (r = 0 ; r < rows ; r++) {
@@ -157,9 +178,7 @@ function apply_start() {
         offsets = [new Offset(0, 0),   new Offset(-1, 0),   new Offset(1, 0),
                    new Offset(-1, -1), new Offset(0, 1)];
     } else if (which == "acorn") {
-        offsets = [new Offset(0, 0),   new Offset(0, 1),    new Offset(-2, 1),
-                   new Offset(-1, 3),  new Offset(0, 4),    new Offset(0, 5),
-                   new Offset(0, 6)];
+        setup_acorn();
     } else if (which == "clear") {
         setup_clear();
     } else if (which == "diehard") {
