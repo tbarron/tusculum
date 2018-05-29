@@ -400,15 +400,7 @@ function start_init() {
 // ----------------------------------------------------------------------------
 // *** main and ready
 function main() {
-    $("#controls").css("font-family", "Arial, Helvetica, sans-serif");
-    $("#controls").css("font-size", "13px");
-    //$("#restart").css("width", "100px");
-    $("#stopgo").css("width", "100px");
-    $("#step").css("width", "100px");
-    $("#sclabel").css("width", "75px");
-    $("#clear").css("width", "100px");
-    $("#rxc").css("border", "none");
-    $("#stepcount").css("border", "none");
+    css();
 
     wh = $(window).height();
     ww = $(window).width();
@@ -423,6 +415,22 @@ function main() {
     make_grid(rows, cols);
     cur = make_matrix(rows, cols);
     next = make_matrix(rows, cols);
+}
+
+// CSS
+function css() {
+    $("#controls").css("font-family", "Arial, Helvetica, sans-serif");
+    $("#controls").css("font-size", "13px");
+    $("#stopgo").css("width", "100px");
+    $("#step").css("width", "100px");
+    $("#sclabel").css("width", "75px");
+    $("#clear").css("width", "100px");
+    $("#rxc").css("border", "none");
+    $("#stepcount").css("border", "none");
+    // $("table").css("border", "1px solid black");
+    // $("table").css("border-collapse", "collapse");
+    // $("td").css("border", "1px solid black");
+    // $("#grid").css("border-collapse", "collapse");
 }
 
 // start here
