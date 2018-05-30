@@ -91,6 +91,8 @@ var tmo;
 var running = false;
 var cur, next;
 var rxc;
+var rxc_idx = 0;
+var rxc_list;
 var step_count = 0;
 var where = new Loc(0, 0);
 
@@ -342,6 +344,22 @@ function update_grid(mtx) {
     }
 }
 
+// rxc
+function rxc_click() {
+    rxc_idx = 1 - rxc_idx;
+    $("#rxc").val(rxc_list[rxc_idx]);
+}
+
+function rxc_set() {
+    var wh = $(window).height();
+    var ww = $(window).width();
+    rows = Math.floor((wh / 7) - 6);
+    cols = Math.floor(ww / 7);
+    rxc_list = ["" + rows + " x " + cols,
+                "" + rows + " x " + cols + " (" + wh + "/" + ww + ")"];
+    $("#rxc").val(rxc_list[rxc_idx]);
+}
+
 // Set a cell
 function set_cell(mtx, row, col, val) {
     console.log(row, col);
@@ -431,14 +449,7 @@ function start_init() {
 // *** main and ready
 function main() {
     css();
-
-    wh = $(window).height();
-    ww = $(window).width();
-    rows = Math.floor((wh / 15) - 6);
-    cols = Math.floor(ww / 15);
-    rxc = "" + rows + " x " + cols;
-    $("#rxc").val(rxc);
-
+    rxc_set();
     start_init();
     milliseconds = parseInt($("#interval").val());
     make_grid(rows, cols);
