@@ -305,7 +305,7 @@ function make_grid(rows, cols) {
         t.append("<tr>");
         for (col = 0 ; col < cols ; col++) {
             var cell = new Loc(row, col);
-            var txt = "<td height='12px' width='10px' id='" + cell.id() + "'></td>";
+            var txt = "<td height='6px' width='7px' id='" + cell.id() + "'></td>";
             t.append(txt);
             $(cell.jqid()).click(cell_click);
         }
