@@ -467,10 +467,8 @@ function css() {
     $("#clear").css("width", "100px");
     $("#rxc").css("border", "none");
     $("#stepcount").css("border", "none");
-    // $("table").css("border", "1px solid black");
-    // $("table").css("border-collapse", "collapse");
-    // $("td").css("border", "1px solid black");
-    // $("#grid").css("border-collapse", "collapse");
+    $("#grid").css({'border': "1",
+                    'border-collapse': 'collapse'});
 }
 
 // start here
