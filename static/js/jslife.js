@@ -222,6 +222,17 @@ var setter_up = {
         apply_list(r, c, offl, 1);
     },
 
+    // random
+    'random': function() {
+        for (r = 0 ; r < rows ; r++) {
+            for (c = 0 ; c < cols ; c++) {
+                n = neighbors(r, c);
+                t = threshold(n);
+                set_cell(cur, r, c, (Math.random() < t) ? 1 : 0);
+            }
+        }
+    },
+
     // r-pentomino
     'rpent': function() {
         var r = Math.floor(rows/2);
@@ -300,6 +311,25 @@ function make_grid(rows, cols) {
         }
         t.append("</tr>");
     }
+}
+
+// Map a number of neighbors to a probability
+// neighbors      probability of life
+//    < 2, 5           0.1
+//      2, 4           0.2
+//      3              0.3
+//      5 <            0.0
+function threshold(n) {
+    if ((n < 2) || (n == 5)) {
+        rval = 0.1;
+    } else if ((n == 2) || (n == 4)) {
+        rval = 0.2;
+    } else if (n == 3) {
+        rval = 0.3
+    } else {
+        rval = 0
+    }
+    return rval;
 }
 
 // Update the visible table from the invisible matrix
@@ -407,7 +437,6 @@ function main() {
     rows = Math.floor((wh / 15) - 6);
     cols = Math.floor(ww / 15);
     rxc = "" + rows + " x " + cols;
-    // rxc = "" + rows + " x " + cols + " (" + wh + "/" + ww + ")";
     $("#rxc").val(rxc);
 
     start_init();
