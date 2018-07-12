@@ -1,0 +1,41 @@
+<!DOCTYPE html5>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+    <!-- Javascript ======================================================= -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/sierpinski.js') }}"></script>
+
+  </head>
+  <body>
+    <!-- <center><h1>{{ title }}</h1></center> -->
+
+    <div id="controls">
+      <select id="starts" onchange="apply_start()"></select>
+      <!-- <button id="restart" onclick="restart_click()">Start --
+        -- Over</button> -->
+      <button id="step" onclick="step_click()">Step</button>
+      <button id="stopgo" onclick="stopgo_click()">Run</button>
+      <!-- <button id="clear" onclick="clear_click()">Clear</button> -->
+      Interval:
+      <input id="interval" value="100" onfocusout="interval_set()"/>
+      <button id="sclabel"
+              onmouseover="sc_mouseover()"
+              onmouseout="sc_mouseout()"
+              onclick="sc_click()">Steps:</button>
+      <input id="stepcount" type="text" value="0"/>
+      <input id="rxc" onclick="rxc_click()" type="text"/>
+      <p>
+    </div>
+    <div id='grid-container' style="border:1px solid black;">
+      <canvas id='fld' width='100%' height='200' border=1>
+        this is what you see if canvas is not supported
+      </canvas>
+    </div>
+
+  </body>
+</html>
+
+
