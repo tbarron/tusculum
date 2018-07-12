@@ -1,10 +1,16 @@
-## 1.0.4 ... 2018.xxxx
+## 1.0.4 ... 2018.0712 xx:xx:xx
 
  * Conway's Game of Life in javascript
    * Sensitive to size of browser window at load time
    * Selectable starting configurations
    * Step or run
    * User-controllable step interval
+   * CSS handled in javascript so we don't need a separate .css file,
+     jslife.css removed
+   * Support interesting initial arrangements
+   * Collapsed cell borders
+ * Document work cycle in README.md
+ * Add link to project envy in github
 
 ## 1.0.3 ... 2018.0127 19:02:14
 
