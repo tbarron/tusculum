@@ -92,6 +92,8 @@ def widget(which):
                               'placeholder': "This computes geometric growth over time"},
               'mental_hygiene': {'filename': 'mental_hygiene.html',
                               'title': 'Mental Hygiene',},
+              'sierpinski': {'filename': "sierpinski.html",
+                             'title': "Sierpinski: A Geometric Sieve Generator"},
               'wandro': {'filename': 'wandro.html',
                               'title': 'wandro - A scrolling, random wikipedia viewer'},
               }
