@@ -521,6 +521,39 @@ $( document ).ready(function() {
 });
 */
 
+var cvContext;
+var cvData;
+var cvHeight;
+var cvWidth;
+
+// ----------------------------------------------------------------------------
+// Returns a canvas context for drawing
+function context(objname) {
+    var canvas = document.getElementById(objname);
+    cvContext = canvas.getContext("2d");
+    cvHeight = canvas.height;
+    cvWidth = canvas.width;
+    cvData = cvContext.getImageData(0, 0, cvWidth, cvHeight);
+    return cvContext;
+}
+
+// ----------------------------------------------------------------------------
+// Draws a pixel on the canvas
+function drawpix(x, y) {
+    // cvContext.fillRect(x, y, 1, 1);
+    var index = (x + y*cvWidth) * 4;
+    cvData.data[index + 0] = 0x00;
+    cvData.data[index + 1] = 0x00;
+    cvData.data[index + 2] = 0x00;
+    cvData.data[index + 3] = 0xFF;
+}
+
+// ----------------------------------------------------------------------------
+// Updates the canvas
+function update_canvas() {
+    cvContext.putImageData(cvData, 0, 0);
+}
+
 // ----------------------------------------------------------------------------
 // resize canvas div and canvas
 function content_resize() {
