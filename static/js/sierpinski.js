@@ -608,6 +608,20 @@ function reportHW(hud, subject) {
 }
 
 // ----------------------------------------------------------------------------
+function start_sierpinski() {
+    cornerA = new Point(random_int(0, cvWidth/2),
+                        random_int(0, cvHeight/2));
+    cornerB = new Point(random_int(cvWidth/2, cvWidth),
+                        random_int(0, cvHeight/2));
+    cornerC = new Point (random_int(0, cvWidth),
+                         random_int(cvHeight/2, cvHeight));
+    drawpoint(cornerA);
+    drawpoint(cornerB);
+    drawpoint(cornerC);
+    update_canvas();
+}
+
+// ----------------------------------------------------------------------------
 // document ready calls this
 function main() {
     $("#fld").css("border", "1px solid black");
@@ -615,13 +629,7 @@ function main() {
 
     var ctx = context("fld");
     var ccount = parseInt($("#corners").val());
-    drawpix(random_int(0, cvWidth/2), random_int(0, cvHeight/2));
-    drawpix(random_int(cvWidth/2, cvWidth), random_int(0, cvHeight/2));
-    drawpix(random_int(0, cvWidth), random_int(cvHeight/2, cvHeight));
-    // for (var idx = 0 ; idx < ccount ; idx++) {
-    //     drawpix(random_int(0, cvWidth), random_int(0, cvHeight));
-    // }
-    update_canvas();
+    start_sierpinski();
 }
 
 // ----------------------------------------------------------------------------
