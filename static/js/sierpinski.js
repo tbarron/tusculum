@@ -35,6 +35,7 @@ Next steps
 // ----------------------------------------------------------------------------
 // *** Classes
 // The Loc class holds the row and column for a location in the grid/matrix
+/*
 class Loc {
     constructor(row, col) {
         this.row = row;
@@ -71,7 +72,9 @@ class Loc {
         }
     }
 }
+*/
 
+/*
 // Offset holds a delta for row and col
 class Offset {
     constructor(roff, coff) {
@@ -79,7 +82,9 @@ class Offset {
         this.coff = coff;
     }
 }
+*/
 
+/*
 // ----------------------------------------------------------------------------
 // *** Data
 var rows = 20;
@@ -99,6 +104,7 @@ var where = new Loc(0, 0);
 // ----------------------------------------------------------------------------
 // *** Event handlers
 // Handle sclabel mouseover, mouseout
+/*
 function sc_mouseover() {
     $("#sclabel").html("Reset");
 }
@@ -109,8 +115,10 @@ function sc_click() {
     step_count = 0;
     $("#stepcount").val(step_count);
 }
+*/
 
 // What to do with a click on a matrix cell
+/*
 function cell_click() {
     var rgx = /r(\d+)c(\d+)/;
     var rowcol = rgx.exec($(this).attr('id'));
@@ -293,8 +301,10 @@ function make_matrix(rows, cols) {
 function random_int(low, high) {
     return Math.floor((high - low) * Math.random() + low);
 }
+*/
 
 // Create the grid of cells in the table with id 'grid'
+/*
 function make_grid(rows, cols) {
     if (first_time) {
         first_time = 0;
@@ -343,8 +353,10 @@ function update_grid(mtx) {
         }
     }
 }
+*/
 
 // rxc
+/*
 function rxc_click() {
     rxc_idx = 1 - rxc_idx;
     $("#rxc").val(rxc_list[rxc_idx]);
@@ -445,10 +457,24 @@ function start_init() {
     // $("#starts").append("<option value='zippy'>Unknown</option>")
 }
 
+// Set the value of the grid-container height and width
+function gchw_set() {
+    $("#gchw").val("" + $("#grid-container").height()
+                      + ", " + $("#grid-container").width());
+}
+
+// Set the value of the canvas height and width
+function cvhw_set() {
+    $("#cvhw").val("" + $("#fld").height()
+                      + ", " + $("#fld").width());
+}
+
 // ----------------------------------------------------------------------------
 // *** main and ready
 function main() {
     css();
+    gchw_set();
+    cvhw_set();
     rxc_set();
     start_init();
     milliseconds = parseInt($("#interval").val());
@@ -459,7 +485,12 @@ function main() {
 
 // CSS
 function css() {
-    $("#grid-container").css("border", "1px solid black");
+    var gc_margin = $("#controls").height() + 30;
+    $("#rxc").val("" + $(window).height() + ", " + $("#grid-container").height());
+    var gc_height = $(window).height() - gc_margin;
+    $("#grid-container").css("border", "2px solid blue");
+    $("#fld").css("border", "1px solid black");
+    $("#fld").css("height", "" + gc_height);
     $("#controls").css("font-family", "Arial, Helvetica, sans-serif");
     $("#controls").css("font-size", "13px");
     $("#stopgo").css("width", "100px");
@@ -473,6 +504,68 @@ function css() {
 }
 
 // start here
+$( window ).ready(function() {
+    $(window).onresize = function(event) {
+        var new_width = $(window).width();
+        var new_height = $(window).height() - 50;
+        $("#fld").css("height", "" + new_height);
+        $("#fld").css("width", "" + new_width);
+        gchw_set();
+        cvhw_set();
+    }
+});
+
 $( document ).ready(function() {
+    alert("here we are");
+    main();
+});
+*/
+
+// ----------------------------------------------------------------------------
+function gc_resize() {
+    $("#grid-container").height($(window).height() - 40);
+    update_gchw();
+    $("#fld").height($("#grid-container").height());
+    $("#fld").width($("#grid-container").width());
+    update_cvhw();
+}
+
+// ----------------------------------------------------------------------------
+// Set field cvhw
+function update_cvhw() {
+    var $fld = $("#fld");
+    var cvhw_val = "" + $fld.height()
+                      + ", "
+                      + $fld.width();
+    $("#cvhw").val(cvhw_val);
+}
+
+// ----------------------------------------------------------------------------
+// Set field gchw
+function update_gchw() {
+    var gchw_val = "" + $("#grid-container").height()
+                      + ", "
+                      + $("#grid-container").width();
+    $("#gchw").val(gchw_val);
+}
+
+// ----------------------------------------------------------------------------
+// document ready calls this
+function main() {
+    // alert("here we are in main");
+    //$("#grid-container").height($(window).height() - 50);
+    // $("#grid-container").css("border", "2px solid blue");
+    $("#fld").css("border", "1px solid red");
+    
+    var $window = $(window).on('resize', function() {
+        gc_resize();
+//        $("#grid-container").height($(window).height() - 45);
+//        update_gchw();
+    }).trigger('resize');
+}
+
+// ----------------------------------------------------------------------------
+// Kick things off
+$(document).ready(function() {
     main();
 });
