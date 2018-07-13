@@ -548,12 +548,7 @@ function reportHW(hud, subject) {
 function main() {
     $("#fld").css("border", "1px solid black");
 
-    var $window = $(window).on('resize', gc_resize).trigger('resize');
-/*
-    var $window = $(window).on('resize', function() {
-        gc_resize();
-    }).trigger('resize');
-*/
+    var $window = $(window).on('resize', content_resize).trigger('resize');
 }
 
 // ----------------------------------------------------------------------------
