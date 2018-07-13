@@ -523,13 +523,16 @@ $( document ).ready(function() {
 
 // ----------------------------------------------------------------------------
 // resize canvas div and canvas
-function gc_resize() {
-    $("#cdiv").height($(window).height() - 40);
-    report("gchw", "cdiv");
-    $("#fld").height($("#cdiv").height());
-    $("#fld").width($("#cdiv").width());
-    report("cvhw", "fld");
-    report("cthw", "controls");
+function content_resize() {
+    var $controls = $("#controls");
+    var $cdiv = $("#cdiv");
+    var $fld = $("#fld");
+    $cdiv.height($(window).height() - 20 - $controls.height());
+    $fld.height($cdiv.height());
+    $fld.width($cdiv.width());
+    reportHW("gchw", "cdiv");
+    reportHW("cvhw", "fld");
+    reportHW("cthw", "controls");
 }
 
 // ----------------------------------------------------------------------------
