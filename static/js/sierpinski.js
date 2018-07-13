@@ -541,25 +541,6 @@ function reportHW(hud, subject) {
 }
 
 // ----------------------------------------------------------------------------
-// Report height and width for controls div
-function update_ctrlhw() {
-    var $ctrl = $("#controls");
-    $ctrl.val("" + $ctrl.height()
-              + ", "
-              + $ctrl.width());
-}
-
-// ----------------------------------------------------------------------------
-// Set h/w field for cdiv
-function update_cdiv() {
-    var $cdiv = $("#cdiv");
-    var $gchw = $("#gchw");
-    $gchw.val("" + $cdiv.height()
-              + ", "
-              + $cdiv.width());
-}
-
-// ----------------------------------------------------------------------------
 // document ready calls this
 function main() {
     $("#fld").css("border", "1px solid red");
