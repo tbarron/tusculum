@@ -296,12 +296,12 @@ function make_matrix(rows, cols) {
     }
     return arr;
 }
+*/
 
 // Returns a random integer in the range [low, high)
 function random_int(low, high) {
     return Math.floor((high - low) * Math.random() + low);
 }
-*/
 
 // Create the grid of cells in the table with id 'grid'
 /*
