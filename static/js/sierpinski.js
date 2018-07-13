@@ -521,6 +521,14 @@ $( document ).ready(function() {
 });
 */
 
+// ----------------------------------------------------------------------------
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
 var cvContext;
 var cvData;
 var cvHeight;
