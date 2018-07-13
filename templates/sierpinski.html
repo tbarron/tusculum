@@ -13,12 +13,13 @@
     <!-- <center><h1>{{ title }}</h1></center> -->
 
     <div id="controls">
+
+      gc h, w: <input id="gchw"/>
+      canvas h, w: <input id="cvhw"/>
+      <!--
       <select id="starts" onchange="apply_start()"></select>
-      <!-- <button id="restart" onclick="restart_click()">Start --
-        -- Over</button> -->
       <button id="step" onclick="step_click()">Step</button>
       <button id="stopgo" onclick="stopgo_click()">Run</button>
-      <!-- <button id="clear" onclick="clear_click()">Clear</button> -->
       Interval:
       <input id="interval" value="100" onfocusout="interval_set()"/>
       <button id="sclabel"
@@ -28,14 +29,13 @@
       <input id="stepcount" type="text" value="0"/>
       <input id="rxc" onclick="rxc_click()" type="text"/>
       <p>
+      -->
     </div>
     <div id='grid-container'>
-      <canvas id='fld' width='100%' height='200' border=1>
+      <canvas id='fld'>
         this is what you see if canvas is not supported
       </canvas>
     </div>
 
   </body>
 </html>
-
-
