@@ -524,11 +524,12 @@ $( document ).ready(function() {
 // ----------------------------------------------------------------------------
 // resize canvas div and canvas
 function gc_resize() {
-    $("#grid-container").height($(window).height() - 40);
-    update_gchw();
-    $("#fld").height($("#grid-container").height());
-    $("#fld").width($("#grid-container").width());
-    update_cvhw();
+    $("#cdiv").height($(window).height() - 40);
+    report("gchw", "cdiv");
+    $("#fld").height($("#cdiv").height());
+    $("#fld").width($("#cdiv").width());
+    report("cvhw", "fld");
+    report("cthw", "controls");
 }
 
 // ----------------------------------------------------------------------------
