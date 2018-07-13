@@ -533,22 +533,13 @@ function gc_resize() {
 }
 
 // ----------------------------------------------------------------------------
-// Set field cvhw
-function update_cvhw() {
-    var $fld = $("#fld");
-    var cvhw_val = "" + $fld.height()
-                      + ", "
-                      + $fld.width();
-    $("#cvhw").val(cvhw_val);
+function report(hud, subject) {
+    var $hud = $("#" + hud);
+    var $subject = $("#" + subject);
+    $hud.val("" + $subject.height() + ", " + $subject.width());
 }
 
 // ----------------------------------------------------------------------------
-// Set field gchw
-function update_gchw() {
-    var gchw_val = "" + $("#grid-container").height()
-                      + ", "
-                      + $("#grid-container").width();
-    $("#gchw").val(gchw_val);
 }
 
 // ----------------------------------------------------------------------------
