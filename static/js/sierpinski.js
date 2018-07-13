@@ -531,6 +531,7 @@ class Point {
 
 var cvContext;
 var cvData;
+var cvClear;
 var cvHeight;
 var cvWidth;
 
@@ -542,6 +543,7 @@ function context(objname) {
     cvHeight = canvas.height;
     cvWidth = canvas.width;
     cvData = cvContext.getImageData(0, 0, cvWidth, cvHeight);
+    cvClear = cvContext.getImageData(0, 0, cvWidth, cvHeight);
     return cvContext;
 }
 
@@ -554,6 +556,13 @@ function drawpix(x, y) {
     cvData.data[index + 1] = 0x00;
     cvData.data[index + 2] = 0x00;
     cvData.data[index + 3] = 0xFF;
+}
+
+// ----------------------------------------------------------------------------
+// Clears the canvas
+function reset_canvas() {
+    cvContext.putImageData(cvClear, 0, 0);
+    cvData = cvContext.getImageData(0, 0, cvWidth, cvHeight);
 }
 
 // ----------------------------------------------------------------------------
