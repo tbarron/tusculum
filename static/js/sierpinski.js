@@ -522,6 +522,7 @@ $( document ).ready(function() {
 */
 
 // ----------------------------------------------------------------------------
+// resize canvas div and canvas
 function gc_resize() {
     $("#grid-container").height($(window).height() - 40);
     update_gchw();
