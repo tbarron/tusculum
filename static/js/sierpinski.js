@@ -540,21 +540,35 @@ function report(hud, subject) {
 }
 
 // ----------------------------------------------------------------------------
+// Report height and width for controls div
+function update_ctrlhw() {
+    var $ctrl = $("#controls");
+    $ctrl.val("" + $ctrl.height()
+              + ", "
+              + $ctrl.width());
+}
+
+// ----------------------------------------------------------------------------
+// Set h/w field for cdiv
+function update_cdiv() {
+    var $cdiv = $("#cdiv");
+    var $gchw = $("#gchw");
+    $gchw.val("" + $cdiv.height()
+              + ", "
+              + $cdiv.width());
 }
 
 // ----------------------------------------------------------------------------
 // document ready calls this
 function main() {
-    // alert("here we are in main");
-    //$("#grid-container").height($(window).height() - 50);
-    // $("#grid-container").css("border", "2px solid blue");
     $("#fld").css("border", "1px solid red");
-    
+
+    var $window = $(window).on('resize', gc_resize).trigger('resize');
+/*
     var $window = $(window).on('resize', function() {
         gc_resize();
-//        $("#grid-container").height($(window).height() - 45);
-//        update_gchw();
     }).trigger('resize');
+*/
 }
 
 // ----------------------------------------------------------------------------
