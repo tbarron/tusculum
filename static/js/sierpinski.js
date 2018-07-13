@@ -562,6 +562,17 @@ function drawpix(x, y) {
 }
 
 // ----------------------------------------------------------------------------
+// Draws a point on the canvas
+function drawpoint(p) {
+    // cvContext.fillRect(x, y, 1, 1);
+    var index = (p.x + p.y*cvWidth) * 4;
+    cvData.data[index + 0] = 0x00;
+    cvData.data[index + 1] = 0x00;
+    cvData.data[index + 2] = 0x00;
+    cvData.data[index + 3] = 0xFF;
+}
+
+// ----------------------------------------------------------------------------
 // Clears the canvas
 function reset_canvas() {
     cvContext.putImageData(cvClear, 0, 0);
