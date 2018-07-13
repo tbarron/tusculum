@@ -580,8 +580,17 @@ function reportHW(hud, subject) {
 // document ready calls this
 function main() {
     $("#fld").css("border", "1px solid black");
-
     var $window = $(window).on('resize', content_resize).trigger('resize');
+
+    var ctx = context("fld");
+    var ccount = parseInt($("#corners").val());
+    drawpix(random_int(0, cvWidth/2), random_int(0, cvHeight/2));
+    drawpix(random_int(cvWidth/2, cvWidth), random_int(0, cvHeight/2));
+    drawpix(random_int(0, cvWidth), random_int(cvHeight/2, cvHeight));
+    // for (var idx = 0 ; idx < ccount ; idx++) {
+    //     drawpix(random_int(0, cvWidth), random_int(0, cvHeight));
+    // }
+    update_canvas();
 }
 
 // ----------------------------------------------------------------------------
