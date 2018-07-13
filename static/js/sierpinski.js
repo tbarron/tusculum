@@ -533,7 +533,8 @@ function gc_resize() {
 }
 
 // ----------------------------------------------------------------------------
-function report(hud, subject) {
+// Generalized height/weight reporting routine
+function reportHW(hud, subject) {
     var $hud = $("#" + hud);
     var $subject = $("#" + subject);
     $hud.val("" + $subject.height() + ", " + $subject.width());
