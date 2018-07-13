@@ -534,6 +534,9 @@ var cvData;
 var cvClear;
 var cvHeight;
 var cvWidth;
+var cornerA;
+var cornerB;
+var cornerC;
 
 // ----------------------------------------------------------------------------
 // Returns a canvas context for drawing
