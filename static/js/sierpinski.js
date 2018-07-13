@@ -543,7 +543,7 @@ function reportHW(hud, subject) {
 // ----------------------------------------------------------------------------
 // document ready calls this
 function main() {
-    $("#fld").css("border", "1px solid red");
+    $("#fld").css("border", "1px solid black");
 
     var $window = $(window).on('resize', gc_resize).trigger('resize');
 /*
