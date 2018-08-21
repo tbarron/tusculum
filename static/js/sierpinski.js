@@ -535,6 +535,7 @@ var cvClear;
 var cvHeight;
 var cvWidth;
 var corners = [];
+var current;
 
 // ----------------------------------------------------------------------------
 // Returns a canvas context for drawing
@@ -607,12 +608,19 @@ function reportHW(hud, subject) {
 
 // ----------------------------------------------------------------------------
     tmp_corner = corners[random_int(0, corners.length)];
+    nx = (tmp_corner.x + current.x) / 2;
+    ny = (tmp_corner.y + current.y) / 2;
+    current = new Point(nx, ny);
+    drawpoint(current);
 function start_sierpinski() {
     corners = [];
         corners.push(new Point(random_int(0, cvWidth),
                                random_int(0, cvHeight)));
 
         drawpoint(corners[idx]);
+    current = new Point(random_int(0, cvWidth),
+                        random_int(0, cvHeight));
+    drawpoint(current);
     update_canvas();
 }
 
