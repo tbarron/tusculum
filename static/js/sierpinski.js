@@ -607,11 +607,18 @@ function reportHW(hud, subject) {
 }
 
 // ----------------------------------------------------------------------------
+// Plot the next point
+function one_step() {
+    var tmp_corner;
+
     tmp_corner = corners[random_int(0, corners.length)];
     nx = (tmp_corner.x + current.x) / 2;
     ny = (tmp_corner.y + current.y) / 2;
     current = new Point(nx, ny);
     drawpoint(current);
+    update_canvas();
+}
+
 function start_sierpinski() {
     corners = [];
         corners.push(new Point(random_int(0, cvWidth),
