@@ -619,12 +619,17 @@ function one_step() {
     update_canvas();
 }
 
+// ----------------------------------------------------------------------------
+// Get ready to run the sim
 function start_sierpinski() {
     corners = [];
+    var ccount = parseInt($("#corners").val())
+    for (var idx = 0 ; idx < ccount ; idx++) {
         corners.push(new Point(random_int(0, cvWidth),
                                random_int(0, cvHeight)));
 
         drawpoint(corners[idx]);
+    }
     current = new Point(random_int(0, cvWidth),
                         random_int(0, cvHeight));
     drawpoint(current);
@@ -638,7 +643,6 @@ function main() {
     var $window = $(window).on('resize', content_resize).trigger('resize');
 
     var ctx = context("fld");
-    var ccount = parseInt($("#corners").val());
     start_sierpinski();
 }
 
