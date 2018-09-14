@@ -1,4 +1,21 @@
-## 1.0.4 ... 2018.0712 xx:xx:xx
+# Changelog
+
+Notable changes for this project.
+
+## [1.0.5] / 2018-08-21 / Adding (Partial) Random Sierpinski Calculator
+### Additions
+ * Add 'sierpinski' entry in flask_app.py, sierpinski.html template,
+   sierpinski entry in jach.html, file sierpinski.js
+ * Reset button
+ * Favicon suppression
+
+### Changes
+ * Make content sensitive to window resizes
+
+### Deletions
+ * Obsolete stuff
+
+## [1.0.4] / 2018-07-12 / Conway's Game of Life in Javascript
 
  * Conway's Game of Life in javascript
    * Sensitive to size of browser window at load time
