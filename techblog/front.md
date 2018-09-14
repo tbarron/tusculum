@@ -14,3 +14,5 @@ them again.
  * [Tools](2017-01-06-tools)
  * [A Pages Project](2017-03-02-a-pages-project)
  * [Life Goes On](2017.1219-life-goes-on)
+ * [Simple Release Cycle](2018-09-14-simple-release-cycle)
+
