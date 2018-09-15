@@ -15,13 +15,13 @@ In this project, I want to apply the following three conventions:
 
   * [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   * [Semantic Versioning](https://semver.org/), and
-  * [Simple Release Cycle](https://tbarron.github.io/2018/09/13/simple-release-cycle.html).
-
+  * [Simple Release Cycle](http://tusculum.pythonanywhere.com/techblog/2018-09-14-simple-release-cycle).
 
 ### Work Cycle
 
     This section is deprecated in favor of
     https://tusculum.pcanywhere.com/techblog/2018.0914-simple-release-cycle
+    (see Simple Release Cycle above).
 
   1. git checkout master
   2. git checkout -b <branch-name>
