@@ -9,12 +9,15 @@
   <body>
     <header>
       <div id="prev">
-        <a href="/techblog/{{ prev }}">{{ prev }}</a>
+        <a href="/techblog/{{ prev }}"> <- {{ prev }}</a>
       </div>
-      <div id="title"><h1> {{ title }} </h1></div>
+      <div id="up">
+        <a href="/techblog/front">front</a>
+      </div>
       <div id="next">
-        <a href="/techblog/{{ next }}">{{ next }}</a>
+        <a href="/techblog/{{ next }}">{{ next }} -> </a>
       </div>
+      <div id="title"><center><h1> {{ title }} </h1></center></div>
     </header>
     <p>
     {{ html }}
