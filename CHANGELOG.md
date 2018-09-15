@@ -2,7 +2,18 @@
 
 Notable changes for this project.
 
-## [1.0.5] / 2018-08-21 / Adding (Partial) Random Sierpinski Calculator
+## [1.0.6] / 2018-09-15 / Correct README.md
+### Additions
+ * Add up link to each blog page
+
+### Changes
+ * Put newest techblog entries in reverse chronological order
+ * Correct Simple Release Cycle URL in README.md
+ * Correct comments (flask_app.py)
+ * Use CSS grid to lay out title, prev, next, and up links
+
+
+## [1.0.5] / 2018-09-15 / Adding (Partial) Random Sierpinski Calculator
 ### Additions
  * Add 'sierpinski' entry in flask_app.py, sierpinski.html template,
    sierpinski entry in jach.html, file sierpinski.js
@@ -14,6 +25,7 @@ Notable changes for this project.
 
 ### Deletions
  * Obsolete stuff
+
 
 ## [1.0.4] / 2018-07-12 / Conway's Game of Life in Javascript
 
