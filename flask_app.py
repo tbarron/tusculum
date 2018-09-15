@@ -249,8 +249,8 @@ def shutdown():
 @app.route('/techblog/<entry>')
 def techblog(entry):
     """
-    If *entry* is empty, we render the blog page. Otherwise, we rende the entry
-    requested.
+    If *entry* is empty, we render the blog page. Otherwise, we render the
+    entry requested.
     """
     if entry == "":
         md, raw = read_file_with_metadata("techblog/front.md")
