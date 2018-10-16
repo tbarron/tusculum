@@ -2,6 +2,11 @@
 
 Notable changes for this project.
 
+## [1.0.7] / 2018-10-16 / Link to Python Best Practices
+### Additions
+ * Add link to Python Best Practices on home page
+
+
 ## [1.0.6] / 2018-09-15 / Correct README.md
 ### Additions
  * Add up link to each blog page
