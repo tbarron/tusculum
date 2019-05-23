@@ -2,6 +2,11 @@
 
 Notable changes for this project.
 
+## [1.0.8] / 2019-05-23 / Add GPS coord converter
+### Additions
+ * Add page 'degrees' to convert among various formats for lat/long values
+
+
 ## [1.0.7] / 2018-10-16 / Link to Python Best Practices
 ### Additions
  * Add link to Python Best Practices on home page
