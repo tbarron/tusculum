@@ -90,6 +90,8 @@ def widget(which):
               'compounding': {'filename': 'compounding.html',
                               'title': 'Compounding',
                               'placeholder': "This computes geometric growth over time"},
+              'degrees': {'filename': 'degrees.html',
+                              'title': 'Degrees',},
               'mental_hygiene': {'filename': 'mental_hygiene.html',
                               'title': 'Mental Hygiene',},
               'sierpinski': {'filename': "sierpinski.html",
