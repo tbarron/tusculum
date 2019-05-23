@@ -19,26 +19,40 @@ In this project, I want to apply the following three conventions:
 
 ### Work Cycle
 
-    This section is deprecated in favor of
-    https://tusculum.pcanywhere.com/techblog/2018.0914-simple-release-cycle
-    (see Simple Release Cycle above).
+  (see https://tusculum.pythonanywhere.com/techblog/2018-09-14-simple-release-cycle)
+  
+  * Create a branch off master with a meaningful name.
+  
+  * Make changes in the branch to fix the bug, add new functionality, or
+    whatever.
+    
+      * Update tests (if appropriate).
+      * Update payload code / content.
+      * Update CHANGELOG.md to describe the updates.
+      * Update the project version (version.py or wherever).
+      
+  * Run tests and make sure they pass
+  
+  * Commit changes in the work branch.
+  
+  * Tag the final commit in the work branch with the new version.
+  
+  * Checkout 'master' and merge the work branch.
+  
+  * Run tests and make sure they pass.
+  
+  * Push master to origin.
 
-  1. git checkout master
-  2. git checkout -b <branch-name>
-  3. git push -u origin <branch-name>
-      1) track next steps in DODO (not in git)
-      2) ... edit ...
-      3) ... test ...
-      4) update CHANGELOG.md
-      1) git commit
-      1) git push
-      1) back to step i until ready for a release
-  4. git checkout master
-  5. [test]
-  6. git tag -a <next-release>
-  7. git merge <branch-name>
-  8. git push
-  9. back to step 2 for next feature
+For the tusculum project, after pushing from the local machine to github,
+the code must be deployed on pythonanywhere.com. To do this...
+
+  * Login to pythonanywhere as tusculum.
+  
+  * Open a bash shell
+  
+  * cd web
+  
+  * run 'update'
 
 
 ### Files and Directory Layout
