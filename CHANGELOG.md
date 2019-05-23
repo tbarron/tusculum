@@ -2,6 +2,10 @@
 
 Notable changes for this project.
 
+## [1.0.9] / 2019-05-23 / Add update script for refreshing tusculum
+### Additions
+ * New script 'update'
+
 ## [1.0.8] / 2019-05-23 / Add GPS coord converter
 ### Additions
  * Add page 'degrees' to convert among various formats for lat/long values
