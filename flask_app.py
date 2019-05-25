@@ -119,43 +119,6 @@ def widget(which):
 
 
 # -----------------------------------------------------------------------------
-# @app.route('/calendar')
-# def calendar():
-#     """
-#     Render the calendar page
-#     """
-#     return(render_template('calendar.html',
-#                            title='Mind-Hacking Your Calendar'))
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/cal-p-lb')
-# def calories_per_pound():
-#     """
-#     Render the calories per pound page
-#     """
-#     return(render_template('calorease.html'))
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/compounding')
-# def compounding():
-#     """
-#     This is a placeholder. Not sure this will ever get implemented
-#     """
-#     return("This computes interest compounding over time")
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/mental_hygiene')
-# def mental_hygiene():
-#     """
-#     Render the mental hygiene page
-#     """
-#     return(render_template('mental_hygiene.html', title="Mental Hygiene"))
-
-
-# -----------------------------------------------------------------------------
 @app.route('/jach')
 def jach():
     """
@@ -163,15 +126,6 @@ def jach():
     """
     return(render_template('jach.html',
                            title="Tusculum"))
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/wandro')
-# def wandro():
-#     """
-#     Render the wandro page
-#     """
-#     return(render_template('wandro.html'))
 
 
 # -----------------------------------------------------------------------------
