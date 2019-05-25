@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Degrees</title>
+    <!-- Javascript ======================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/speed.js') }} "></script>
+    <style>
+      .container {
+        /* Make .container use grid layout. 'inline-grid' produces a grid
+        ; narrower than the browser page */
+        display: inline-grid;
+
+        /* Generate the correct number of columns -- we want 7 */
+        grid-template-columns: auto auto auto auto auto auto auto;
+
+        /* Separation between grid items */
+        grid-gap: 5px;
+      }
+
+      .item {
+        margin-top: 5px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        /* To see where the items are, make the border width non-zero */
+        border: solid 0px black;
+        text-align: left;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      #d_lab_d, #d_inp_d {
+        grid-column-start: 1;
+        grid-column-end: 7;
+      }
+
+      #dm_lab_d, #dm_inp_d {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      #dm_lab_m, #dm_inp_m {
+        grid-column-start: 3;
+        grid-column-end: 7;
+      }
+
+      #dms_lab_d, #dms_inp_d {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      #dms_lab_m, #dms_inp_m {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
+      #dms_lab_s, #dms_inp_s {
+        grid-column-start: 5;
+        grid-column-end: 7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Speed Converter</h1>
+    <p>This page will convert fractional degree values (eg., 36.75342) to
+    degree + fractional minutes (eg., 36 45.2052) or to degree + minute +
+    fractional seconds (eg., 36 45 12.312).
+
+    <p>Fill in whichever form of the coordinate you have and click the
+    "calculate" button on the right to compute and fill in the other forms
+    of the value.
+
+    <p>Note that only one coordinate (latitude or longitude) is handled at
+    a time.
+
+    <div class="container">
+      <div class="item" id="d_lab_d">degrees (ddd.ffff)</div>
+      <div class="item" id="d_inp_d"><input id="d_deg"></input></div>
+      <div class="item" id="d_btn">
+        <button onclick="calc_d()">calculate</button></div>
+
+      <div class="item" id="dm_lab_d">degrees (ddd)</div>
+      <div class="item" id="dm_lab_m">minutes (mm.ffff)</div>
+      <div class="item" id="dm_inp_d"><input id="dm_deg"></input></div>
+      <div class="item" id="dm_inp_m"><input id="dm_min"></input></div>
+      <div class="item" id="dm_btn">
+        <button onclick="calc_dm()">calculate</button></div>
+
+      <div class="item" id="dms_lab_d">degrees (ddd)</div>
+      <div class="item" id="dms_lab_m">minutes (mm)</div>
+      <div class="item" id="dms_lab_s">seconds (ss.fff)</div>
+      <div class="item" id="dms_inp_d"><input id="dms_deg"></input></div>
+      <div class="item" id="dms_inp_m"><input id="dms_min"></input></div>
+      <div class="item" id="dms_inp_s"><input id="dms_sec"></input></div>
+      <div class="item" id="dms_btn">
+        <button onclick="calc_dms()">calculate</button></div>
+    </div>
+  </body>
+</html>
