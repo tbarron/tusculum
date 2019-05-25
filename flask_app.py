@@ -81,23 +81,34 @@ def widget(which):
     """
     Render a widget based on the URL
     """
-    widges = {'calendar': {'filename': 'calendar.html',
-                           'title': 'Mind-Hacking Your Calendar'},
-              'jslife': {'filename': 'jslife.html',
-                         'title': "Conway's Life in Javascript"},
-              'cal-p-lb': {'filename': 'calorease.html',
-                           'title': ''},
-              'compounding': {'filename': 'compounding.html',
-                              'title': 'Compounding',
-                              'placeholder': "This computes geometric growth over time"},
-              'degrees': {'filename': 'degrees.html',
-                              'title': 'Degrees',},
-              'mental_hygiene': {'filename': 'mental_hygiene.html',
-                              'title': 'Mental Hygiene',},
-              'sierpinski': {'filename': "sierpinski.html",
-                             'title': "Sierpinski: A Geometric Sieve Generator"},
-              'wandro': {'filename': 'wandro.html',
-                              'title': 'wandro - A scrolling, random wikipedia viewer'},
+    widges = {'calendar':
+                 {'filename': "calendar.html",
+                  'title': "Mind-Hacking Your Calendar"},
+              'jslife':
+                 {'filename': "jslife.html",
+                  'title': "Conway's Life in Javascript"},
+              'cal-p-lb':
+                 {'filename': "calorease.html",
+                  'title': ""},
+              'compounding':
+                 {'filename': "compounding.html",
+                  'title': "Compounding",
+                  'placeholder': "This computes geometric growth over time"},
+              'degrees':
+                 {'filename': "degrees.html",
+                  'title': "Degrees",},
+              'mental_hygiene':
+                 {'filename': "mental_hygiene.html",
+                  'title': "Mental Hygiene",},
+              'sierpinski':
+                 {'filename': "sierpinski.html",
+                  'title': "Sierpinski: A Geometric Sieve Generator"},
+              'speed':
+                 {'filename': "speed.html",
+                  'title': "Speed",},
+              'wandro':
+                 {'filename': "wandro.html",
+                  'title': "wandro - A scrolling, random wikipedia viewer"},
               }
 
     if "placeholder" in widges[which]:
