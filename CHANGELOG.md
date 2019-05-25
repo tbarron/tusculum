@@ -2,6 +2,15 @@
 
 Notable changes for this project.
 
+## [1.0.11] / 2019-05-25 / Add speed conversion page
+### Additions
+ * Add description of branches 'mouser' and 'speed' to README.md
+ * Add minimal code for speed.{html,js}
+ * Add entries for speed to flask_app.py, jach.html
+### Changes
+### Deletions
+ * Remove obsolete code from flask_app.py
+
 ## [1.0.10] / 2019-05-23 / Update README.md with correct work cycle
 ### Changes
  * Correct work cycle in README.md
