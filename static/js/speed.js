@@ -20,18 +20,15 @@ function isaFloat(str, msg) {
 }
 
 // =============================================================================
-// This function is fired by the first calculate button and computes
-// dm and dms values from d values.
-function calc_d() {
-    var degrees_s = $("#d_deg").val();
-    var degrees_f = parseFloat(degrees_s);
+// This function is fired by the calculate button for meters / second
+function mps_calc() {
+    alert("This is mps_calc");
+}
 
-    $("#dm_deg").val(fd_to_dm_d(degrees_f));
-    $("#dm_min").val(fd_to_dm_m(degrees_f));
-
-    $("#dms_deg").val(fd_to_dms_d(degrees_f));
-    $("#dms_min").val(fd_to_dms_m(degrees_f));
-    $("#dms_sec").val(fd_to_dms_s(degrees_f));
+// =============================================================================
+// This function is fired by the calculate button for feet / second
+function fps_calc() {
+    alert("This is fps_calc");
 }
 
 // =============================================================================
