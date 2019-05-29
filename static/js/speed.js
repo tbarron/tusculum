@@ -20,27 +20,61 @@ function isaFloat(str, msg) {
 }
 
 // =============================================================================
+// Convert miles per hour to meters per second
+function mlph_mps(mlph) {
+    mps = mlph * 1609.344 / 3600;
+    return(mps);
 }
 
 // =============================================================================
+// Convert feet per seconds to meters per second
+function fps_mps(fps) {
+    mps = fps / 3.28084;
+    return(mps);
 }
 
 // =============================================================================
+// Convert kilometers per hour to meters per second
+function kmph_mps(kmph) {
+    mps = kmph * 1000 / 3600;
+    return(mps);
 }
 
 // =============================================================================
+// Convert furlongs per fortnight to meters per second
+function fpf_mps(fpf) {
+    mps = fpf * 1609.344 * 8 / (3600 * 24 * 14);
+    return(mps);
 }
 
 // =============================================================================
+// Convert meters per second to miles per hour
+function mps_mlph(mps) {
+    mlph = mps * 3600 / 1609.344
+    return(mlph);
 }
 
 // =============================================================================
+// Convert meters per second to feet per seconds
+function mps_fps(mps) {
+    fps = mps * 3.28084;
+    return(fps);
 }
 
 // =============================================================================
+// Convert meters per second to kilometers per hour
+function mps_kmph(mps) {
+    kmph = mps * 3600 / 1000;
+    return(kmph);
 }
 
 // =============================================================================
+// Convert meters per second to furlongs per fortnight
+function mps_fpf(mps) {
+    // fpf = mps * 3600 * 24 * 14 / (1609.344 * 8);
+    spf = 3600 * 24 * 14;
+    fpf = mps * spf * 1609.344 / 8;
+    return(mps);
 }
 
 // =============================================================================
