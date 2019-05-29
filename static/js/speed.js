@@ -3,6 +3,13 @@
 // speeds expressed in various units: meters/sec, miles/hour,
 // feet/second, kilometers/hour, furlongs/fortnight
 //
+// X / Y
+//                   feet      meters     furlong      kilometer          mile
+// feet               1.0      3.2084         660        3280.84          5280
+// meter           0.3048         1.0     201.168           1000      1609.344
+// furlong       0.001515     0.00497         1.0           4.97           8.0
+// kilometer     0.000305       0.001      0.2012            1.0         1.609
+// mile          0.000189    0.000621       0.125         0.6215           1.0
 // =============================================================================
 
 // =============================================================================
