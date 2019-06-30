@@ -1,3 +1,15 @@
+"""
+I want to use https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
+if we have an internet connection and it's available, otherwise fall back to
+$base/static/js/jquery.min.js.
+
+How do I test for internet connectivity?
+
+    Check whether hostnames can be resolved:
+    host = socket.gethostbyname(hostname)
+
+How do I write a markup function I can call from html like url_for()?
+"""
 from flask import Flask
 from flask import render_template
 from flask import request
