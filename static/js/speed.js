@@ -189,7 +189,7 @@ function mph_calc() {
     mlph_f = parseFloat(mlph_s);
     $("#mps").val(mlph_mps(mlph_f));
     $("#fps").val(mps_fps(mlph_mps(mlph_f)));
-    $("#kph").val(mps_kmph(mlph_mps(mlph_f)));
+    $("#kph").val(mlph_kph(mlph_f));
     $("#fpf").val(mps_fpf(mlph_mps(mlph_f)));
 }
 
