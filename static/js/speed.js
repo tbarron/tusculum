@@ -141,9 +141,10 @@ function mps_kmph(mps) {
 // Convert meters per second to furlongs per fortnight
 function mps_fpf(mps) {
     // fpf = mps * 3600 * 24 * 14 / (1609.344 * 8);
-    spf = 3600 * 24 * 14;
-    fpf = mps * spf * 1609.344 / 8;
-    return(mps);
+    // spf = 3600 * 24 * 14;
+    // fpf = mps * spf * 1609.344 / 8;
+    fpf = 6012.885 * mps;
+    return(fpf);
 }
 
 // =============================================================================
