@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Degrees</title>
     <!-- Javascript ======================================================== -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+         </script> -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/speed.js') }} "></script>
     <style>
       .container {
@@ -35,7 +37,7 @@
         display: inline-grid;
 
         /* Generate the correct number of columns -- we want 7 */
-        grid-template-columns: auto auto auto auto auto auto;
+        grid-template-columns: auto auto auto auto auto auto auto;
 
         /* Separation between grid items */
         grid-gap: 5px;
@@ -47,7 +49,7 @@
         margin-right: 25px;
         margin-bottom: 5px;
         /* To see where the items are, make the border width non-zero */
-        border: solid 0px black;
+        border: solid 1px black;
         text-align: right;
       }
 
@@ -89,47 +91,60 @@
 
     <div class="multipliers">
       <div class="mcell">&nbsp;</div>
-      <div class="mcell">meters/sec</div>
       <div class="mcell">feet/sec</div>
+      <div class="mcell">meters/sec</div>
+      <div class="mcell">furlong/fortnite</div>
       <div class="mcell">km/hour</div>
       <div class="mcell">miles/hour</div>
-      <div class="mcell">furlong/fortnite</div>
+      <div class="mcell">knots</div>
 
-      <div class="mcell">meters/sec</div>
+      <div class="mcell">feet/sec</div>
       <div class="mcell">1.0</div>
       <div class="mcell">3.28084</div>
+      <div class="mcell">1832.7273</div>
+      <div class="mcell">1.09727996</div>
+      <div class="mcell">0.6818182</div>
+      <div class="mcell">0.5924835</div>
+
+      <div class="mcell">meters/sec</div>
+      <div class="mcell">0.3048</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">6012.89</div>
       <div class="mcell">3.6</div>
       <div class="mcell">2.236936</div>
-      <div class="mcell">6012.89</div>
-
-      <div class="mcell">feet/sec</div>
-      <div class="mcell">0.304878</div>
-      <div class="mcell">1.0</div>
-      <div class="mcell">1.09727996</div>
-      <div class="mcell">0.689655</div>
-      <div class="mcell">1832.7273</div>
-
-      <div class="mcell">km/hour</div>
-      <div class="mcell">0.277778</div>
-      <div class="mcell">0.91134444</div>
-      <div class="mcell">1.0</div>
-      <div class="mcell">0.6213712</div>
-      <div class="mcell">1670.2474</div>
-
-      <div class="mcell">miles/hour</div>
-      <div class="mcell">0.44704</div>
-      <div class="mcell">1.46667</div>
-      <div class="mcell">1.60934</div>
-      <div class="mcell">1.0</div>
-      <div class="mcell">2688</div>
+      <div class="mcell">1.943844</div>
 
       <div class="mcell">furlong/fortnite</div>
-      <div class="mcell">0.0001663</div>
       <div class="mcell">0.0005456</div>
+      <div class="mcell">0.0001663</div>
+      <div class="mcell">1.0</div>
       <div class="mcell">0.0005987</div>
       <div class="mcell">0.0003720</div>
-      <div class="mcell">1.0</div>
+      <div class="mcell">0.0003233</div>
 
+      <div class="mcell">km/hour</div>
+      <div class="mcell">0.91134444</div>
+      <div class="mcell">0.277778</div>
+      <div class="mcell">1670.2474</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">0.6213712</div>
+      <div class="mcell">0.5399565</div>
+
+      <div class="mcell">miles/hour</div>
+      <div class="mcell">1.46667</div>
+      <div class="mcell">0.44704</div>
+      <div class="mcell">2688</div>
+      <div class="mcell">1.60934</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">0.8689758</div>
+
+      <div class="mcell">knots</div>
+      <div class="mcell">1.687811</div>
+      <div class="mcell">0.5144447</div>
+      <div class="mcell">2336</div>
+      <div class="mcell">1.852001</div>
+      <div class="mcell">1.15078</div>
+      <div class="mcell">1.0</div>
     </div>
 
     <p>Fill in whichever form of the speed you have and click the
@@ -137,15 +152,20 @@
     of the value.
 
     <div class="container">
+      <div class="item" id="fps_lab">feet/sec</div>
+      <div class="item" id="fps_inp"><input id="fps"></input></div>
+      <div class="item" id="fps_btn">
+        <button onclick="fps_calc()">calculate</button></div>
+
       <div class="item" id="mps_lab">meters/sec</div>
       <div class="item" id="mps_inp"><input id="mps"></input></div>
       <div class="item" id="mps_btn">
         <button onclick="mps_calc()">calculate</button></div>
 
-      <div class="item" id="fps_lab">feet/sec</div>
-      <div class="item" id="fps_inp"><input id="fps"></input></div>
-      <div class="item" id="fps_btn">
-        <button onclick="fps_calc()">calculate</button></div>
+      <div class="item" id="fpf_lab">furlong/fortnite</div>
+      <div class="item" id="fpf_inp"><input id="fpf"></input></div>
+      <div class="item" id="fpf_btn">
+        <button onclick="fpf_calc()">calculate</button></div>
 
       <div class="item" id="kph_lab">km/hour</div>
       <div class="item" id="kph_inp"><input id="kph"></input></div>
@@ -161,11 +181,6 @@
       <div class="item" id="knt_inp"><input id="knt"></input></div>
       <div class="item" id="knt_btn">
         <button onclick="knt_calc()">calculate</button></div>
-
-      <div class="item" id="fpf_lab">furlong/fortnite</div>
-      <div class="item" id="fpf_inp"><input id="fpf"></input></div>
-      <div class="item" id="fpf_btn">
-        <button onclick="fpf_calc()">calculate</button></div>
 
     </div>
   </body>

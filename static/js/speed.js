@@ -110,6 +110,13 @@ function kmph_mps(kmph) {
 }
 
 // =============================================================================
+// Convert knots to meters per second
+function knt_mps(knt) {
+    mps =  (1000 * knt) / (1.852 * 3600)
+    return(mps);
+}
+
+// =============================================================================
 // Convert furlongs per fortnight to meters per second
 function fpf_mps(fpf) {
     mps = fpf * 1609.344 * 8 / (3600 * 24 * 14);
@@ -121,6 +128,13 @@ function fpf_mps(fpf) {
 function mps_mlph(mps) {
     mlph = mps * 3600 / 1609.344
     return(mlph);
+}
+
+// =============================================================================
+// Convert meters per second to knots
+function mps_knt(mps) {
+    knt = mps * 1.852 * 3600 / 1000;
+    return(knt);
 }
 
 // =============================================================================
@@ -156,6 +170,7 @@ function mps_calc() {
     $("#kph").val(mps_kmph(mps_f));
     $("#mph").val(mps_mlph(mps_f));
     $("#fpf").val(mps_fpf(mps_f));
+    $("#knt").val(mps_knt(mps_f));
 }
 
 // =============================================================================
@@ -163,10 +178,12 @@ function mps_calc() {
 function fps_calc() {
     fps_s = $("#fps").val();
     fps_f = parseFloat(fps_s);
-    $("#mps").val(fps_mps(fps_f));
-    $("#kph").val(mps_kmph(fps_mps(fps_f)));
-    $("#mph").val(mps_mlph(fps_mps(fps_f)));
-    $("#fpf").val(mps_fpf(fps_mps(fps_f)));
+    mps = fps_mps(fps_f);
+    $("#mps").val(mps);
+    $("#kph").val(mps_kmph(mps));
+    $("#mph").val(mps_mlph(mps));
+    $("#fpf").val(mps_fpf(mps));
+    $("#knt").val(mps_knt(mps));
 }
 
 // =============================================================================
@@ -175,10 +192,25 @@ function fps_calc() {
 function kph_calc() {
     kph_s = $("#kph").val();
     kph_f = parseFloat(kph_s);
-    $("#mps").val(kmph_mps(kph_f));
-    $("#fps").val(mps_fps(kmph_mps(kph_f)));
-    $("#mph").val(mps_mlph(kmph_mps(kph_f)));
-    $("#fpf").val(mps_fpf(kmph_mps(kph_f)));
+    mps = kmph_mps(kph_f);
+    $("#mps").val(mps);
+    $("#fps").val(mps_fps(mps));
+    $("#mph").val(mps_mlph(mps));
+    $("#fpf").val(mps_fpf(mps));
+    $("#knt").val(mps_knt(mps));
+}
+
+// =============================================================================
+// This function is fired by the calculate button for knots
+function knt_calc() {
+    knt_s = $("#kph").val();
+    knt_f = parseFloat(knt_s);
+    mps = knt_mps(knt_f);
+    $("#mps").val(mps);
+    $("#fps").val(mps_fps(mps));
+    $("#mph").val(mps_mlph(mps));
+    $("#fpf").val(mps_fpf(mps));
+    $("#kph").val(mps_kmph(mps));
 }
 
 // =============================================================================
@@ -187,10 +219,12 @@ function kph_calc() {
 function mph_calc() {
     mlph_s = $("#mph").val();
     mlph_f = parseFloat(mlph_s);
-    $("#mps").val(mlph_mps(mlph_f));
-    $("#fps").val(mps_fps(mlph_mps(mlph_f)));
-    $("#kph").val(mlph_kph(mlph_f));
-    $("#fpf").val(mps_fpf(mlph_mps(mlph_f)));
+    mps = mlph_mps(mlph_f);
+    $("#mps").val(mps);
+    $("#fps").val(mps_fps(mps));
+    $("#kph").val(mps_kph(mps));
+    $("#fpf").val(mps_fpf(mps));
+    $("#knt").val(mps_knt(mps));
 }
 
 // =============================================================================
@@ -198,9 +232,11 @@ function mph_calc() {
 function fpf_calc() {
     fpf_s = $("#fpf").val();
     fpf_f = parseFloat(fpf_s);
-    $("#mps").val(fpf_mps(fpf_f));
-    $("#fps").val(mps_fps(fpf_mps(fpf_f)));
-    $("#kph").val(mps_kmph(fpf_mps(fpf_f)));
-    $("#mph").val(mps_mlph(fpf_mps(fpf_f)));
+    mps = fpf_mps(fpf_f);
+    $("#mps").val(mps);
+    $("#fps").val(mps_fps(mps));
+    $("#kph").val(mps_kmph(mps));
+    $("#mph").val(mps_mlph(mps));
+    $("#knt").val(mps_knt(mps));
 }
 
