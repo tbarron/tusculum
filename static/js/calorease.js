@@ -63,11 +63,11 @@ function calorease_main() {
     });
 
     $("#calc").click(function() {
-        var cps = parseInt($("#cps").val());
-        var cpw = parseInt($("#cpw").val());
-        var spp = parseInt($("#spp").val());
-        var wpp = parseInt($("#wpp").val());
-        var cpw = parseInt($("#cpw").val());
+        var cps = parseFloat($("#cps").val());
+        var cpw = parseFloat($("#cpw").val());
+        var spp = parseFloat($("#spp").val());
+        var wpp = parseFloat($("#wpp").val());
+        var cpw = parseFloat($("#cpw").val());
         var unit_pp = parseFloat($("#unit_pp").val());
         var cp_unit = parseFloat($("#cp_unit").val());
 
