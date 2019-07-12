@@ -1,3 +1,15 @@
+"""
+I want to use https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js
+if we have an internet connection and it's available, otherwise fall back to
+$base/static/js/jquery.min.js.
+
+How do I test for internet connectivity?
+
+    Check whether hostnames can be resolved:
+    host = socket.gethostbyname(hostname)
+
+How do I write a markup function I can call from html like url_for()?
+"""
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -81,23 +93,34 @@ def widget(which):
     """
     Render a widget based on the URL
     """
-    widges = {'calendar': {'filename': 'calendar.html',
-                           'title': 'Mind-Hacking Your Calendar'},
-              'jslife': {'filename': 'jslife.html',
-                         'title': "Conway's Life in Javascript"},
-              'cal-p-lb': {'filename': 'calorease.html',
-                           'title': ''},
-              'compounding': {'filename': 'compounding.html',
-                              'title': 'Compounding',
-                              'placeholder': "This computes geometric growth over time"},
-              'degrees': {'filename': 'degrees.html',
-                              'title': 'Degrees',},
-              'mental_hygiene': {'filename': 'mental_hygiene.html',
-                              'title': 'Mental Hygiene',},
-              'sierpinski': {'filename': "sierpinski.html",
-                             'title': "Sierpinski: A Geometric Sieve Generator"},
-              'wandro': {'filename': 'wandro.html',
-                              'title': 'wandro - A scrolling, random wikipedia viewer'},
+    widges = {'calendar':
+                 {'filename': "calendar.html",
+                  'title': "Mind-Hacking Your Calendar"},
+              'jslife':
+                 {'filename': "jslife.html",
+                  'title': "Conway's Life in Javascript"},
+              'cal-p-lb':
+                 {'filename': "calorease.html",
+                  'title': ""},
+              'compounding':
+                 {'filename': "compounding.html",
+                  'title': "Compounding",
+                  'placeholder': "This computes geometric growth over time"},
+              'degrees':
+                 {'filename': "degrees.html",
+                  'title': "Degrees",},
+              'mental_hygiene':
+                 {'filename': "mental_hygiene.html",
+                  'title': "Mental Hygiene",},
+              'sierpinski':
+                 {'filename': "sierpinski.html",
+                  'title': "Sierpinski: A Geometric Sieve Generator"},
+              'speed':
+                 {'filename': "speed.html",
+                  'title': "Speed",},
+              'wandro':
+                 {'filename': "wandro.html",
+                  'title': "wandro - A scrolling, random wikipedia viewer"},
               }
 
     if "placeholder" in widges[which]:
@@ -108,43 +131,6 @@ def widget(which):
 
 
 # -----------------------------------------------------------------------------
-# @app.route('/calendar')
-# def calendar():
-#     """
-#     Render the calendar page
-#     """
-#     return(render_template('calendar.html',
-#                            title='Mind-Hacking Your Calendar'))
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/cal-p-lb')
-# def calories_per_pound():
-#     """
-#     Render the calories per pound page
-#     """
-#     return(render_template('calorease.html'))
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/compounding')
-# def compounding():
-#     """
-#     This is a placeholder. Not sure this will ever get implemented
-#     """
-#     return("This computes interest compounding over time")
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/mental_hygiene')
-# def mental_hygiene():
-#     """
-#     Render the mental hygiene page
-#     """
-#     return(render_template('mental_hygiene.html', title="Mental Hygiene"))
-
-
-# -----------------------------------------------------------------------------
 @app.route('/jach')
 def jach():
     """
@@ -152,15 +138,6 @@ def jach():
     """
     return(render_template('jach.html',
                            title="Tusculum"))
-
-
-# -----------------------------------------------------------------------------
-# @app.route('/wandro')
-# def wandro():
-#     """
-#     Render the wandro page
-#     """
-#     return(render_template('wandro.html'))
 
 
 # -----------------------------------------------------------------------------

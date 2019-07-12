@@ -128,4 +128,13 @@ markdown README.md > templates/README.html
 
 ### Branches
 
-jslife: Adding a Life game written in javascript.
+speed: Adding a page to convert among speeds expressed using various units:
+  miles/hour, feet/second, meters/s, kilometer/hour, furlongs/fortnite.
+
+mouser: Trying to figure out how to make the loaded pages in wandro scroll
+  together. The current (undesirable) behavior is that when the current
+  page is exhausted and a new page is loaded, scrolling is sensitive to
+  where the mouse is relative to the break between the pages and at times
+  the previous page scrolls within its frame rather than moving everything
+  up. I would prefer to set the frame to be the same length as the page so
+  that the frame is not exhausted until the page is.

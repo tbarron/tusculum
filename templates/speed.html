@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Degrees</title>
+    <!-- Javascript ======================================================== -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+         </script> -->
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/speed.js') }} "></script>
+    <style>
+      .container {
+        /* Make .container use grid layout. 'inline-grid' produces a grid
+        ; narrower than the browser page */
+        display: inline-grid;
+
+        /* Generate the correct number of columns -- we want 7 */
+        grid-template-columns: auto auto auto;
+
+        /* Separation between grid items */
+        grid-gap: 5px;
+      }
+
+      .item {
+        margin-top: 5px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        /* To see where the items are, make the border width non-zero */
+        border: solid 0px black;
+        text-align: left;
+      }
+
+      .multipliers {
+        /* Make .container use grid layout. 'inline-grid' produces a grid
+        ; narrower than the browser page */
+        display: inline-grid;
+
+        /* Generate the correct number of columns -- we want 7 */
+        grid-template-columns: auto auto auto auto auto auto auto;
+
+        /* Separation between grid items */
+        grid-gap: 5px;
+      }
+
+      .mcell {
+        margin-top: 5px;
+        margin-left: 25px;
+        margin-right: 25px;
+        margin-bottom: 5px;
+        /* To see where the items are, make the border width non-zero */
+        border: solid 0px black;
+        text-align: right;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      button {
+        width: 65px;
+      }
+
+      #d_lab_d, #d_inp_d {
+        grid-column-start: 1;
+        grid-column-end: 7;
+      }
+
+      #dm_lab_d, #dm_inp_d {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      #dm_lab_m, #dm_inp_m {
+        grid-column-start: 3;
+        grid-column-end: 7;
+      }
+
+      #dms_lab_d, #dms_inp_d {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
+      #dms_lab_m, #dms_inp_m {
+        grid-column-start: 3;
+        grid-column-end: 5;
+      }
+      #dms_lab_s, #dms_inp_s {
+        grid-column-start: 5;
+        grid-column-end: 7;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Speed Converter</h1>
+    <p>This page converts speeds from one set of units to others. Units on
+    the left of the table multiplied by the number in the cell yields the
+    unit at the top of the table.
+
+    <p>For example, feet/sec * 0.3048 produces
+    meters/sec.
+
+    <div class="multipliers">
+      <div class="mcell">&nbsp;</div>
+      <div class="mcell">feet/sec</div>
+      <div class="mcell">meters/sec</div>
+      <div class="mcell">furlong/fortnite</div>
+      <div class="mcell">km/hour</div>
+      <div class="mcell">miles/hour</div>
+      <div class="mcell">knots</div>
+
+      <div class="mcell">feet/sec</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">0.3048</div>
+      <div class="mcell">1832.7273</div>
+      <div class="mcell">1.09728</div>
+      <div class="mcell">0.6818182</div>
+      <div class="mcell">0.5924835</div>
+
+      <div class="mcell">meters/sec</div>
+      <div class="mcell">3.28084</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">6012.885</div>
+      <div class="mcell">3.6</div>
+      <div class="mcell">2.236936</div>
+      <div class="mcell">1.943844</div>
+
+      <div class="mcell">furlong/fortnite</div>
+      <div class="mcell">0.00054563</div>
+      <div class="mcell">0.00016631</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">0.00059871</div>
+      <div class="mcell">0.00037202</div>
+      <div class="mcell">0.00042808</div>
+
+      <div class="mcell">km/hour</div>
+      <div class="mcell">0.9113444</div>
+      <div class="mcell">0.277778</div>
+      <div class="mcell">1670.246</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">0.6213712</div>
+      <div class="mcell">0.5399565</div>
+
+      <div class="mcell">miles/hour</div>
+      <div class="mcell">1.46667</div>
+      <div class="mcell">0.44704</div>
+      <div class="mcell">2688</div>
+      <div class="mcell">1.609344</div>
+      <div class="mcell">1.0</div>
+      <div class="mcell">0.8689758</div>
+
+      <div class="mcell">knots</div>
+      <div class="mcell">1.687811</div>
+      <div class="mcell">0.5144447</div>
+      <div class="mcell">2336</div>
+      <div class="mcell">1.852001</div>
+      <div class="mcell">1.15078</div>
+      <div class="mcell">1.0</div>
+    </div>
+
+    <p>Fill in whichever form of the speed you have and click the
+    "calculate" button on the right to compute and fill in the other forms
+    of the value.
+
+    <div class="container">
+      <div class="item" id="fps_lab">feet/sec</div>
+      <div class="item" id="fps_inp"><input id="fps"></input></div>
+      <div class="item" id="fps_btn">
+        <button onclick="fps_calc()">calculate</button></div>
+
+      <div class="item" id="mps_lab">meters/sec</div>
+      <div class="item" id="mps_inp"><input id="mps"></input></div>
+      <div class="item" id="mps_btn">
+        <button onclick="mps_calc()">calculate</button></div>
+
+      <div class="item" id="fpf_lab">furlong/fortnite</div>
+      <div class="item" id="fpf_inp"><input id="fpf"></input></div>
+      <div class="item" id="fpf_btn">
+        <button onclick="fpf_calc()">calculate</button></div>
+
+      <div class="item" id="kph_lab">km/hour</div>
+      <div class="item" id="kph_inp"><input id="kph"></input></div>
+      <div class="item" id="kph_btn">
+        <button onclick="kph_calc()">calculate</button></div>
+
+      <div class="item" id="mph_lab">miles/hour</div>
+      <div class="item" id="mph_inp"><input id="mph"></input></div>
+      <div class="item" id="mph_btn">
+        <button onclick="mph_calc()">calculate</button></div>
+
+      <div class="item" id="knt_lab">knots</div>
+      <div class="item" id="knt_inp"><input id="knt"></input></div>
+      <div class="item" id="knt_btn">
+        <button onclick="knt_calc()">calculate</button></div>
+
+      <div class="item" id="space_lab"></div>
+      <div class="item" id="space_inp"></div>
+      <div class="item" id="space_btn">
+        <button width="63.2px" onclick="clear_fields()">clear</button></div>
+
+    </div>
+  </body>
+</html>
