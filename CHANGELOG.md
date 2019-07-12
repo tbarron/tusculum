@@ -2,6 +2,15 @@
 
 Notable changes for this project.
 
+## [1.0.12] / 2019-07-12 / Finalize speed conversion page
+### Additions
+ * Got speed.{html,js} working
+### Changes
+ * Arranged to have a local copy of jquery.min.js so we can run the local
+   server when offline
+ * Update descriptions of branches in README.md
+### Deletions
+
 ## [1.0.11] / 2019-05-25 / Add speed conversion page
 ### Additions
  * Add description of branches 'mouser' and 'speed' to README.md

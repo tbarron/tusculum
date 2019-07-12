@@ -128,6 +128,11 @@ markdown README.md > templates/README.html
 
 ### Branches
 
+master: Currently released code.
+
+degrees: Add calculator for converting degrees to degrees/minutes to
+  degrees/minutes/seconds.
+
 speed: Adding a page to convert among speeds expressed using various units:
   miles/hour, feet/second, meters/s, kilometer/hour, furlongs/fortnite.
 
