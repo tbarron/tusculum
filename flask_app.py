@@ -112,6 +112,9 @@ def widget(which):
               'mental_hygiene':
                  {'filename': "mental_hygiene.html",
                   'title': "Mental Hygiene",},
+              'pbscore':
+                 {'filename': "pbscore.html",
+                  'title': "Pickleball Scoring Tutor",},
               'sierpinski':
                  {'filename': "sierpinski.html",
                   'title': "Sierpinski: A Geometric Sieve Generator"},
