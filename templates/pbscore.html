@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Pickleball Scoring Tutor</title>
+    <!-- Javascript ======================================================== -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/pbscore.js') }} "></script>
+    <style>
+      canvas {
+        width: 880;
+        border: 1px solid black;
+        pad-left: 20;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>Pickleball Scoring Tutor</h1>
+    <p>This page will help you learn to keep track of scoring in the game
+      of pickleball.
+
+    <div>
+      <center>
+        <canvas id="pbCourt" width="880" height="400"></canvas>
+        <br>
+        Score: <input id="ab_score"></input>
+        <input id="cd_score"></input>
+        <br>
+        Server: <input id="server"></input>
+        <input id="servnum"></input>
+        <p>
+        <textarea id="message" cols="80" rows="5"></textarea>
+        <br>
+        <button onclick="advanceGame()">Play a point!</button>
+        <button onclick="restartGame()">Restart the game</button>
+      </center>
+      
+    </div>
+  </body>
+</html>
