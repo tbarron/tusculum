@@ -131,6 +131,7 @@ class Court {
         this.east_score = 0;
         this.serving = this.sw;
         this.servnum = 2;
+        this.game_over = 0;
     }
 
     // ------------------------------------------------------------------------
@@ -139,10 +140,12 @@ class Court {
     checkGameEnd() {
         if ((10 < this.west_score)
             && (2 <= this.west_score - this.east_score)) {
-            Court.msg = "Team West wins! Game over";
+            this.msg = "Team West wins! Game over";
+            this.game_over = 1;
         } else if ((10 < this.east_score)
                    && (2 <= this.east_score - this.west_score)) {
-            Court.msg = "Team East wins! Game over";
+            this.msg = "Team East wins! Game over";
+            this.game_over = 1;
         }
     }
 
@@ -179,6 +182,21 @@ class Court {
         $("#server").val(this.serving);
         $("#servnum").val(this.servnum);
         $("#message").val(this.msg);
+    }
+
+    // ------------------------------------------------------------------------
+    rally() {
+        if (this.game_over == 1) {
+            this.msg += "\nGame over. Click Restart to play again.";
+        } else {
+            if (this.servingTeam() == this.winningTeam()) {
+                this.serverWins();
+            } else {
+                this.serverLoses();
+            }
+            this.checkGameEnd();
+        }
+        this.draw();
     }
 
     // ------------------------------------------------------------------------
@@ -277,7 +295,6 @@ class Court {
             return "east";
         }
     }
-
 }
 
 // ----------------------------------------------------------------------------
@@ -285,13 +302,7 @@ class Court {
 // court structure
 //
 function advanceGame() {
-    if (court.servingTeam() == court.winningTeam()) {
-        court.serverWins();
-    } else {
-        court.serverLoses();
-    }
-    court.checkGameEnd();
-    court.draw();
+    court.rally();
 }
 
 // ----------------------------------------------------------------------------
