@@ -197,8 +197,11 @@ class Court {
 
     // ------------------------------------------------------------------------
     rally(winner) {
-        if (this.game_over == 1) {
-            this.msg += "\nGame over. Click Restart to play again.";
+        if (1 <= this.game_over) {
+            if (this.game_over < 2) {
+                this.msg += "\nGame over. Click Restart to play again.";
+                this.game_over++;
+            }
         } else if (winner == 'random') {
             if (this.servingTeam() == this.winningTeam()) {
                 this.serverWins();
