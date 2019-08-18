@@ -251,7 +251,7 @@ class Court {
             this.servnum = 2;
         } else if (this.servnum == 2) {
             this.servnum = 1;
-            if (this.servingTeam() == "west") {
+            if (this.servingTeam() == nameWest) {
                 this.serving = this.ne;
                 this.msg = msgRally(this.servingTeam(), this.serving);
             } else if (this.servingTeam() == nameEast) {
@@ -281,7 +281,7 @@ class Court {
             //     + " continues serving.";
             [court.players[0].pos_y, court.players[1].pos_y] =
                 [court.players[1].pos_y, court.players[0].pos_y];
-        } else if (this.servingTeam() == "East") {
+        } else if (this.servingTeam() == nameEast) {
             this.east_score++;
             this.msg = this.msgWin(this.servingTeam(), this.serving);
             // this.msg = "Team East wins the rally and scores a point. They" +
@@ -296,13 +296,13 @@ class Court {
     //
     servingTeam() {
         if (this.serving == this.players[0].name) {
-            return("West");
+            return(nameWest);
         } else if (this.serving == this.players[1].name) {
-            return("West");
+            return(nameWest);
         } else if (this.serving == this.players[2].name) {
-            return("East");
+            return(nameEast);
         } else if (this.serving == this.players[3].name) {
-            return("East");
+            return(nameEast);
         } else {
             alert("Invalid serving value : '" + this.serving + "'");
         }
@@ -314,9 +314,9 @@ class Court {
     //
     winningTeam() {
         if (Math.random() < 0.50) {
-            return "West";
+            return nameWest;
         } else {
-            return "East";
+            return nameEast;
         }
     }
 }
@@ -341,6 +341,8 @@ function restartGame() {
 // Here we start: we draw the initial court at the start of the game
 //
 var court = new Court();
+const nameWest = "West";
+const nameEast = "East";
 
 $(document).ready(function() {
     court.draw();
