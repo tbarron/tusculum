@@ -140,11 +140,11 @@ class Court {
     checkGameEnd() {
         if ((10 < this.west_score)
             && (2 <= this.west_score - this.east_score)) {
-            this.msg = "Team West wins! Game over";
+            this.msg = this.msgGameOver(nameWest);
             this.game_over = 1;
         } else if ((10 < this.east_score)
                    && (2 <= this.east_score - this.west_score)) {
-            this.msg = "Team East wins! Game over";
+            this.msg = this.msgGameOver(nameEast);
             this.game_over = 1;
         }
     }
@@ -182,6 +182,12 @@ class Court {
         $("#server").val(this.serving);
         $("#servnum").val(this.servnum);
         $("#message").val(this.msg);
+    }
+
+    // ------------------------------------------------------------------------
+    msgGameOver(team) {
+        var rval = "Team " + team + " wins! Game over.";
+        return rval;
     }
 
     // ------------------------------------------------------------------------
