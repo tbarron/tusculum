@@ -201,6 +201,7 @@ class Court {
             } else {
                 this.serverLoses();
             }
+            this.checkGameEnd();
         }
         this.draw();
     }
