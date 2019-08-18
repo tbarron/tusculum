@@ -185,16 +185,22 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
-    rally() {
+    rally(winner) {
         if (this.game_over == 1) {
             this.msg += "\nGame over. Click Restart to play again.";
-        } else {
+        } else if (winner == 'random') {
             if (this.servingTeam() == this.winningTeam()) {
                 this.serverWins();
             } else {
                 this.serverLoses();
             }
             this.checkGameEnd();
+        } else {
+            if (this.servingTeam() == winner) {
+                this.serverWins();
+            } else {
+                this.serverLoses();
+            }
         }
         this.draw();
     }
