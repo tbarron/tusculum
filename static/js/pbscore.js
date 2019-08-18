@@ -153,20 +153,11 @@ class Court {
     // Draw the court
     //
     draw() {
-        // var canvas = $("#pbCourt").get(0);
-        // var ctx = canvas.getContext("2d");
         var ctx = new Context("#pbCourt");
 
-        // ctx.fillStyle = "black";
         ctx.setFillStyle("black");
-
-        // ctx.font = "20px Comic Sans MS";
         ctx.setFont("20px Comic Sans MS");
-
-        // ctx.textAlign = "center";
         ctx.setTextAlignment("center");
-
-        // ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.clearField();
         for (var ldx = 0 ; ldx < this.lines.length ; ldx++) {
             var line = this.lines[ldx];
