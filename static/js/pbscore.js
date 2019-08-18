@@ -185,6 +185,13 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
+    msgWin(team, player) {
+        var rval = "Team " + team + " wins the rally and scores a point.  "
+            + "They swap places and " + player + " continues serving.";
+        return rval;
+    }
+
+    // ------------------------------------------------------------------------
     rally(winner) {
         if (this.game_over == 1) {
             this.msg += "\nGame over. Click Restart to play again.";
@@ -261,7 +268,7 @@ class Court {
     serverWins() {
         if (this.servingTeam() == "West") {
             this.west_score++;
-            this.msg = this.winMessage(this.servingTeam(), this.serving);
+            this.msg = this.msgWin(this.servingTeam(), this.serving);
             // this.msg = "Team " + this.servingTeam() + " wins the rally "
             //     + " and scores a point. They swap places and " + court.serving
             //     + " continues serving.";
@@ -269,19 +276,12 @@ class Court {
                 [court.players[1].pos_y, court.players[0].pos_y];
         } else if (this.servingTeam() == "East") {
             this.east_score++;
-            this.msg = this.winMessage(this.servingTeam(), this.serving);
+            this.msg = this.msgWin(this.servingTeam(), this.serving);
             // this.msg = "Team East wins the rally and scores a point. They" +
             //     " swap places and " + court.serving + " continues serving.";
             [court.players[2].pos_y, court.players[3].pos_y] =
                 [court.players[3].pos_y, court.players[2].pos_y];
         }
-    }
-
-    // ------------------------------------------------------------------------
-    winMessage(team, player) {
-        var rval = "Team " + team + " wins the rally and scores a point.  "
-            + "They swap places and " + player + " continues serving.";
-
     }
 
     // ------------------------------------------------------------------------
