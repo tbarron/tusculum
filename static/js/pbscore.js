@@ -322,6 +322,14 @@ class Court {
 }
 
 // ----------------------------------------------------------------------------
+// Process a rally. User can specify which team should win ('West' or
+// 'East') or if winner is 'random', the result will be randomized
+//
+function rally(winner) {
+    court.rally(winner);
+}
+
+// ----------------------------------------------------------------------------
 // This function processes the next point based on the contents of the
 // court structure
 //
