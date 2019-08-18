@@ -254,17 +254,27 @@ class Court {
     serverWins() {
         if (this.servingTeam() == "west") {
             court.west_score++;
-            court.msg = "Team West wins the rally and scores a point. They" +
-                " swap places and " + court.serving + " continues serving.";
+            this.msg = this.winMessage(this.servingTeam(), this.serving);
+            // this.msg = "Team " + this.servingTeam() + " wins the rally "
+            //     + " and scores a point. They swap places and " + court.serving
+            //     + " continues serving.";
             [court.players[0].pos_y, court.players[1].pos_y] =
                 [court.players[1].pos_y, court.players[0].pos_y];
         } else if (this.servingTeam() == "east") {
             court.east_score++;
-            court.msg = "Team East wins the rally and scores a point. They" +
-                " swap places and " + court.serving + " continues serving.";
+            this.msg = this.winMessage(this.servingTeam(), this.serving);
+            // this.msg = "Team East wins the rally and scores a point. They" +
+            //     " swap places and " + court.serving + " continues serving.";
             [court.players[2].pos_y, court.players[3].pos_y] =
                 [court.players[3].pos_y, court.players[2].pos_y];
         }
+    }
+
+    // ------------------------------------------------------------------------
+    winMessage(team, player) {
+        var rval = "Team " + team + " wins the rally and scores a point.  "
+            + "They swap places and " + player + " continues serving.";
+
     }
 
     // ------------------------------------------------------------------------
