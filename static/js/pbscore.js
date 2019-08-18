@@ -252,16 +252,16 @@ class Court {
     // Update the court to reflect the serving team winning a rally
     //
     serverWins() {
-        if (this.servingTeam() == "west") {
-            court.west_score++;
+        if (this.servingTeam() == "West") {
+            this.west_score++;
             this.msg = this.winMessage(this.servingTeam(), this.serving);
             // this.msg = "Team " + this.servingTeam() + " wins the rally "
             //     + " and scores a point. They swap places and " + court.serving
             //     + " continues serving.";
             [court.players[0].pos_y, court.players[1].pos_y] =
                 [court.players[1].pos_y, court.players[0].pos_y];
-        } else if (this.servingTeam() == "east") {
-            court.east_score++;
+        } else if (this.servingTeam() == "East") {
+            this.east_score++;
             this.msg = this.winMessage(this.servingTeam(), this.serving);
             // this.msg = "Team East wins the rally and scores a point. They" +
             //     " swap places and " + court.serving + " continues serving.";
@@ -282,13 +282,13 @@ class Court {
     //
     servingTeam() {
         if (this.serving == this.players[0].name) {
-            return("west");
+            return("West");
         } else if (this.serving == this.players[1].name) {
-            return("west");
+            return("West");
         } else if (this.serving == this.players[2].name) {
-            return("east");
+            return("East");
         } else if (this.serving == this.players[3].name) {
-            return("east");
+            return("East");
         } else {
             alert("Invalid serving value : '" + this.serving + "'");
         }
@@ -300,9 +300,9 @@ class Court {
     //
     winningTeam() {
         if (Math.random() < 0.50) {
-            return "west";
+            return "West";
         } else {
-            return "east";
+            return "East";
         }
     }
 }
