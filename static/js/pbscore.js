@@ -185,6 +185,13 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
+    msgRally(team, player) {
+        var rval = "Team " + team
+            + " win the rally; service passes to " + player;
+        return rval;
+    }
+
+    // ------------------------------------------------------------------------
     msgWin(team, player) {
         var rval = "Team " + team + " wins the rally and scores a point.  "
             + "They swap places and " + player + " continues serving.";
@@ -220,20 +227,16 @@ class Court {
         if (this.servnum == 1) {
             if (this.serving == "E") {
                 this.serving = "O";
-                this.msg = "Team East win the rally; service passes to "
-                    + this.serving;
+                this.msg = msgRally(nameEast, this.serving);
             } else if (this.serving == "O") {
                 this.serving = "E";
-                this.msg = "Team East win the rally; service passes to "
-                    + this.serving;
+                this.msg = msgRally(nameEast, this.serving);
             } else if (this.serving == "e") {
                 this.serving = "o";
-                this.msg = "Team West win the rally; service passes to "
-                    + this.serving;
+                this.msg = msgRally(nameWest, this.serving);
             } else if (this.serving == "o") {
                 this.serving = "e";
-                this.msg = "Team West win the rally; service passes to "
-                    + this.serving;
+                this.msg = msgRally(nameEast, this.serving);
             } else {
                 alert("serverLoses: Court.serving (" +
                       this.serving +
@@ -244,12 +247,10 @@ class Court {
             this.servnum = 1;
             if (this.servingTeam() == "west") {
                 this.serving = this.ne;
-                this.msg = "Team " + this.servingTeam()
-                    + " win the rally; service passes to " + this.serving;
-            } else if (this.servingTeam() == "east") {
+                this.msg = msgRally(this.servingTeam(), this.serving);
+            } else if (this.servingTeam() == nameEast) {
                 this.serving = this.sw;
-                this.msg = "Team " + this.servingTeam()
-                    + " win the rally; service passes to " + this.serving;
+                this.msg = msgRally(this.servingTeam(), this.serving);
             } else {
                 alert("serverLoses: this.serving (" +
                       this.serving +
