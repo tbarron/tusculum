@@ -13,8 +13,12 @@ const name_O = "O";
 
 // ----------------------------------------------------------------------------
 // This class provides an interface to the JS canvas drawing machinery.
+//
 class Context {
     // ------------------------------------------------------------------------
+    // Initialize our context object with an underlying JS canvas and
+    // drawing context
+    //
     constructor(canvas) {
         this.canvas = $(canvas).get(0);
         this.ctx = this.canvas.getContext("2d");
@@ -23,22 +27,31 @@ class Context {
     }
 
     // ------------------------------------------------------------------------
+    // Forward beginPath() calls to the underlying graphic context
+    //
     beginPath() {
         this.ctx.beginPath();
     }
 
     // ------------------------------------------------------------------------
+    // Clear the whole canvas
+    //
     clearField() {
         this.ctx.clearRect(0, 0, this.width, this.height);
     }
 
     // ------------------------------------------------------------------------
+    // Forward closePath() calls to the underlying graphic context
+    //
     closePath() {
         this.ctx.closePath();
     }
 
     // ------------------------------------------------------------------------
     drawCircle(cx, cy, radius, name) {
+    // Draw a circle centered at (*cx*, *cy*) of radius *radius*
+    // filled with *color* and labeled with the text *name*.
+    //
         this.ctx.moveTo(cx + radius, cy);
         this.ctx.arc(cx, cy, radius, 0, 2*Math.PI);
         this.ctx.stroke();
@@ -46,36 +59,52 @@ class Context {
     }
 
     // ------------------------------------------------------------------------
+    // Draw a line from point (*start_x*, *start_y*) to point (*end_x*, *end_y*)
+    //
     drawLine(start_x, start_y, end_x, end_y) {
         this.ctx.moveTo(start_x, start_y);
         this.ctx.lineTo(end_x, end_y);
     }
 
     // ------------------------------------------------------------------------
+    // Forward fillText() calls to the underlying context
+    //
     fillText(str, cx, cy) {
         this.ctx.fillText(str, cx, cy);
     }
 
     // ------------------------------------------------------------------------
+    // Set the fill style for the underlying context
+    //
     setFillStyle(color) {
         this.ctx.fillStyle = color;
     }
 
     // ------------------------------------------------------------------------
+    // Set the font for the underlying context
+    //
     setFont(font) {
         this.ctx.font = font;
     }
 
     // ------------------------------------------------------------------------
+    // Set text alignment for the underlying context
+    //
     setTextAlignment(value) {
         this.ctx.textAlign = value;
     }
+    // ------------------------------------------------------------------------
+    // Forward stroke calls to the underlying context
+    //
 }
 
 // ----------------------------------------------------------------------------
 // This class represents a player
+//
 class Player {
     // ------------------------------------------------------------------------
+    // Initialize a player's name and position
+    //
     constructor(name, pos_x, pos_y) {
         this.name = name;
         this.pos_x = pos_x;
@@ -84,6 +113,10 @@ class Player {
 
     // ------------------------------------------------------------------------
     draw(ctx, serving) {
+    // Draw a player's representation, which is a circle containing the
+    // player's name ('E', 'O', 'e', or 'o'). If the player is serving, the
+    // circle is filled with light green. Otherwise, it's white.
+    //
         if (this.name == serving) {
             ctx.fillCircle(this.pos_x, this.pos_y, 25, "LightGreen");
             ctx.fillText(this.name, this.pos_x, this.pos_y + 7);
@@ -171,12 +204,16 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
+    // Generate a message about which team won the game
+    //
     msgGameOver(team) {
         var rval = "Team " + team + " wins! Game over.";
         return rval;
     }
 
     // ------------------------------------------------------------------------
+    // Generate a message about the serving team losing a rally
+    //
     msgRally(team, player) {
         var rval = "Team " + team
             + " win the rally; service passes to " + player;
@@ -184,6 +221,8 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
+    // Generate a message about the serving team winning a rally.
+    //
     msgWin(team, player) {
         var rval = "Team " + team + " wins the rally and scores a point.  "
             + "They swap places and " + player + " continues serving.";
@@ -191,6 +230,12 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
+    // Process a rally. If game is over and user has clicked a button,
+    // expand the message to prompt a correct behavior on the user's
+    // part. If the user has picked a winner, we land on the last
+    // branch of the if-else. Otherwise, if winner is to be
+    // randomized, we take the middle branch.
+    //
     rally(winner) {
         if (1 <= this.game_over) {
             if (this.game_over < 2) {
@@ -321,6 +366,12 @@ function restartGame() {
     court.draw();
 }
 
+// ----------------------------------------------------------------------------
+// Set up Context as a singleton object. The one instantiation is retrieved by
+// doing
+//
+//       context.getInstance()
+//
 // ----------------------------------------------------------------------------
 // Here we start: we draw the initial court at the start of the game
 //
