@@ -48,14 +48,20 @@ class Context {
     }
 
     // ------------------------------------------------------------------------
-    drawCircle(cx, cy, radius, name) {
     // Draw a circle centered at (*cx*, *cy*) of radius *radius*
     // filled with *color* and labeled with the text *name*.
     //
+    drawCircle(cx, cy, radius, name, color) {
+        var previous = this.ctx.fillStyle;
         this.ctx.moveTo(cx + radius, cy);
+        this.ctx.fillStyle = color;
+        this.ctx.beginPath();
         this.ctx.arc(cx, cy, radius, 0, 2*Math.PI);
-        this.ctx.stroke();
+        this.ctx.closePath();
+        this.ctx.fill();
+        this.ctx.fillStyle = previous;
         this.ctx.fillText(name, cx, cy+7);
+        this.ctx.stroke();
     }
 
     // ------------------------------------------------------------------------
@@ -119,10 +125,11 @@ class Player {
     //
         var ctx = context.getInstance();
         if (this.name == serving) {
-            ctx.fillCircle(this.pos_x, this.pos_y, 25, "LightGreen");
-            ctx.fillText(this.name, this.pos_x, this.pos_y + 7);
+            ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
+                           "LightGreen");
         } else {
-            ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name);
+            ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
+                           "white");
         }
     }
 }
