@@ -378,7 +378,7 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
-    // Return "west" or "east" to indicate which team is serving
+    // Return "West" or "East" to indicate which team is serving
     //
     servingTeam() {
         if (this.serving == this.players[0].name) {
