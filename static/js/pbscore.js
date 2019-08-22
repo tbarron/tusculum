@@ -406,6 +406,14 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
+    // Set cheers for the point
+    //
+    setCheers(west, east) {
+        this.westCheer = west;
+        this.eastCheer = east;
+    }
+
+    // ------------------------------------------------------------------------
     // Swap the positions of the two players on a team
     //
     swapPosition(player1, player2, team) {
