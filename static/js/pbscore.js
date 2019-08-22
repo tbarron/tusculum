@@ -210,6 +210,8 @@ class Court {
         this.msg = this.sw + txtFirstSrv;
         this.west_score = 0;
         this.east_score = 0;
+        this.westCheer = "";
+        this.eastCheer = "";
         this.serving = this.sw;
         this.servnum = 2;
         this.game_over = 0;
