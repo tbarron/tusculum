@@ -99,9 +99,13 @@ class Context {
     setTextAlignment(value) {
         this.ctx.textAlign = value;
     }
+
     // ------------------------------------------------------------------------
     // Forward stroke calls to the underlying context
     //
+    stroke() {
+        this.ctx.stroke();
+    }
 }
 
 // ----------------------------------------------------------------------------
