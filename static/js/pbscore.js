@@ -187,7 +187,11 @@ class Court {
     // Set up the court
     //
     constructor() {
-        this.lines = Array(Array(440, 0, 440, 400),
+        this.lines = Array(Array(0, 0, 0, 400),
+                           Array(0, 400, 880, 400),
+                           Array(880, 400, 880, 0),
+                           Array(880, 0, 0, 0),
+                           Array(440, 0, 440, 400),
                            Array(300, 0, 300, 400),
                            Array(580, 0, 580, 400),
                            Array(0, 200, 300, 200),
