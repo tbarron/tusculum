@@ -1,4 +1,17 @@
 // ----------------------------------------------------------------------------
+// Set up constants -- team names and player names
+//
+// Team names
+const nameWest = "West";
+const nameEast = "East";
+
+// Player names
+const name_e = "e";
+const name_E = "E";
+const name_o = "o";
+const name_O = "O";
+
+// ----------------------------------------------------------------------------
 // This class provides an interface to the JS canvas drawing machinery.
 class Context {
     // ------------------------------------------------------------------------
@@ -343,9 +356,6 @@ function restartGame() {
 // Here we start: we draw the initial court at the start of the game
 //
 var court = new Court();
-const nameWest = "West";
-const nameEast = "East";
-
 $(document).ready(function() {
     court.draw();
 });
