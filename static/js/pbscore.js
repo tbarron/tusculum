@@ -365,13 +365,15 @@ class Court {
         if (this.servingTeam() == nameWest) {
             this.west_score++;
             this.msg = this.msgWin(this.servingTeam(), this.serving);
-            [court.players[0].pos_y, court.players[1].pos_y] =
-                [court.players[1].pos_y, court.players[0].pos_y];
+            this.swapPosition(this.players[0],
+                              this.players[1],
+                              this.servingTeam());
         } else if (this.servingTeam() == nameEast) {
             this.east_score++;
             this.msg = this.msgWin(this.servingTeam(), this.serving);
-            [court.players[2].pos_y, court.players[3].pos_y] =
-                [court.players[3].pos_y, court.players[2].pos_y];
+            this.swapPosition(this.players[2],
+                              this.players[3],
+                              this.servingTeam());
         }
     }
 
@@ -394,6 +396,18 @@ class Court {
                   + txtSQComma + name_E
                   + txtSQCommaOr + name_O
                   + txtSQParen);
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // Swap the positions of the two players on a team
+    //
+    swapPosition(player1, player2, team) {
+        [player1.pos_y, player2.pos_y] = [player2.pos_y, player1.pos_y];
+        if (team == "West") {
+            [this.nw, this.sw] = [this.sw, this.nw];
+        } else {
+            [this.ne, this.se] = [this.se, this.ne];
         }
     }
 
