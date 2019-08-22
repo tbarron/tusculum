@@ -197,8 +197,8 @@ class Court {
                            Array(0, 200, 300, 200),
                            Array(580, 200, 880, 200));
 
-        this.players = Array(new Player(name_E, 75, 300),
-                             new Player(name_O, 75, 100),
+        this.players = Array(new Player(name_O, 75, 100),
+                             new Player(name_E, 75, 300),
                              new Player(name_e, 805, 100),
                              new Player(name_o, 805, 300));
 
