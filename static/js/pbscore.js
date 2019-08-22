@@ -9,6 +9,10 @@ const attr_Font = "20px Comic Sans MS";
 const attr_TextAlign = "center";
 const attr_TwoD = "2d";
 
+// Cheers
+const cheer_Win = "Woohoo!";
+const cheer_Lose = "Aww...";
+
 // Team names
 const nameWest = "West";
 const nameEast = "East";
