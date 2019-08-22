@@ -265,6 +265,8 @@ class Court {
         ctx.closePath();
         ctx.stroke();
 
+        ctx.drawCheers(this.westCheer, this.eastCheer);
+
         $(id_WestScore).val(this.west_score);
         $(id_EastScore).val(this.east_score);
         $(id_Server).val(this.serving);
