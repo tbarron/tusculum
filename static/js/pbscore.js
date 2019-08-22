@@ -90,6 +90,12 @@ class Context {
     }
 
     // ------------------------------------------------------------------------
+    drawCheers(west, east) {
+        this.ctx.fillText(west, 250, 190);
+        this.ctx.fillText(east, 630, 190);
+    }
+
+    // ------------------------------------------------------------------------
     // Draw a circle centered at (*cx*, *cy*) of radius *radius*
     // filled with *color* and labeled with the text *name*.
     //
