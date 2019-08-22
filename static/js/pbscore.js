@@ -344,10 +344,10 @@ class Court {
             this.servnum = 1;
             if (this.servingTeam() == nameWest) {
                 this.serving = this.ne;
-                this.msg = msgRally(this.servingTeam(), this.serving);
+                this.msg = this.msgRally(this.servingTeam(), this.serving);
             } else if (this.servingTeam() == nameEast) {
                 this.serving = this.sw;
-                this.msg = msgRally(this.servingTeam(), this.serving);
+                this.msg = this.msgRally(this.servingTeam(), this.serving);
             } else {
                 alert(txtSrvLoses2 + this.servingTeam()
                       + txtShould + nameEast
