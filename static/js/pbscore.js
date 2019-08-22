@@ -117,6 +117,7 @@ class Player {
     // player's name ('E', 'O', 'e', or 'o'). If the player is serving, the
     // circle is filled with light green. Otherwise, it's white.
     //
+        var ctx = context.getInstance();
         if (this.name == serving) {
             ctx.fillCircle(this.pos_x, this.pos_y, 25, "LightGreen");
             ctx.fillText(this.name, this.pos_x, this.pos_y + 7);
@@ -181,7 +182,7 @@ class Court {
     // Draw the court
     //
     draw() {
-        var ctx = new Context("#pbCourt");
+        var ctx = context.getInstance();
 
         ctx.setFillStyle("black");
         ctx.setFont("20px Comic Sans MS");
@@ -372,6 +373,19 @@ function restartGame() {
 //
 //       context.getInstance()
 //
+var context = (function () {
+    var instance;
+
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = new Context("#pbCourt");
+            }
+            return instance;
+        }
+    };
+})();
+
 // ----------------------------------------------------------------------------
 // Here we start: we draw the initial court at the start of the game
 //
