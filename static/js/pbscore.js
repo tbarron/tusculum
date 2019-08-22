@@ -59,7 +59,7 @@ class Context {
     //
     constructor(canvas) {
         this.canvas = $(canvas).get(0);
-        this.ctx = this.canvas.getContext("2d");
+        this.ctx = this.canvas.getContext(attr_TwoD);
         this.width = this.canvas.width;
         this.height = this.canvas.height;
     }
@@ -193,18 +193,17 @@ class Court {
                            Array(0, 200, 300, 200),
                            Array(580, 200, 880, 200));
 
-        this.players = Array(new Player("O", 75, 100),
-                             new Player("E", 75, 300),
-                             new Player("e", 805, 100),
-                             new Player("o", 805, 300));
+        this.players = Array(new Player(name_E, 75, 300),
+                             new Player(name_O, 75, 100),
+                             new Player(name_e, 805, 100),
+                             new Player(name_o, 805, 300));
 
         this.nw = this.players[0].name;
         this.sw = this.players[1].name;
         this.ne = this.players[2].name;
         this.se = this.players[3].name;
 
-        this.msg = this.sw + " is the first server because of being "
-            + "on the right side";
+        this.msg = this.sw + txtFirstSrv;
         this.west_score = 0;
         this.east_score = 0;
         this.serving = this.sw;
@@ -233,9 +232,9 @@ class Court {
     draw() {
         var ctx = context.getInstance();
 
-        ctx.setFillStyle("black");
-        ctx.setFont("20px Comic Sans MS");
-        ctx.setTextAlignment("center");
+        ctx.setFillStyle(attr_ColorBlack);
+        ctx.setFont(attr_Font);
+        ctx.setTextAlignment(attr_TextAlign);
         ctx.clearField();
 
         for (var pdx = 0 ; pdx < this.players.length ; pdx++) {
@@ -250,18 +249,18 @@ class Court {
         ctx.closePath();
         ctx.stroke();
 
-        $("#ab_score").val(this.west_score);
-        $("#cd_score").val(this.east_score);
-        $("#server").val(this.serving);
-        $("#servnum").val(this.servnum);
-        $("#message").val(this.msg);
+        $(id_WestScore).val(this.west_score);
+        $(id_EastScore).val(this.east_score);
+        $(id_Server).val(this.serving);
+        $(id_Servnum).val(this.servnum);
+        $(id_Message).val(this.msg);
     }
 
     // ------------------------------------------------------------------------
     // Generate a message about which team won the game
     //
     msgGameOver(team) {
-        var rval = "Team " + team + " wins! Game over.";
+        var rval = txtTeam + team + txtWin;
         return rval;
     }
 
@@ -269,8 +268,7 @@ class Court {
     // Generate a message about the serving team losing a rally
     //
     msgRally(team, player) {
-        var rval = "Team " + team
-            + " win the rally; service passes to " + player;
+        var rval = txtTeam + team + txtSrvLoss + player;
         return rval;
     }
 
@@ -278,8 +276,7 @@ class Court {
     // Generate a message about the serving team winning a rally.
     //
     msgWin(team, player) {
-        var rval = "Team " + team + " wins the rally and scores a point.  "
-            + "They swap places and " + player + " continues serving.";
+        var rval = txtTeam + team + txtSrvWin1 + player + txtSrvWin2;
         return rval;
     }
 
@@ -293,10 +290,10 @@ class Court {
     rally(winner) {
         if (1 <= this.game_over) {
             if (this.game_over < 2) {
-                this.msg += "\nGame over. Click Restart to play again.";
+                this.msg += txtGameOver;
                 this.game_over++;
             }
-        } else if (winner == 'random') {
+        } else if (winner == txtRandom) {
             if (this.servingTeam() == this.winningTeam()) {
                 this.serverWins();
             } else {
@@ -319,22 +316,24 @@ class Court {
     //
     serverLoses() {
         if (this.servnum == 1) {
-            if (this.serving == "E") {
-                this.serving = "O";
-                this.msg = msgRally(nameEast, this.serving);
-            } else if (this.serving == "O") {
-                this.serving = "E";
-                this.msg = msgRally(nameEast, this.serving);
-            } else if (this.serving == "e") {
-                this.serving = "o";
-                this.msg = msgRally(nameWest, this.serving);
-            } else if (this.serving == "o") {
-                this.serving = "e";
-                this.msg = msgRally(nameEast, this.serving);
+            if (this.serving == name_E) {
+                this.serving = name_O;
+                this.msg = this.msgRally(nameEast, this.serving);
+            } else if (this.serving == name_O) {
+                this.serving = name_E;
+                this.msg = this.msgRally(nameEast, this.serving);
+            } else if (this.serving == name_e) {
+                this.serving = name_o;
+                this.msg = this.msgRally(nameWest, this.serving);
+            } else if (this.serving == name_o) {
+                this.serving = name_e;
+                this.msg = this.msgRally(nameWest, this.serving);
             } else {
-                alert("serverLoses: Court.serving (" +
-                      this.serving +
-                      ") should be A, B, C, or D");
+                alert(txtSrvLoses + this.serving
+                      + txtShould + name_E
+                      + txtComma + name_O
+                      + txtComma + name_e
+                      + txtCommaOr + name_o);
             }
             this.servnum = 2;
         } else if (this.servnum == 2) {
@@ -346,14 +345,12 @@ class Court {
                 this.serving = this.sw;
                 this.msg = msgRally(this.servingTeam(), this.serving);
             } else {
-                alert("serverLoses: this.serving (" +
-                      this.serving +
-                      ") should be E, O, e, or o");
+                alert(txtSrvLoses2 + this.servingTeam()
+                      + txtShould + nameEast
+                      + txtOr + nameWest);
             }
         } else {
-            alert("serverLoses: Court.servnum (" +
-                  this.servnum +
-                  ") should be 1 or 2");
+            alert(txtSrvLoses3 + this.servnum + txtShould12);
         }
     }
 
@@ -361,7 +358,7 @@ class Court {
     // Update the court to reflect the serving team winning a rally
     //
     serverWins() {
-        if (this.servingTeam() == "West") {
+        if (this.servingTeam() == nameWest) {
             this.west_score++;
             this.msg = this.msgWin(this.servingTeam(), this.serving);
             [court.players[0].pos_y, court.players[1].pos_y] =
@@ -387,7 +384,12 @@ class Court {
         } else if (this.serving == this.players[3].name) {
             return(nameEast);
         } else {
-            alert("Invalid serving value : '" + this.serving + "'");
+            alert(txtInvalid1 + this.serving
+                  + txtInvalid2 + name_e
+                  + txtSQComma + name_o
+                  + txtSQComma + name_E
+                  + txtSQCommaOr + name_O
+                  + txtSQParen);
         }
     }
 
@@ -432,7 +434,7 @@ var context = (function () {
     return {
         getInstance: function () {
             if (!instance) {
-                instance = new Context("#pbCourt");
+                instance = new Context(id_PBCourt);
             }
             return instance;
         }
