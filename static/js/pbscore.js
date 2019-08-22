@@ -199,14 +199,18 @@ class Court {
         ctx.setFont("20px Comic Sans MS");
         ctx.setTextAlignment("center");
         ctx.clearField();
+
+        for (var pdx = 0 ; pdx < this.players.length ; pdx++) {
+            this.players[pdx].draw(this.serving);
+        }
+
+        ctx.beginPath();
         for (var ldx = 0 ; ldx < this.lines.length ; ldx++) {
             var line = this.lines[ldx];
             ctx.drawLine(line[0], line[1], line[2], line[3]);
         }
-
-        for (var pdx = 0 ; pdx < this.players.length ; pdx++) {
-            this.players[pdx].draw(ctx, this.serving);
-        }
+        ctx.closePath();
+        ctx.stroke();
 
         $("#ab_score").val(this.west_score);
         $("#cd_score").val(this.east_score);
