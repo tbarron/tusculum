@@ -1,6 +1,14 @@
 // ----------------------------------------------------------------------------
-// Set up constants -- team names and player names
+// Set up constants -- team names, player names, HTML ids, text strings, etc.
 //
+// Attributes
+const attr_ColorBlack = "black";
+const attr_ColorGreen = "LightGreen";
+const attr_ColorWhite = "white";
+const attr_Font = "20px Comic Sans MS";
+const attr_TextAlign = "center";
+const attr_TwoD = "2d";
+
 // Team names
 const nameWest = "West";
 const nameEast = "East";
@@ -10,6 +18,36 @@ const name_e = "e";
 const name_E = "E";
 const name_o = "o";
 const name_O = "O";
+
+// HTML id strings
+const id_EastScore = "#cd_score";
+const id_Message = "#message";
+const id_PBCourt = "#pbCourt";
+const id_Server = "#server";
+const id_Servnum = "#servnum";
+const id_WestScore = "#ab_score";
+
+// Text strings
+const txtComma = ", ";
+const txtCommaOr = ", or ";
+const txtFirstSrv = " is the first server because of being on the right side";
+const txtGameOver = "\nGame over. Click Restart to play again.";
+const txtInvalid1 = "Invalid serving value : '";
+const txtInvalid2 = "' (should be '";
+const txtRandom = "random";
+const txtShould = ") should be ";
+const txtShould12 = ") should be 1 or 2"
+const txtSQComma = "', '";
+const txtSQCommaOr = "', or '";
+const txtSQParen = "')";
+const txtSrvLoses1 = "serverLoses: with servnum = 1, (";
+const txtSrvLoses2 = "serverLoses: with servnum = 2, (";
+const txtSrvLoses3 = "serverLoses: this.servnum (";
+const txtSrvLoss = " win the rally; service passes to ";
+const txtSrvWin1 = " wins the rally and scores a point. They swap places and ";
+const txtSrvWin2 = " continues serving.";
+const txtTeam = "Team ";
+const txtWin = " wins! Game over.";
 
 // ----------------------------------------------------------------------------
 // This class provides an interface to the JS canvas drawing machinery.
