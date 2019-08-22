@@ -52,26 +52,8 @@ class Context {
     }
 
     // ------------------------------------------------------------------------
-    fillCircle(cx, cy, radius, color) {
-        var previous = this.ctx.fillStyle;
-        this.ctx.fillStyle = color;
-        this.ctx.beginPath();
-        this.ctx.moveTo(cx + radius, cy);
-        this.ctx.arc(cx, cy, radius, 0, 2*Math.PI);
-        this.ctx.stroke();
-        this.ctx.closePath();
-        this.ctx.fill();
-        this.ctx.fillStyle = previous;
-    }
-
-    // ------------------------------------------------------------------------
     fillText(str, cx, cy) {
         this.ctx.fillText(str, cx, cy);
-    }
-
-    // ------------------------------------------------------------------------
-    setCTX(context) {
-        this.ctx = context;
     }
 
     // ------------------------------------------------------------------------
@@ -283,16 +265,11 @@ class Court {
         if (this.servingTeam() == "West") {
             this.west_score++;
             this.msg = this.msgWin(this.servingTeam(), this.serving);
-            // this.msg = "Team " + this.servingTeam() + " wins the rally "
-            //     + " and scores a point. They swap places and " + court.serving
-            //     + " continues serving.";
             [court.players[0].pos_y, court.players[1].pos_y] =
                 [court.players[1].pos_y, court.players[0].pos_y];
         } else if (this.servingTeam() == nameEast) {
             this.east_score++;
             this.msg = this.msgWin(this.servingTeam(), this.serving);
-            // this.msg = "Team East wins the rally and scores a point. They" +
-            //     " swap places and " + court.serving + " continues serving.";
             [court.players[2].pos_y, court.players[3].pos_y] =
                 [court.players[3].pos_y, court.players[2].pos_y];
         }
@@ -334,14 +311,6 @@ class Court {
 //
 function rally(winner) {
     court.rally(winner);
-}
-
-// ----------------------------------------------------------------------------
-// This function processes the next point based on the contents of the
-// court structure
-//
-function advanceGame() {
-    court.rally();
 }
 
 // ----------------------------------------------------------------------------
