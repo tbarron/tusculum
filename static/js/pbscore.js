@@ -90,12 +90,6 @@ class Context {
     }
 
     // ------------------------------------------------------------------------
-    drawCheers(west, east) {
-        this.ctx.fillText(west, 250, 190);
-        this.ctx.fillText(east, 630, 190);
-    }
-
-    // ------------------------------------------------------------------------
     // Draw a circle centered at (*cx*, *cy*) of radius *radius*
     // filled with *color* and labeled with the text *name*.
     //
@@ -220,8 +214,6 @@ class Court {
         this.msg = this.sw + txtFirstSrv;
         this.west_score = 0;
         this.east_score = 0;
-        this.westCheer = "";
-        this.eastCheer = "";
         this.serving = this.sw;
         this.servnum = 2;
         this.game_over = 0;
@@ -265,7 +257,9 @@ class Court {
         ctx.closePath();
         ctx.stroke();
 
-        ctx.drawCheers(this.westCheer, this.eastCheer);
+        // ctx.drawCheers(this.westCheer, this.eastCheer, this);
+        // this.westCheer.showContent();
+        // this.eastCheer.showContent();
 
         $(id_WestScore).val(this.west_score);
         $(id_EastScore).val(this.east_score);
