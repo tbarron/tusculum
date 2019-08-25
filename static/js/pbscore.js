@@ -428,12 +428,33 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
-    // Set cheers for the point
+    // Set cheers for the point. *west* and *east* are Cheer objects, one that
+    // says "Woohoo!" and the saying "Aww..."
     //
-    // setCheers(west, east) {
-    //     this.westCheer.setContent(west);
-    //     this.eastCheer.setContent(east);
-    // }
+    setCheers(west, east) {
+        this.doCheer("#west_cheer", west);
+        this.doCheer("#east_cheer", east);
+    }
+
+    // ------------------------------------------------------------------------
+    // For each cheer, we set the font, size, and color, then display the text
+    // value. Next, we fade it out over the course of a second with a callback
+    // to clear the text content and reset the field to visible after the fade
+    // out completes.
+    //
+    doCheer(name, chobj) {
+        $(name).css({
+            "font-family" : "Comic Sans MS",
+            "font-size": chobj.size,
+            "color": chobj.color
+        });
+        $(name).val(chobj.value);
+        $(name).fadeOut(1000, "swing",
+                        function() {
+                            $(name).val("");
+                            $(name).show();
+                        });
+    }
 
     // ------------------------------------------------------------------------
     // Swap the positions of the two players on a team
