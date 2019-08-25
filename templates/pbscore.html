@@ -24,22 +24,25 @@
     <p>This page will help you learn to keep track of scoring in the game
       of pickleball.
 
-    <div>
+    <div class="g-container">
       <center>
-        <canvas id="pbCourt" width="880" height="400"></canvas>
+        <canvas class="g-item" id="pbCourt" width="880" height="400"></canvas>
         <br>
-        Score: <input id="ab_score"></input>
-        <input id="cd_score"></input>
+        <output class="g-item" id="west_cheer"></output>
+        <output class="g-item" id="east_cheer"></output>
         <br>
-        Server: <input id="server"></input>
-        <input id="servnum"></input>
+        Score: <input class="g-item" id="ab_score"></input>
+        <input class="g-item" id="cd_score"></input>
+        <br>
+        Server: <input class="g-item" id="server"></input>
+        <input class="g-item" id="servnum"></input>
         <p>
-        <textarea id="message" cols="80" rows="5"></textarea>
+        <textarea class="g-item" id="message" cols="80" rows="5"></textarea>
         <br>
-        <button onclick="rally('West')">West wins rally</button>
-        <button onclick="rally('random')">Random rally</button>
-        <button onclick="rally('East')">East wins rally</button>
-        <br><button onclick="restartGame()">Restart</button>
+        <button class="g-item" onclick="rally('West')">West wins rally</button>
+        <button class="g-item" onclick="rally('random')">Random rally</button>
+        <button class="g-item" onclick="rally('East')">East wins rally</button>
+        <br><button class="g-item" onclick="restartGame()">Restart</button>
       </center>
 
     </div>
