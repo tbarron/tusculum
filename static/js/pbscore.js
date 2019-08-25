@@ -24,12 +24,23 @@ const name_o = "o";
 const name_O = "O";
 
 // HTML id strings
-const id_EastScore = "#cd_score";
+const id_BtnEast = "#btn-east";
+const id_BtnReset = "#btn-reset";
+const id_BtnRnd = "#btn-rnd";
+const id_BtnWest = "#btn-west";
+const id_EastCheer = "#east_cheer";
 const id_Message = "#message";
 const id_PBCourt = "#pbCourt";
+const id_PSLabel = "#ps-label";
+const id_RcvLabel = "#rt-label";
+const id_RcvScore = "#rt-score";
+const id_ScoreLab = "#score-lab";
 const id_Server = "#server";
-const id_Servnum = "#servnum";
-const id_WestScore = "#ab_score";
+const id_SrvNumber = "#sn-label";
+const id_Servnum = "#srvnum";
+const id_SrvLabel = "#st-label";
+const id_SrvScore = "#st-score";
+const id_WestCheer = "#west_cheer";
 
 // Text strings
 const txtComma = ", ";
