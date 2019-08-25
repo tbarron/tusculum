@@ -280,12 +280,14 @@ class Court {
         ctx.closePath();
         ctx.stroke();
 
-        // ctx.drawCheers(this.westCheer, this.eastCheer, this);
-        // this.westCheer.showContent();
-        // this.eastCheer.showContent();
+        if (this.servingTeam() == nameWest) {
+            $(id_SrvScore).val(this.west_score);
+            $(id_RcvScore).val(this.east_score);
+        } else {
+            $(id_SrvScore).val(this.east_score);
+            $(id_RcvScore).val(this.west_score);
+        }
 
-        $(id_WestScore).val(this.west_score);
-        $(id_EastScore).val(this.east_score);
         $(id_Server).val(this.serving);
         $(id_Servnum).val(this.servnum);
         $(id_Message).val(this.msg);
