@@ -443,8 +443,8 @@ class Court {
     // says "Woohoo!" and the saying "Aww..."
     //
     setCheers(west, east) {
-        this.doCheer("#west_cheer", west);
-        this.doCheer("#east_cheer", east);
+        this.doCheer(id_WestCheer, west);
+        this.doCheer(id_EastCheer, east);
     }
 
     // ------------------------------------------------------------------------
@@ -472,7 +472,7 @@ class Court {
     //
     swapPosition(player1, player2, team) {
         [player1.pos_y, player2.pos_y] = [player2.pos_y, player1.pos_y];
-        if (team == "West") {
+        if (team == nameWest) {
             [this.nw, this.sw] = [this.sw, this.nw];
         } else {
             [this.ne, this.se] = [this.se, this.ne];
