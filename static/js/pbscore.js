@@ -343,19 +343,19 @@ class Court {
             if (this.serving == name_E) {
                 this.serving = name_O;
                 this.msg = this.msgRally(nameEast, this.serving);
-                // this.setCheers(cheer_Lose, cheer_Win);
+                this.setCheers(this.loss_cheer, this.win_cheer);
             } else if (this.serving == name_O) {
                 this.serving = name_E;
                 this.msg = this.msgRally(nameEast, this.serving);
-                // this.setCheers(cheer_Lose, cheer_Win);
+                this.setCheers(this.loss_cheer, this.win_cheer);
             } else if (this.serving == name_e) {
                 this.serving = name_o;
                 this.msg = this.msgRally(nameWest, this.serving);
-                //this.setCheers(cheer_Win, cheer_Lose);
+                this.setCheers(this.win_cheer, this.loss_cheer);
             } else if (this.serving == name_o) {
                 this.serving = name_e;
                 this.msg = this.msgRally(nameWest, this.serving);
-                //this.setCheers(cheer_Win, cheer_Lose);
+                this.setCheers(this.win_cheer, this.loss_cheer);
             } else {
                 alert(txtSrvLoses + this.serving
                       + txtShould + name_E
@@ -369,11 +369,11 @@ class Court {
             if (this.servingTeam() == nameWest) {
                 this.serving = this.ne;
                 this.msg = this.msgRally(this.servingTeam(), this.serving);
-                //this.setCheers(cheer_Lose, cheer_Win);
+                this.setCheers(this.loss_cheer, this.win_cheer);
             } else if (this.servingTeam() == nameEast) {
                 this.serving = this.sw;
                 this.msg = this.msgRally(this.servingTeam(), this.serving);
-                //this.setCheers(cheer_Win, cheer_Lose);
+                this.setCheers(this.win_cheer, this.loss_cheer);
             } else {
                 alert(txtSrvLoses2 + this.servingTeam()
                       + txtShould + nameEast
@@ -390,14 +390,14 @@ class Court {
     serverWins() {
         if (this.servingTeam() == nameWest) {
             this.west_score++;
-            //this.setCheers(cheer_Win, cheer_Lose);
+            this.setCheers(this.win_cheer, this.loss_cheer);
             this.msg = this.msgWin(this.servingTeam(), this.serving);
             this.swapPosition(this.players[0],
                               this.players[1],
                               this.servingTeam());
         } else if (this.servingTeam() == nameEast) {
             this.east_score++;
-            //this.setCheers(cheer_Lose, cheer_Win);
+            this.setCheers(this.loss_cheer, this.win_cheer);
             this.msg = this.msgWin(this.servingTeam(), this.serving);
             this.swapPosition(this.players[2],
                               this.players[3],
