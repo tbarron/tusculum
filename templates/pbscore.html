@@ -11,10 +11,74 @@
     -->
     <script src="{{ url_for('static', filename='js/pbscore.js') }} "></script>
     <style>
+      .g-container {
+        display: grid;
+        grid-template-columns: 176px 176px 176px 176px 176px;
+        grid-template-rows: 400px 50px 20px 20px 20px;
+        grid-gap: 5px;
+        justify-items: center;
+      }
+
+      /*
+      .g-item {
+        border: 1px solid black;
+      }
+      */
+
+      #pbCourt {
+        grid-column-start: 1;
+        grid-column-end: 6;
+        justify-self: space-around;
+      }
+
+      label {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        justify-self: end;
+      }
+
+      #east_cheer {
+        grid-column: 4 / 5;
+        justify-self: end;
+      }
+
+      #west_cheer {
+        grid-column: 2 / 3;
+        justify-self: start;
+      }
+
+      #st-label {
+        grid-column: 2 / 3;
+        justify-self: center;
+      }
+
+      #rt-label {
+        grid-column: 3 / 4;
+        justify-self: center;
+      }
+
+      #sn-label {
+        grid-column: 4 / 5;
+        justify-self: center;
+      }
+
+      #message {
+        grid-column: 1 / 6;
+        width: 800px;
+      }
+
       canvas {
         width: 880;
         border: 1px solid black;
         pad-left: 20;
+      }
+
+      #btn-west {
+        grid-column: 2 / 3;
+      }
+
+      #btn-reset {
+        grid-column: 3 / 4;
       }
     </style>
   </head>
@@ -25,26 +89,27 @@
       of pickleball.
 
     <div class="g-container">
-      <center>
-        <canvas class="g-item" id="pbCourt" width="880" height="400"></canvas>
-        <br>
-        <output class="g-item" id="west_cheer"></output>
-        <output class="g-item" id="east_cheer"></output>
-        <br>
-        Score: <input class="g-item" id="ab_score"></input>
-        <input class="g-item" id="cd_score"></input>
-        <br>
-        Server: <input class="g-item" id="server"></input>
-        <input class="g-item" id="servnum"></input>
-        <p>
-        <textarea class="g-item" id="message" cols="80" rows="5"></textarea>
-        <br>
-        <button class="g-item" onclick="rally('West')">West wins rally</button>
-        <button class="g-item" onclick="rally('random')">Random rally</button>
-        <button class="g-item" onclick="rally('East')">East wins rally</button>
-        <br><button class="g-item" onclick="restartGame()">Restart</button>
-      </center>
+      <canvas class="g-item" id="pbCourt" width="880" height="400"></canvas>
 
+      <output class="g-item" id="west_cheer"></output>
+      <output class="g-item" id="east_cheer"></output>
+
+      <label class="g-item" id="st-label">Serving Team</label>
+      <label class="g-item" id="rt-label">Receiving Team</label>
+      <label class="g-item" id="sn-label">Server Number</label>
+      <label class="g-item" for="score-lab">Score:</label>
+      <input class="g-item" id="st-score"></input>
+      <input class="g-item" id="rt-score"></input>
+      <input class="g-item" id="srvnum"></input>
+
+      <label class="g-item" id="ps-label">Player serving:</label>
+      <input class="g-item" id="server"></input>
+      <textarea class="g-item" id="message" cols="80" rows="5"></textarea>
+
+      <button class="g-item" id="btn-west" onclick="rally('West')">West wins rally</button>
+      <button class="g-item" id="btn-rnd" onclick="rally('random')">Random rally</button>
+      <button class="g-item" id="btn-east" onclick="rally('East')">East wins rally</button>
+      <button class="g-item" id="btn-reset" onclick="restartGame()">Restart</button>
     </div>
   </body>
 </html>
