@@ -151,6 +151,15 @@ class Context {
 }
 
 // ----------------------------------------------------------------------------
+class Cheer {
+    constructor(value, color, size) {
+        this.value = value;
+        this.color = color;
+        this.size = size;
+    }
+}
+
+// ----------------------------------------------------------------------------
 // This class represents a player
 //
 class Player {
@@ -217,6 +226,9 @@ class Court {
         this.serving = this.sw;
         this.servnum = 2;
         this.game_over = 0;
+
+        this.win_cheer = new Cheer("Woohoo!", "green", "35px");
+        this.loss_cheer = new Cheer("Aww...", "red", "20px");
     }
 
     // ------------------------------------------------------------------------
