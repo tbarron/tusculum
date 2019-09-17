@@ -1,0 +1,105 @@
+/*
+** Don't edit pbscore.css! Instead edit pbscore.scss and recompile with
+**
+**     sass pbscore.scss pbscore.css
+**
+*/
+
+$col-width: 880px / 5;
+
+body {
+  font-family: arial;
+}
+
+.instructions {
+  display: grid;
+  grid-template-columns: $col-width $col-width $col-width $col-width $col-width;
+}
+
+.g-container {
+  display: grid;
+  grid-template-columns: $col-width $col-width $col-width $col-width $col-width;
+  grid-template-rows: auto auto auto auto auto 50px 50px auto;
+  /* grid-template-rows: auto 20px 50px 20px 20px 20px 50px 400px; */
+  grid-gap: 5px;
+  justify-items: center;
+}
+
+/*
+.g-item {
+  border: 1px solid black;
+}
+*/
+
+#title {
+  text-align: center;
+}
+
+#description {
+  grid-column: 2 / 5;
+}
+
+#pbCourt {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  justify-self: space-around;
+}
+
+label {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  justify-self: end;
+}
+
+#east_cheer {
+  grid-column: 4 / 5;
+  justify-self: end;
+}
+
+#west_cheer {
+  grid-column: 2 / 3;
+  justify-self: start;
+}
+
+#st-label {
+  grid-column: 2 / 3;
+  justify-self: center;
+}
+
+#rt-label {
+  grid-column: 3 / 4;
+  justify-self: center;
+}
+
+#sn-label {
+  grid-column: 4 / 5;
+  justify-self: center;
+}
+
+#message {
+  font-size: large;
+  grid-column: 1 / 6;
+  resize: none;
+  width: 800px;
+  border: none;
+  text-align: center;
+  background-color: lightblue;
+}
+
+canvas {
+  width: 880;
+  border: 1px solid black;
+  pad-left: 20;
+}
+
+#btn-hide {
+  grid-column: 1 / 2;
+}
+
+#btn-west {
+  grid-column: 2 / 3;
+}
+
+#btn-reset {
+  grid-column: 5 / 6;
+}
