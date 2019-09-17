@@ -5,6 +5,7 @@ attic
 DODO
 flask.log
 jasmine
+pbscore.css*
 pybp
 pytest.ini
 __pycache__
