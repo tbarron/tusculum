@@ -10,77 +10,9 @@
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     -->
     <script src="{{ url_for('static', filename='js/pbscore.js') }} "></script>
-    <style>
-      .g-container {
-        display: grid;
-        grid-template-columns: 176px 176px 176px 176px 176px;
-        grid-template-rows: 50px 400px 20px 20px 20px;
-        grid-gap: 5px;
-        justify-items: center;
-      }
+    <link rel="stylesheet" type="text/css"
+          href="{{ url_for('static', filename='styles/pbscore.css') }}">
 
-      /*
-      .g-item {
-        border: 1px solid black;
-      }
-      */
-
-      #pbCourt {
-        grid-column-start: 1;
-        grid-column-end: 6;
-        justify-self: space-around;
-      }
-
-      label {
-        grid-column-start: 1;
-        grid-column-end: 2;
-        justify-self: end;
-      }
-
-      #east_cheer {
-        grid-column: 4 / 5;
-        justify-self: end;
-      }
-
-      #west_cheer {
-        grid-column: 2 / 3;
-        justify-self: start;
-      }
-
-      #st-label {
-        grid-column: 2 / 3;
-        justify-self: center;
-      }
-
-      #rt-label {
-        grid-column: 3 / 4;
-        justify-self: center;
-      }
-
-      #sn-label {
-        grid-column: 4 / 5;
-        justify-self: center;
-      }
-
-      #message {
-        grid-column: 1 / 6;
-        width: 800px;
-      }
-
-      canvas {
-        width: 880;
-        border: 1px solid black;
-        pad-left: 20;
-      }
-
-      #btn-west {
-        grid-column: 2 / 3;
-      }
-
-      #btn-reset {
-        grid-column: 3 / 4;
-      }
-    </style>
   </head>
 
   <body>
