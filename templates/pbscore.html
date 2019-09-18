@@ -23,8 +23,91 @@
     <div class="g-container">
       <output class="g-item" id="west_cheer"></output>
       <output class="g-item" id="east_cheer"></output>
+      <div class="instructions">
+        <div class="g-item" id="description">
+          <p>This page will help you learn to keep track of scoring in the game
+            of pickleball.
 
       <canvas class="g-item" id="pbCourt" width="880" height="400"></canvas>
+          <p>If you scroll to the bottom of the page, you will see some
+            buttons for controlling the game, some fields that give you
+            feedback about the game, and a pickleball court where our
+            players, E, O, e, and o, will play.
+
+          <p>On the left end of the court is Team West, consisting of
+            players E and O. On the right end of the court is Team East,
+            players e and o.
+
+          <p>The player serving the ball is colored yellow, like a
+            pickleball.
+
+          <p>When you click one of the rally buttons ("West wins rally",
+            "Random rally", or "East wins rally"), a rally will be played
+            out, a message will be posted in the text area (immediately
+            under the buttons) describing what happened, and the score and
+            player serving fields will be updated.
+
+          <p>The score is arranged in the order we call it out in the game,
+            with the serving team's score first, followed by the other
+            team's score, and then the server number. The scores count up
+            from 0. The server number can only ever be 1 or 2, indicating
+            whether the first or second player on the team is currently
+            serving.
+
+          <p>After each rally, one of three things can happen:
+
+            <ol>
+              <li>If the serving team wins the rally, the serving team's
+                score will go up by one, the serving team will swap places,
+                and the same player will serve again.
+
+              <li><p>If the serving team loses the rally and only one player
+                on the team has served (Server Number is 1), service will
+                pass to the second player on the serving team (the Server
+                Number field will go from 1 to 2).
+
+              <li><p>If the serving team loses the rally and both players on
+                the team have served (Server Number is 2), service will
+                pass to the other team (this is called a "side out"), and
+                the player on the right facing the net will become the next
+                server.
+            </ol>
+
+          <p>Another way of looking at this is that the first number can go
+            up by 1 without anything else changing (case 1 above), the last
+            number can go from 1 to 2 without anything else changing (case
+            2 above), or the scores can flip and the server number become 1
+            (case 3 above). Those are the only possibilities. Only the
+            first score (that of the serving team) ever advances. The
+            second team's score can only advance after it flips into the
+            serving position.
+
+          <p>So, for example, if the current score is "3, 2, 1" (the
+            serving team's score is 3, the other team's score is 2, and the
+            first player on the serving team is serving), the next score
+            could be either "4, 2, 1" (because the serving team won the
+            rally and got a point) or "3, 2, 2" (because the serving team
+            lost the rally and has to go to their second server) but NOT
+            "3, 3, 1".
+
+          <p>Notice that at the beginning of the game, Server Number is
+            already 2. This is because the first team to serve only gets
+            one server before the first side out to balance out the
+            advantage that they have by virtue of serving first.
+
+          <p>Here are two ways you can use this page:
+
+            <ul>
+              <li>Pick a rally button and click it to see what happens.
+
+              <li><p>Choose a rally button, predict how the score will
+                  change, then click the button and see if your prediction
+                  is correct. Of course, if you do this and choose the
+                  "Random rally" button, you'll need to make two
+                  predictions -- one for the serving team winning and one
+                  for the serving team losing.
+
+            </ul>
 
       <label class="g-item" id="st-label">Serving Team</label>
       <label class="g-item" id="rt-label">Receiving Team</label>
