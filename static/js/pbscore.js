@@ -240,7 +240,7 @@ class Court {
         this.ne = this.players[2].name;
         this.se = this.players[3].name;
 
-        this.msg = this.sw + txtFirstSrv;
+        this.msg = this.sw + txt_FirstSrv;
         this.west_score = 0;
         this.east_score = 0;
         this.serving = this.sw;
@@ -306,7 +306,7 @@ class Court {
     // Generate a message about which team won the game
     //
     msgGameOver(team) {
-        var rval = txtTeam + team + txtWin;
+        var rval = txt_Team + team + txt_Win;
         return rval;
     }
 
@@ -314,7 +314,7 @@ class Court {
     // Generate a message about the serving team losing a rally
     //
     msgRally(team, player) {
-        var rval = txtTeam + team + txtSrvLoss + player;
+        var rval = txt_Team + team + txt_SrvLoss + player;
         return rval;
     }
 
@@ -322,7 +322,7 @@ class Court {
     // Generate a message about the serving team winning a rally.
     //
     msgWin(team, player) {
-        var rval = txtTeam + team + txtSrvWin1 + player + txtSrvWin2;
+        var rval = txt_Team + team + txt_SrvWin1 + player + txt_SrvWin2;
         return rval;
     }
 
@@ -336,10 +336,10 @@ class Court {
     rally(winner) {
         if (1 <= this.game_over) {
             if (this.game_over < 2) {
-                this.msg += txtGameOver;
+                this.msg += txt_GameOver;
                 this.game_over++;
             }
-        } else if (winner == txtRandom) {
+        } else if (winner == txt_Random) {
             if (this.servingTeam() == this.winningTeam()) {
                 this.serverWins();
             } else {
@@ -379,11 +379,11 @@ class Court {
                 this.msg = this.msgRally(nameWest, this.serving);
                 this.setCheers(this.win_cheer, this.loss_cheer);
             } else {
-                alert(txtSrvLoses + this.serving
-                      + txtShould + name_E
-                      + txtComma + name_O
-                      + txtComma + name_e
-                      + txtCommaOr + name_o);
+                alert(txt_SrvLoses1 + this.serving
+                      + txt_Should + name_E
+                      + txt_Comma + name_O
+                      + txt_Comma + name_e
+                      + txt_CommaOr + name_o);
             }
             this.servnum = 2;
         } else if (this.servnum == 2) {
@@ -397,12 +397,12 @@ class Court {
                 this.msg = this.msgRally(this.servingTeam(), this.serving);
                 this.setCheers(this.win_cheer, this.loss_cheer);
             } else {
-                alert(txtSrvLoses2 + this.servingTeam()
-                      + txtShould + nameEast
-                      + txtOr + nameWest);
+                alert(txt_SrvLoses2 + this.servingTeam()
+                      + txt_Should + nameEast
+                      + txt_Or + nameWest);
             }
         } else {
-            alert(txtSrvLoses3 + this.servnum + txtShould12);
+            alert(txt_SrvLoses3 + this.servnum + txt_Should12);
         }
     }
 
@@ -440,18 +440,18 @@ class Court {
         } else if (this.serving == this.players[3].name) {
             return(nameEast);
         } else {
-            alert(txtInvalid1 + this.serving
-                  + txtInvalid2 + name_e
-                  + txtSQComma + name_o
-                  + txtSQComma + name_E
-                  + txtSQCommaOr + name_O
-                  + txtSQParen);
+            alert(txt_Invalid1 + this.serving
+                  + txt_Invalid2 + name_e
+                  + txt_SQComma + name_o
+                  + txt_SQComma + name_E
+                  + txt_SQCommaOr + name_O
+                  + txt_SQParen);
         }
     }
 
     // ------------------------------------------------------------------------
     // Set cheers for the point. *west* and *east* are Cheer objects, one that
-    // says "Woohoo!" and the saying "Aww..."
+    // says "Woohoo!" and other the saying "Aww..."
     //
     setCheers(west, east) {
         this.doCheer(id_WestCheer, west);
