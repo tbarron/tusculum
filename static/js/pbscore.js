@@ -465,6 +465,7 @@ class Court {
     // out completes.
     //
     doCheer(name, chobj) {
+        $(name).stop(true, true);
         $(name).css(css_FontFamily, attr_CheerFont);
         $(name).css(css_FontSize, chobj.size);
         $(name).css(css_Color, chobj.color);
@@ -490,7 +491,7 @@ class Court {
     }
 
     // ------------------------------------------------------------------------
-    // Return "west" or "east" to indicate which team wins rally based
+    // Return "West" or "East" to indicate which team wins rally based
     // on a virtual coin flip
     //
     winningTeam() {
