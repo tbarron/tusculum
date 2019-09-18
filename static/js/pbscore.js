@@ -8,6 +8,25 @@ const attr_ColorWhite = "white";
 const attr_Font = "20px Comic Sans MS";
 const attr_TextAlign = "center";
 const attr_TwoD = "2d";
+const attr_DefaultInkColor = "black";
+const attr_ServerColor = "yellow";
+const attr_PlayerColor = "white";
+const attr_WinColor = "green";
+const attr_LoseColor = "red";
+const attr_WinSize = "35px";
+const attr_LoseSize = "20px";
+const attr_PlayerFont = "20px Comic Sans MS";
+const attr_CheerFont = "Comic Sans MS";
+const attr_Empty = "";
+const attr_PlayerAlign = "center";
+const attr_Flat = "2d";
+
+// CSS labels
+const css_FontFamily = "font-family";
+const css_FontSize = "font-size";
+const css_Color = "color";
+
+const js_FadeSpeed = "swing";
 
 // Cheers
 const cheer_Win = "Woohoo!";
@@ -28,6 +47,8 @@ const id_BtnEast = "#btn-east";
 const id_BtnReset = "#btn-reset";
 const id_BtnRnd = "#btn-rnd";
 const id_BtnWest = "#btn-west";
+const id_BtnHide = "#btn-hide";
+const id_Description = "#description";
 const id_EastCheer = "#east_cheer";
 const id_Message = "#message";
 const id_PBCourt = "#pbCourt";
@@ -63,6 +84,29 @@ const txtSrvWin1 = " wins the rally and scores a point. They swap places and ";
 const txtSrvWin2 = " continues serving.";
 const txtTeam = "Team ";
 const txtWin = " wins! Game over.";
+const txt_Comma = ", ";
+const txt_CommaOr = ", or ";
+const txt_FirstSrv = " is the first server because of being on the right side " +
+                    "of the court facing the net";
+const txt_GameOver = "\nGame over. Click Restart to play again.";
+const txt_HideInst = "Hide Instructions";
+const txt_ShowInst = "Show Instructions";
+const txt_Invalid1 = "Invalid serving value : '";
+const txt_Invalid2 = "' (should be '";
+const txt_Random = "random";
+const txt_Should = ") should be ";
+const txt_Should12 = ") should be 1 or 2"
+const txt_SQComma = "', '";
+const txt_SQCommaOr = "', or '";
+const txt_SQParen = "')";
+const txt_SrvLoses1 = "serverLoses: with servnum = 1, (";
+const txt_SrvLoses2 = "serverLoses: with servnum = 2, (";
+const txt_SrvLoses3 = "serverLoses: this.servnum (";
+const txt_SrvLoss = " win the rally; service passes to ";
+const txt_SrvWin1 = " wins the rally and scores a point. They swap places and ";
+const txt_SrvWin2 = " continues serving.";
+const txt_Team = "Team ";
+const txt_Win = " wins! Game over.";
 
 // ----------------------------------------------------------------------------
 // This class provides an interface to the JS canvas drawing machinery.
