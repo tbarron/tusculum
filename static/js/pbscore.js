@@ -118,7 +118,7 @@ class Context {
     //
     constructor(canvas) {
         this.canvas = $(canvas).get(0);
-        this.ctx = this.canvas.getContext(attr_TwoD);
+        this.ctx = this.canvas.getContext(attr_Flat);
         this.width = this.canvas.width;
         this.height = this.canvas.height;
     }
@@ -236,10 +236,10 @@ class Player {
         var ctx = context.getInstance();
         if (this.name == serving) {
             ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
-                           "LightGreen");
+                           attr_ServerColor);
         } else {
             ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
-                           "white");
+                           attr_PlayerColor);
         }
     }
 }
@@ -282,8 +282,8 @@ class Court {
         this.servnum = 2;
         this.game_over = 0;
 
-        this.win_cheer = new Cheer("Woohoo!", "green", "35px");
-        this.loss_cheer = new Cheer("Aww...", "red", "20px");
+        this.win_cheer = new Cheer(cheer_Win, attr_WinColor, attr_WinSize);
+        this.loss_cheer = new Cheer(cheer_Lose, attr_LoseColor, attr_LoseSize);
     }
 
     // ------------------------------------------------------------------------
@@ -307,9 +307,9 @@ class Court {
     draw() {
         var ctx = context.getInstance();
 
-        ctx.setFillStyle(attr_ColorBlack);
-        ctx.setFont(attr_Font);
-        ctx.setTextAlignment(attr_TextAlign);
+        ctx.setFillStyle(attr_DefaultInkColor);
+        ctx.setFont(attr_PlayerFont);
+        ctx.setTextAlignment(attr_PlayerAlign);
         ctx.clearField();
 
         for (var pdx = 0 ; pdx < this.players.length ; pdx++) {
@@ -500,15 +500,14 @@ class Court {
     // out completes.
     //
     doCheer(name, chobj) {
-        $(name).css({
-            "font-family" : "Comic Sans MS",
-            "font-size": chobj.size,
-            "color": chobj.color
-        });
+        $(name).css(css_FontFamily, attr_CheerFont);
+        $(name).css(css_FontSize, chobj.size);
+        $(name).css(css_Color, chobj.color);
+
         $(name).val(chobj.value);
-        $(name).fadeOut(1000, "swing",
+        $(name).fadeOut(1000, js_FadeSpeed,
                         function() {
-                            $(name).val("");
+                            $(name).val(attr_Empty);
                             $(name).show();
                         });
     }
