@@ -109,6 +109,19 @@
 
             </ul>
 
+        <center>
+          <hr>
+        </center>
+        </div>
+      </div>
+
+      <div class="g-container">
+      <button class="g-item" id="btn-hide" onclick="hide_instructions()">Hide Instructions</button>
+      <button class="g-item" id="btn-west" onclick="rally('West')">West wins rally</button>
+      <button class="g-item" id="btn-rnd" onclick="rally('random')">Random rally</button>
+      <button class="g-item" id="btn-east" onclick="rally('East')">East wins rally</button>
+      <button class="g-item" id="btn-reset" onclick="restartGame()">Restart</button>
+
       <label class="g-item" id="st-label">Serving Team</label>
       <label class="g-item" id="rt-label">Receiving Team</label>
       <label class="g-item" id="sn-label">Server Number</label>
@@ -119,12 +132,14 @@
 
       <label class="g-item" id="ps-label">Player serving:</label>
       <input class="g-item" id="server"></input>
-      <textarea class="g-item" id="message" cols="80" rows="5"></textarea>
 
-      <button class="g-item" id="btn-west" onclick="rally('West')">West wins rally</button>
-      <button class="g-item" id="btn-rnd" onclick="rally('random')">Random rally</button>
-      <button class="g-item" id="btn-east" onclick="rally('East')">East wins rally</button>
-      <button class="g-item" id="btn-reset" onclick="restartGame()">Restart</button>
+      <textarea class="g-item" id="message" cols="80" rows="1"></textarea>
+
+      <output class="g-item" id="west_cheer"></output>
+      <output class="g-item" id="east_cheer"></output>
+
+      <canvas class="g-item" id="pbCourt" width="880" height="400"></canvas>
+
     </div>
   </body>
 </html>
