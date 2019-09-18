@@ -2,12 +2,6 @@
 // Set up constants -- team names, player names, HTML ids, text strings, etc.
 //
 // Attributes
-const attr_ColorBlack = "black";
-const attr_ColorGreen = "LightGreen";
-const attr_ColorWhite = "white";
-const attr_Font = "20px Comic Sans MS";
-const attr_TextAlign = "center";
-const attr_TwoD = "2d";
 const attr_DefaultInkColor = "black";
 const attr_ServerColor = "yellow";
 const attr_PlayerColor = "white";
@@ -43,47 +37,18 @@ const name_o = "o";
 const name_O = "O";
 
 // HTML id strings
-const id_BtnEast = "#btn-east";
-const id_BtnReset = "#btn-reset";
-const id_BtnRnd = "#btn-rnd";
-const id_BtnWest = "#btn-west";
 const id_BtnHide = "#btn-hide";
 const id_Description = "#description";
 const id_EastCheer = "#east_cheer";
 const id_Message = "#message";
 const id_PBCourt = "#pbCourt";
-const id_PSLabel = "#ps-label";
-const id_RcvLabel = "#rt-label";
 const id_RcvScore = "#rt-score";
-const id_ScoreLab = "#score-lab";
 const id_Server = "#server";
-const id_SrvNumber = "#sn-label";
 const id_Servnum = "#srvnum";
-const id_SrvLabel = "#st-label";
 const id_SrvScore = "#st-score";
 const id_WestCheer = "#west_cheer";
 
 // Text strings
-const txtComma = ", ";
-const txtCommaOr = ", or ";
-const txtFirstSrv = " is the first server because of being on the right side";
-const txtGameOver = "\nGame over. Click Restart to play again.";
-const txtInvalid1 = "Invalid serving value : '";
-const txtInvalid2 = "' (should be '";
-const txtRandom = "random";
-const txtShould = ") should be ";
-const txtShould12 = ") should be 1 or 2"
-const txtSQComma = "', '";
-const txtSQCommaOr = "', or '";
-const txtSQParen = "')";
-const txtSrvLoses1 = "serverLoses: with servnum = 1, (";
-const txtSrvLoses2 = "serverLoses: with servnum = 2, (";
-const txtSrvLoses3 = "serverLoses: this.servnum (";
-const txtSrvLoss = " win the rally; service passes to ";
-const txtSrvWin1 = " wins the rally and scores a point. They swap places and ";
-const txtSrvWin2 = " continues serving.";
-const txtTeam = "Team ";
-const txtWin = " wins! Game over.";
 const txt_Comma = ", ";
 const txt_CommaOr = ", or ";
 const txt_FirstSrv = " is the first server because of being on the right side " +
