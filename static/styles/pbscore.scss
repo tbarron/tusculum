@@ -25,11 +25,11 @@ body {
   justify-items: center;
 }
 
-/*
-.g-item {
-  border: 1px solid black;
+@if (false) {
+  .g-item {
+    border: 1px solid black;
+  }
 }
-*/
 
 #title {
   text-align: center;
