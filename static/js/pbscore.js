@@ -538,6 +538,18 @@ var context = (function () {
 })();
 
 // ----------------------------------------------------------------------------
+function hide_instructions() {
+    var cur = $(id_BtnHide).html();
+    if (cur == txt_HideInst) {
+        $(id_Description).fadeOut();
+        $(id_BtnHide).html(txt_ShowInst);
+    } else {
+        $(id_Description).fadeIn();
+        $(id_BtnHide).html(txt_HideInst);
+    }
+}
+
+// ----------------------------------------------------------------------------
 // Here we start: we draw the initial court at the start of the game
 //
 var court = new Court();
