@@ -686,15 +686,9 @@ var context = (function () {
 })();
 
 // ----------------------------------------------------------------------------
-function hide_instructions() {
-    var cur = $(id_BtnHide).html();
-    if (cur == txt_HideInst) {
-        $(id_Description).fadeOut();
-        $(id_BtnHide).html(txt_ShowInst);
-    } else {
-        $(id_Description).fadeIn();
-        $(id_BtnHide).html(txt_HideInst);
-    }
+function toggle_instructions() {
+    var instruct = instr.getInstance();
+    instruct.toggle();
 }
 
 // ----------------------------------------------------------------------------
