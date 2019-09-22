@@ -573,6 +573,7 @@ class Court {
     // Swap the positions of the two players on a team
     //
     swapPosition(player1, player2, team) {
+        this.animatePlayerSwap(player1, player2);
         [player1.pos_y, player2.pos_y] = [player2.pos_y, player1.pos_y];
         if (team == nameWest) {
             [this.nw, this.sw] = [this.sw, this.nw];
