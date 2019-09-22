@@ -702,5 +702,6 @@ function hide_instructions() {
 //
 var court = new Court();
 $(document).ready(function() {
+    var instruct = instr.getInstance();
     court.draw();
 });
