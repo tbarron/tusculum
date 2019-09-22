@@ -207,9 +207,11 @@ class Player {
         if (this.name == serving) {
             ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
                            attr_ServerColor);
+            this.serving = true;
         } else {
             ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
                            attr_PlayerColor);
+            this.serving = false;
         }
     }
 }
