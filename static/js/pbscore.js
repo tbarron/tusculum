@@ -53,7 +53,7 @@ const txt_Comma = ", ";
 const txt_CommaOr = ", or ";
 const txt_FirstSrv = " is the first server because of being on the right side " +
                     "of the court facing the net";
-const txt_GameOver = "\nGame over. Click Restart to play again.";
+const txt_GameOver = "The game is over. Click Restart to play again.";
 const txt_HideInst = "Hide Instructions";
 const txt_ShowInst = "Show Instructions";
 const txt_Invalid1 = "Invalid serving value : '";
