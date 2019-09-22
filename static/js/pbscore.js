@@ -319,6 +319,41 @@ class Court {
         }
     }
 
+    // ------------------------------------------------------------------------
+    // Move the players to net for the end of the game
+    //
+    animateMeetAtNet(start) {
+        var done = false;
+        console.log("animateMeetAtNet (" +
+                    this.players[0].pos_x + ", " +
+                    this.players[0].pos_y + ")");
+        for (var player of this.players) {
+            if (player.pos_x < 400) {
+                player.pos_x += 10;
+            } else if (480 < player.pos_x) {
+                player.pos_x -= 10;
+            } else {
+                done = true;
+            }
+
+            if (player.pos_y < 175) {
+                player.pos_y += 2;
+            } else if (225 < player.pos_y) {
+                player.pos_y -= 2;
+            } else {
+                done = true;
+            }
+        }
+
+        this.draw();
+
+        if (start) {
+            animationInterval = setInterval(function() {
+                court.animateMeetAtNet(false);
+            }, 20);
+        } else if (done) {
+            clearInterval(animationInterval);
+        }
     }
 
     // ------------------------------------------------------------------------
