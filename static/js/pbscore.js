@@ -174,6 +174,36 @@ class Context {
 }
 
 // ----------------------------------------------------------------------------
+class Instructions {
+    constructor(visible) {
+        if (visible == false) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    }
+
+    toggle() {
+        var cur = $(id_BtnHide).html();
+        if (cur == txt_HideInst) {
+            this.hide();
+        } else {
+            this.show();
+        }
+    }
+
+    show() {
+        $(id_Description).fadeIn();
+        $(id_BtnHide).html(txt_HideInst);
+    }
+
+    hide() {
+        $(id_Description).fadeOut();
+        $(id_BtnHide).html(txt_ShowInst);
+    }
+}
+
+// ----------------------------------------------------------------------------
 class Cheer {
     constructor(value, color, size) {
         this.value = value;
