@@ -612,6 +612,22 @@ function restartGame() {
 }
 
 // ----------------------------------------------------------------------------
+// Singleton object for instructions
+//
+var instr = (function () {
+    var i_inst;
+
+    return {
+        getInstance: function () {
+            if (!i_inst) {
+                i_inst = new Instructions(false);
+            }
+            return i_inst;
+        }
+    };
+})();
+
+// ----------------------------------------------------------------------------
 // Set up Context as a singleton object. The one instantiation is retrieved by
 // doing
 //
