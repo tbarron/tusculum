@@ -200,7 +200,7 @@ class Player {
     // ------------------------------------------------------------------------
     // Draw a player's representation, which is a circle containing the
     // player's name ('E', 'O', 'e', or 'o'). If the player is serving, the
-    // circle is filled with light green. Otherwise, it's white.
+    // circle is filled with yellow. Otherwise, it's white.
     //
     draw(serving) {
         var ctx = context.getInstance();
