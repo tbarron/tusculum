@@ -418,15 +418,16 @@ class Court {
 
     // ------------------------------------------------------------------------
     // Process a rally. If game is over and user has clicked a button,
-    // expand the message to prompt a correct behavior on the user's
-    // part. If the user has picked a winner, we land on the last
-    // branch of the if-else. Otherwise, if winner is to be
-    // randomized, we take the middle branch.
+    // update the message to remind the user that the game is over and
+    // to prompt a correct behavior on the user's part. If the user
+    // has picked a winner for the rally, we land on the last branch
+    // of the if-else. Otherwise, if winner is to be randomized, we
+    // take the middle branch.
     //
     rally(winner) {
         if (1 <= this.game_over) {
             if (this.game_over < 2) {
-                this.msg += txt_GameOver;
+                this.msg = txt_GameOver;
                 this.game_over++;
             }
         } else if (winner == txt_Random) {
