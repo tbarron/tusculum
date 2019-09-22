@@ -271,6 +271,54 @@ class Court {
             this.msg = this.msgGameOver(nameEast);
             this.game_over = 1;
         }
+    // ------------------------------------------------------------------------
+    // Animate a player swap for the winning team
+    //
+    animatePlayerSwap(p1, p2) {
+        var done = false;
+        if (p1 != undefined) {
+            swapping[0] = p1;
+            swapping[1] = p2;
+
+            for (var p of swapping) {
+                if ((p.pos_x < 400) && (p.pos_y < 200)) {
+                    p.to_x = 75;
+                    p.to_y = 300;
+                    p.delta_y = 5;
+                } else if ((p.pos_x < 400) && (200 < p.pos_y)) {
+                    p.to_x = 75;
+                    p.to_y = 100;
+                    p.delta_y = -5;
+                } else if ((400 < p.pos_x) && (p.pos_y < 200)) {
+                    p.to_x = 805;
+                    p.to_y = 300;
+                    p.delta_y = 5;
+                } else if ((400 < p.pos_x) && (200 < p.pos_y)) {
+                    p.to_x = 805;
+                    p.to_y = 100;
+                    p.delta_y = -5;
+                }
+            }
+
+            animationInterval = setInterval( function() {
+                court.animatePlayerSwap();
+            }, 200 );
+        }
+
+        this.draw();
+
+        for (var p of swapping) {
+            p.pos_x = (3*p.pos_x + p.to_x) / 4;
+            p.pos_y = (3*p.pos_y + p.to_y) / 4;
+        }
+
+        // alert(Math.abs(swapping[0].pos_y - swapping[0].to_y));
+
+        if (Math.abs(swapping[0].pos_y - swapping[0].to_y) < 10) {
+            clearInterval(animationInterval);
+        }
+    }
+
     }
 
     // ------------------------------------------------------------------------
