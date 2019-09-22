@@ -73,6 +73,9 @@ const txt_SrvWin2 = " continues serving.";
 const txt_Team = "Team ";
 const txt_Win = " wins! Game over.";
 
+var animationInterval;
+var swapping = [0, 0];
+
 // ----------------------------------------------------------------------------
 // This class provides an interface to the JS canvas drawing machinery.
 //
