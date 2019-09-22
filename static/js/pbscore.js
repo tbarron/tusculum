@@ -304,6 +304,12 @@ class Court {
             this.msg = this.msgGameOver(nameEast);
             this.game_over = 1;
         }
+
+        if (this.game_over == 1) {
+            this.animateMeetAtNet(true);
+        }
+    }
+
     // ------------------------------------------------------------------------
     // Animate a player swap for the winning team
     //
