@@ -314,11 +314,11 @@ class Player {
     draw(serving) {
         var ctx = context.getInstance();
         if (this.name == serving) {
-            ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
+            ctx.drawCircle(this.pos.x, this.pos.y, 25, this.name,
                            attr_ServerColor);
             this.serving = true;
         } else {
-            ctx.drawCircle(this.pos_x, this.pos_y, 25, this.name,
+            ctx.drawCircle(this.pos.x, this.pos.y, 25, this.name,
                            attr_PlayerColor);
             this.serving = false;
         }
