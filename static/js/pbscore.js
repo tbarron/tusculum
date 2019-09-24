@@ -709,7 +709,7 @@ class Court {
     //
     swapPosition(player1, player2, team) {
         this.animatePlayerSwap(player1, player2);
-        [player1.pos_y, player2.pos_y] = [player2.pos_y, player1.pos_y];
+        [player1.pos, player2.pos] = [player2.pos, player1.pos];
         if (team == nameWest) {
             [this.nw, this.sw] = [this.sw, this.nw];
         } else {
