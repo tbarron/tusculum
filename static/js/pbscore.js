@@ -77,6 +77,16 @@ var animationInterval;
 var swapping = [0, 0];
 
 // ----------------------------------------------------------------------------
+// This object represents a position on the canvas
+//
+class Point {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+// ----------------------------------------------------------------------------
 // This class provides an interface to the JS canvas drawing machinery.
 //
 class Context {
