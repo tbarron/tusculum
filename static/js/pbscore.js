@@ -723,9 +723,9 @@ class Court {
     //
     winningTeam() {
         if (Math.random() < 0.50) {
-            return nameWest;
+            return(nameWest);
         } else {
-            return nameEast;
+            return(nameEast);
         }
     }
 }
