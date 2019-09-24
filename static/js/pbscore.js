@@ -254,7 +254,11 @@ class Player {
     //
     constructor(name, pos_x, pos_y) {
         this.name = name;
+        this.pos = new Point(pos_x, pos_y);
         this.serving = false;
+        this.path = new Array();
+        this.path_idx = -1;
+    }
     }
 
     // ------------------------------------------------------------------------
