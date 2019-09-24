@@ -438,35 +438,55 @@ class Court {
     // Move the players to net for the end of the game
     //
     animateMeetAtNet(start) {
-        var done = false;
-        console.log("animateMeetAtNet (" +
-                    this.players[0].pos_x + ", " +
-                    this.players[0].pos_y + ")");
-        for (var player of this.players) {
-            if (player.pos_x < 400) {
-                player.pos_x += 10;
-            } else if (480 < player.pos_x) {
-                player.pos_x -= 10;
-            } else {
-                done = true;
+        if (start) {
+            for (var p of this.players) {
+                p.path = new Array();
+                if ((p.pos.x < 400) && (p.pos.y < 200)) {
+                    // northwest
+                    var yv = p.pos.y + 2;
+                    for (var xv = p.pos.x + 10 ; xv <= 415 ; xv += 10) {
+                        p.addStep(new Point(xv, yv));
+                        yv += 2;
+                    }
+                } else if ((p.pos.x < 400) && (200 < p.pos.y)) {
+                    // southwest
+                    var yv = p.pos.y - 2;
+                    for (var xv = p.pos.x + 10 ; xv <= 415 ; xv += 10) {
+                        p.addStep(new Point(xv, yv));
+                        yv -= 2;
+                    }
+                } else if ((400 < p.pos.x) && (p.pos.y < 200)) {
+                    // northeast
+                    var yv = p.pos.y + 2;
+                    for (var xv = p.pos.x - 10 ; 455 <= xv ; xv -= 10) {
+                        p.addStep(new Point(xv, yv));
+                        yv += 2;
+                    }
+                } else if ((400 < p.pos.x) && (200 < p.pos.y)) {
+                    var yv = p.pos.y - 2;
+                    for (var xv = p.pos.x - 10 ; 455 < xv ; xv -= 10) {
+                        p.addStep(new Point(xv, yv));
+                        yv -= 2;
+                    }
+                }
+                // p.path_idx = 0;
             }
 
-            if (player.pos_y < 175) {
-                player.pos_y += 2;
-            } else if (225 < player.pos_y) {
-                player.pos_y -= 2;
-            } else {
-                done = true;
-            }
+            animationInterval = setInterval(function() {
+                court.animateMeetAtNet(false);
+            }, 20);
         }
 
         this.draw();
 
-        if (start) {
-            animationInterval = setInterval(function() {
-                court.animateMeetAtNet(false);
-            }, 20);
-        } else if (done) {
+        var moved = 0;
+        for (var p of this.players) {
+            if (p.takeStep()) {
+                moved++;
+            }
+        }
+
+        if (moved <= 0) {
             clearInterval(animationInterval);
         }
     }
