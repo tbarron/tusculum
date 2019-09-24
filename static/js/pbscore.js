@@ -254,12 +254,6 @@ class Player {
     //
     constructor(name, pos_x, pos_y) {
         this.name = name;
-        this.pos_x = pos_x;
-        this.pos_y = pos_y;
-        this.delta_y = 0;
-        this.delta_x = 0;
-        this.to_x = -1;
-        this.to_y = -1;
         this.serving = false;
     }
 
