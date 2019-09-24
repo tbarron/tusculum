@@ -259,6 +259,51 @@ class Player {
         this.path = new Array();
         this.path_idx = -1;
     }
+
+    // ------------------------------------------------------------------------
+    // Extend a step to the player's path
+    //
+    addStep(point) {
+        this.path.push(point);
+        this.path_idx = 0;
+    }
+
+    // ------------------------------------------------------------------------
+    // Reset the player's path
+    //
+    resetPath() {
+        this.path = new Array();
+        this.path_idx = -1;
+    }
+
+    // ------------------------------------------------------------------------
+    // Return the x element of the player's position
+    //
+    pos_x() {
+        return(this.pos.x);
+    }
+
+    // ------------------------------------------------------------------------
+    // Return the y element of the player's position
+    //
+    pos_y() {
+        return(this.pos.y);
+    }
+
+    // ------------------------------------------------------------------------
+    // Move the player to the next position on the path if there are any left
+    //
+    takeStep() {
+        if (this.path_idx < 0) {
+            return(false);
+        } else if (this.path.length <= this.path_idx) {
+            this.resetPath();
+            return(false);
+        } else {
+            this.pos = this.path[this.path_idx];
+            this.path_idx++;
+            return(true);
+        }
     }
 
     // ------------------------------------------------------------------------
