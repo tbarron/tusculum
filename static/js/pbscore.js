@@ -396,40 +396,40 @@ class Court {
             swapping[1] = p2;
 
             for (var p of swapping) {
-                if ((p.pos_x < 400) && (p.pos_y < 200)) {
-                    p.to_x = 75;
-                    p.to_y = 300;
-                    p.delta_y = 5;
-                } else if ((p.pos_x < 400) && (200 < p.pos_y)) {
-                    p.to_x = 75;
-                    p.to_y = 100;
-                    p.delta_y = -5;
-                } else if ((400 < p.pos_x) && (p.pos_y < 200)) {
-                    p.to_x = 805;
-                    p.to_y = 300;
-                    p.delta_y = 5;
-                } else if ((400 < p.pos_x) && (200 < p.pos_y)) {
-                    p.to_x = 805;
-                    p.to_y = 100;
-                    p.delta_y = -5;
+                if ((p.pos.x < 400) && (p.pos.y < 200)) {
+                    for (var yval = 110 ; yval <= 300 ; yval += 10) {
+                        p.addStep(new Point(75, yval));
+                    }
+                } else if ((p.pos.x < 400) && (200 < p.pos.y)) {
+                    for (var yval = 290 ; 100 <= yval ; yval -= 10) {
+                        p.addStep(new Point(75, yval));
+                    }
+                } else if ((400 < p.pos.x) && (p.pos.y < 200)) {
+                    for (var yval = 110 ; yval <= 300 ; yval += 10) {
+                        p.addStep(new Point(805, yval));
+                    }
+                } else if ((400 < p.pos.x) && (200 < p.pos.y)) {
+                    for (var yval = 290 ; 100 <= yval ; yval -= 10) {
+                        p.addStep(new Point(805, yval));
+                    }
                 }
             }
 
             animationInterval = setInterval( function() {
                 court.animatePlayerSwap();
-            }, 200 );
+            }, 20 );
         }
 
         this.draw();
 
+        var moved = 0;
         for (var p of swapping) {
-            p.pos_x = (3*p.pos_x + p.to_x) / 4;
-            p.pos_y = (3*p.pos_y + p.to_y) / 4;
+            if (p.takeStep()) {
+                moved++;
+            }
         }
 
-        // alert(Math.abs(swapping[0].pos_y - swapping[0].to_y));
-
-        if (Math.abs(swapping[0].pos_y - swapping[0].to_y) < 10) {
+        if (moved <= 0) {
             clearInterval(animationInterval);
         }
     }
