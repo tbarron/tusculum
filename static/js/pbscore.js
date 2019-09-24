@@ -184,7 +184,14 @@ class Context {
 }
 
 // ----------------------------------------------------------------------------
+// The instructions describe the pickleball scoring tutor and
+// pickleball scoring
+//
 class Instructions {
+    // ------------------------------------------------------------------------
+    // If visible is false, initialize the instructions as hidden.
+    // Otherwise, initialize them to show up.
+    //
     constructor(visible) {
         if (visible == false) {
             this.hide();
@@ -193,6 +200,9 @@ class Instructions {
         }
     }
 
+    // ------------------------------------------------------------------------
+    // Toggle instruction display state
+    //
     toggle() {
         var cur = $(id_BtnHide).html();
         if (cur == txt_HideInst) {
@@ -202,11 +212,17 @@ class Instructions {
         }
     }
 
+    // ------------------------------------------------------------------------
+    // Make the instructions appear
+    //
     show() {
         $(id_Description).fadeIn();
         $(id_BtnHide).html(txt_HideInst);
     }
 
+    // ------------------------------------------------------------------------
+    // Make the instructions disappear
+    //
     hide() {
         $(id_Description).fadeOut();
         $(id_BtnHide).html(txt_ShowInst);
@@ -214,7 +230,14 @@ class Instructions {
 }
 
 // ----------------------------------------------------------------------------
+// The cheers show up over the court under the description of the
+// rally outcome
+//
 class Cheer {
+    // ------------------------------------------------------------------------
+    // A Cheer has a string (value), color, and size. "Woohoo" is big
+    // and green while "Aww..." is small and red.
+    //
     constructor(value, color, size) {
         this.value = value;
         this.color = color;
@@ -696,6 +719,8 @@ var context = (function () {
 })();
 
 // ----------------------------------------------------------------------------
+// Top level control for hiding/showing instructions
+//
 function toggle_instructions() {
     var instruct = instr.getInstance();
     instruct.toggle();
