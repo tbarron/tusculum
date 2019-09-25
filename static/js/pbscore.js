@@ -447,27 +447,27 @@ class Court {
                 if ((p.pos.x < 400) && (p.pos.y < 200)) {
                     // northwest
                     var yv = p.pos.y + 2;
-                    for (var xv = p.pos.x + 10 ; xv <= 415 ; xv += 10) {
+                    for (var xv = p.pos.x + 10 ; xv <= 405 ; xv += 10) {
                         p.addStep(new Point(xv, yv));
                         yv += 2;
                     }
                 } else if ((p.pos.x < 400) && (200 < p.pos.y)) {
                     // southwest
                     var yv = p.pos.y - 2;
-                    for (var xv = p.pos.x + 10 ; xv <= 415 ; xv += 10) {
+                    for (var xv = p.pos.x + 10 ; xv <= 405 ; xv += 10) {
                         p.addStep(new Point(xv, yv));
                         yv -= 2;
                     }
                 } else if ((400 < p.pos.x) && (p.pos.y < 200)) {
                     // northeast
                     var yv = p.pos.y + 2;
-                    for (var xv = p.pos.x - 10 ; 455 <= xv ; xv -= 10) {
+                    for (var xv = p.pos.x - 10 ; 470 <= xv ; xv -= 10) {
                         p.addStep(new Point(xv, yv));
                         yv += 2;
                     }
                 } else if ((400 < p.pos.x) && (200 < p.pos.y)) {
                     var yv = p.pos.y - 2;
-                    for (var xv = p.pos.x - 10 ; 455 < xv ; xv -= 10) {
+                    for (var xv = p.pos.x - 10 ; 470 <= xv ; xv -= 10) {
                         p.addStep(new Point(xv, yv));
                         yv -= 2;
                     }
