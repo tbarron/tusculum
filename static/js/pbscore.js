@@ -73,7 +73,8 @@ const txt_SrvWin2 = " continues serving.";
 const txt_Team = "Team ";
 const txt_Win = " wins! Game over.";
 
-var animationInterval;
+var meetInterval;
+var swapInterval;
 var swapping = [0, 0];
 
 // ----------------------------------------------------------------------------
@@ -415,7 +416,7 @@ class Court {
                 }
             }
 
-            animationInterval = setInterval( function() {
+            swapInterval = setInterval( function() {
                 court.animatePlayerSwap();
             }, 20 );
         }
@@ -429,8 +430,9 @@ class Court {
             }
         }
 
-        if (moved <= 0) {
-            clearInterval(animationInterval);
+            if (moved <= 0) {
+                clearInterval(swapInterval);
+            }
         }
     }
 
@@ -472,7 +474,7 @@ class Court {
                 // p.path_idx = 0;
             }
 
-            animationInterval = setInterval(function() {
+            meetInterval = setInterval(function() {
                 court.animateMeetAtNet(false);
             }, 20);
         }
@@ -486,8 +488,9 @@ class Court {
             }
         }
 
-        if (moved <= 0) {
-            clearInterval(animationInterval);
+            if (moved <= 0) {
+                clearInterval(meetInterval);
+            }
         }
     }
 
