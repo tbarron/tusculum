@@ -296,14 +296,14 @@ class Player {
     //
     takeStep() {
         if (this.path_idx < 0) {
-            return(false);
+            return(0);
         } else if (this.path.length <= this.path_idx) {
             this.resetPath();
-            return(false);
+            return(0);
         } else {
             this.pos = this.path[this.path_idx];
-            this.path_idx++;
-            return(true);
+            this.path_idx += 1;
+            return(1);
         }
     }
 
@@ -425,8 +425,9 @@ class Court {
 
         var moved = 0;
         for (var p of swapping) {
-            if (p.takeStep()) {
-                moved++;
+            var moved = 0;
+            for (var p of swapping) {
+                moved += p.takeStep();
             }
         }
 
@@ -481,10 +482,9 @@ class Court {
 
         this.draw();
 
-        var moved = 0;
-        for (var p of this.players) {
-            if (p.takeStep()) {
-                moved++;
+            var moved = 0;
+            for (var p of this.players) {
+                moved += p.takeStep();
             }
         }
 
