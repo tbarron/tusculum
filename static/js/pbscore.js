@@ -419,17 +419,13 @@ class Court {
             swapInterval = setInterval( function() {
                 court.animatePlayerSwap();
             }, 20 );
-        }
+        } else {
+            this.draw();
 
-        this.draw();
-
-        var moved = 0;
-        for (var p of swapping) {
             var moved = 0;
             for (var p of swapping) {
                 moved += p.takeStep();
             }
-        }
 
             if (moved <= 0) {
                 clearInterval(swapInterval);
@@ -477,15 +473,13 @@ class Court {
             meetInterval = setInterval(function() {
                 court.animateMeetAtNet(false);
             }, 20);
-        }
-
-        this.draw();
+        } else {
+            this.draw();
 
             var moved = 0;
             for (var p of this.players) {
                 moved += p.takeStep();
             }
-        }
 
             if (moved <= 0) {
                 clearInterval(meetInterval);
