@@ -443,7 +443,7 @@ class Court {
     animateMeetAtNet(start) {
         if (start) {
             for (var p of this.players) {
-                p.path = new Array();
+                p.resetPath();
                 if ((p.pos.x < 400) && (p.pos.y < 200)) {
                     // northwest
                     var yv = p.pos.y + 2;
@@ -472,7 +472,6 @@ class Court {
                         yv -= 2;
                     }
                 }
-                // p.path_idx = 0;
             }
 
             meetInterval = setInterval(function() {
