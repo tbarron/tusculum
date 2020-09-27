@@ -74,6 +74,7 @@ const txt_Team = "Team ";
 const txt_Win = " wins! Game over.";
 
 var meetInterval;
+var srvInterval;
 var swapInterval;
 var swapping = [0, 0];
 
@@ -84,6 +85,14 @@ class Point {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+    }
+
+    x() {
+        return this.x;
+    }
+
+    y() {
+        return this.y;
     }
 }
 
@@ -127,7 +136,8 @@ class Context {
     // Draw a circle centered at (*cx*, *cy*) of radius *radius*
     // filled with *color* and labeled with the text *name*.
     //
-    drawCircle(cx, cy, radius, name, color) {
+    drawCircle(cx, cy, radius, name, color, just_fill) {
+        // this.ctx.beginPath();
         var previous = this.ctx.fillStyle;
         this.ctx.moveTo(cx + radius, cy);
         this.ctx.fillStyle = color;
@@ -137,7 +147,10 @@ class Context {
         this.ctx.fill();
         this.ctx.fillStyle = previous;
         this.ctx.fillText(name, cx, cy+7);
-        this.ctx.stroke();
+        if (!just_fill) {
+            this.ctx.stroke();
+        }
+        // this.ctx.closePath();
     }
 
     // ------------------------------------------------------------------------
@@ -253,10 +266,16 @@ class Player {
     // ------------------------------------------------------------------------
     // Initialize a player's name and position
     //
-    constructor(name, pos_x, pos_y) {
+    constructor(name, pos_x, pos_y, phantom) {
         this.name = name;
         this.pos = new Point(pos_x, pos_y);
         this.serving = false;
+        this.phantom = phantom;
+        if (this.phantom) {
+            this.visible = false;
+        } else {
+            this.visible = true;
+        }
         this.path = new Array();
         this.path_idx = -1;
     }
@@ -275,6 +294,16 @@ class Player {
     resetPath() {
         this.path = new Array();
         this.path_idx = -1;
+    }
+
+    // ------------------------------------------------------------------------
+    hide() {
+        this.visible = false;
+    }
+
+    // ------------------------------------------------------------------------
+    show() {
+        this.visible = true;
     }
 
     // ------------------------------------------------------------------------
@@ -314,10 +343,15 @@ class Player {
     //
     draw(serving) {
         var ctx = context.getInstance();
-        if (this.name == serving) {
+        if (! this.visible) {
+            return;
+        } else if (this.name == serving) {
             ctx.drawCircle(this.pos.x, this.pos.y, 25, this.name,
                            attr_ServerColor);
             this.serving = true;
+        } else if (this.phantom) {
+            ctx.drawCircle(this.pos.x, this.pos.y, 25, this.name,
+                           attr_ServerColor, true);
         } else {
             ctx.drawCircle(this.pos.x, this.pos.y, 25, this.name,
                            attr_PlayerColor);
@@ -351,40 +385,58 @@ class Court {
                              new Player(name_E, 75, 300),
                              new Player(name_e, 805, 100),
                              new Player(name_o, 805, 300));
+        this.service_phantom = new Player("", 200, 100, true);
 
-        this.nw = this.players[0].name;
-        this.sw = this.players[1].name;
-        this.ne = this.players[2].name;
-        this.se = this.players[3].name;
+        this.nw = this.players[0];
+        this.sw = this.players[1];
+        this.ne = this.players[2];
+        this.se = this.players[3];
 
-        this.msg = this.sw + txt_FirstSrv;
+        this.msg = this.sw.name + txt_FirstSrv;
         this.west_score = 0;
         this.east_score = 0;
-        this.serving = this.sw;
+        this.serving = this.players[1];
         this.servnum = 2;
-        this.game_over = 0;
+        this.game_over = false;
 
         this.win_cheer = new Cheer(cheer_Win, attr_WinColor, attr_WinSize);
         this.loss_cheer = new Cheer(cheer_Lose, attr_LoseColor, attr_LoseSize);
     }
 
     // ------------------------------------------------------------------------
-    // Check for end of game
+    // Check for end of game caching but not returning the result
     //
-    checkGameEnd() {
+    // checkGameEnd() {
+    //     if ((10 < this.west_score)
+    //         && (2 <= this.west_score - this.east_score)) {
+    //         this.msg = this.msgGameOver(nameWest);
+    //         this.game_over = 1;
+    //     } else if ((10 < this.east_score)
+    //                && (2 <= this.east_score - this.west_score)) {
+    //         this.msg = this.msgGameOver(nameEast);
+    //         this.game_over = 1;
+    //     }
+    // 
+    //     if (this.game_over == 1) {
+    //         this.animateMeetAtNet(true);
+    //     }
+    // }
+
+    // ------------------------------------------------------------------------
+    // Check for end of game, caching and returning the result
+    //
+    gameOver() {
+        this.game_over = false;
         if ((10 < this.west_score)
             && (2 <= this.west_score - this.east_score)) {
             this.msg = this.msgGameOver(nameWest);
-            this.game_over = 1;
+            this.game_over = true;
         } else if ((10 < this.east_score)
                    && (2 <= this.east_score - this.west_score)) {
             this.msg = this.msgGameOver(nameEast);
-            this.game_over = 1;
+            this.game_over = true;
         }
-
-        if (this.game_over == 1) {
-            this.animateMeetAtNet(true);
-        }
+        return(this.game_over);
     }
 
     // ------------------------------------------------------------------------
@@ -499,9 +551,10 @@ class Court {
         ctx.clearField();
 
         for (var pdx = 0 ; pdx < this.players.length ; pdx++) {
-            this.players[pdx].draw(this.serving);
+            this.players[pdx].draw(this.serving.name);
         }
-
+        this.service_phantom.draw();
+        
         ctx.beginPath();
         for (var ldx = 0 ; ldx < this.lines.length ; ldx++) {
             var line = this.lines[ldx];
@@ -518,7 +571,7 @@ class Court {
             $(id_RcvScore).val(this.west_score);
         }
 
-        $(id_Server).val(this.serving);
+        $(id_Server).val(this.serving.name);
         $(id_Servnum).val(this.servnum);
         $(id_Message).val(this.msg);
     }
@@ -567,14 +620,12 @@ class Court {
             } else {
                 this.serverLoses();
             }
-            this.checkGameEnd();
         } else {
             if (this.servingTeam() == winner) {
                 this.serverWins();
             } else {
                 this.serverLoses();
             }
-            this.checkGameEnd();
         }
         this.draw();
     }
@@ -584,20 +635,32 @@ class Court {
     //
     serverLoses() {
         if (this.servnum == 1) {
-            if (this.serving == name_E) {
-                this.serving = name_O;
+            if (this.serving.name == name_E) {
+                startServerTransition(this.players[1].pos,
+                                      this.players[0].pos);
+                // this.serving = name_O;
+                this.serving = this.players[0];
                 this.msg = this.msgRally(nameEast, this.serving);
                 this.setCheers(this.loss_cheer, this.win_cheer);
             } else if (this.serving == name_O) {
-                this.serving = name_E;
+                startServerTransition(this.players[0].pos,
+                                      this.players[1].pos);
+                // this.serving = name_E;
+                this.serving = this.players[1];
                 this.msg = this.msgRally(nameEast, this.serving);
                 this.setCheers(this.loss_cheer, this.win_cheer);
             } else if (this.serving == name_e) {
-                this.serving = name_o;
+                startServerTransition(this.players[2].pos,
+                                      this.players[3].pos);
+                // this.serving = name_o;
+                this.serving = this.players[3];
                 this.msg = this.msgRally(nameWest, this.serving);
                 this.setCheers(this.win_cheer, this.loss_cheer);
             } else if (this.serving == name_o) {
-                this.serving = name_e;
+                startServerTransition(court.players[3].pos,
+                                      court.players[2].pos);
+                //this.serving = name_e;
+                this.serving = this.players[2];
                 this.msg = this.msgRally(nameWest, this.serving);
                 this.setCheers(this.win_cheer, this.loss_cheer);
             } else {
@@ -611,10 +674,12 @@ class Court {
         } else if (this.servnum == 2) {
             this.servnum = 1;
             if (this.servingTeam() == nameWest) {
+                startServerTransition(this.serving.pos, this.ne.pos);
                 this.serving = this.ne;
                 this.msg = this.msgRally(this.servingTeam(), this.serving);
                 this.setCheers(this.loss_cheer, this.win_cheer);
             } else if (this.servingTeam() == nameEast) {
+                startServerTransition(this.serving.pos, this.sw.pos);
                 this.serving = this.sw;
                 this.msg = this.msgRally(this.servingTeam(), this.serving);
                 this.setCheers(this.win_cheer, this.loss_cheer);
@@ -636,16 +701,24 @@ class Court {
             this.west_score++;
             this.setCheers(this.win_cheer, this.loss_cheer);
             this.msg = this.msgWin(this.servingTeam(), this.serving);
-            this.swapPosition(this.players[0],
-                              this.players[1],
-                              this.servingTeam());
+            if (this.gameOver()) {
+                this.animateMeetAtNet(true);
+            } else {
+                this.swapPosition(this.players[0],
+                                  this.players[1],
+                                  this.servingTeam());
+            }
         } else if (this.servingTeam() == nameEast) {
             this.east_score++;
             this.setCheers(this.loss_cheer, this.win_cheer);
             this.msg = this.msgWin(this.servingTeam(), this.serving);
-            this.swapPosition(this.players[2],
-                              this.players[3],
-                              this.servingTeam());
+            if (this.gameOver()) {
+                this.animateMeetAtNet(true);
+            } else {
+                this.swapPosition(this.players[2],
+                                  this.players[3],
+                                  this.servingTeam());
+            }
         }
     }
 
@@ -653,13 +726,13 @@ class Court {
     // Return "West" or "East" to indicate which team is serving
     //
     servingTeam() {
-        if (this.serving == this.players[0].name) {
+        if (this.serving == this.players[0]) {
             return(nameWest);
-        } else if (this.serving == this.players[1].name) {
+        } else if (this.serving == this.players[1]) {
             return(nameWest);
-        } else if (this.serving == this.players[2].name) {
+        } else if (this.serving == this.players[2]) {
             return(nameEast);
-        } else if (this.serving == this.players[3].name) {
+        } else if (this.serving == this.players[3]) {
             return(nameEast);
         } else {
             alert(txt_Invalid1 + this.serving
@@ -740,6 +813,42 @@ function rally(winner) {
 function restartGame() {
     court = new Court();
     court.draw();
+}
+
+// ------------------------------------------------------------------------
+// Animate a service transition, moving the yellow ball from point 1 (p1)
+// to point 2 (p2)
+//
+var stInterval;
+function startServerTransition(p1, p2) {
+    delta_x = Math.abs(p1.x - p2.x) / 10;
+    delta_y = Math.abs(p1.y - p2.y) / 10;
+    base_x = Math.min(p1.x, p2.x);
+    base_y = Math.min(p1.y, p2.y);
+    for (var step = 0 ; step < 10 ; step++) {
+        step_x = base_x + step*delta_x;
+        step_y = base_y + step*delta_y;
+        court.service_phantom.addStep(new Point(step_x, step_y));
+    }
+    court.serving = "";
+    court.service_phantom.show();
+    court.draw();
+    
+    stInterval = setInterval(function() {
+        stepServerTransition();
+    }, 20);
+}
+    
+// ----------------------------------------------------------------------------
+// Take a step for the service transition
+//
+function stepServerTransition() {
+    var moved = 0;
+    moved = court.service_phantom.takeStep();
+    court.draw();
+    if (moved <= 0) {
+        clearInterval(stInterval);
+    }
 }
 
 // ----------------------------------------------------------------------------

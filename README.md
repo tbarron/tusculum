@@ -17,6 +17,10 @@ In this project, I want to apply the following three conventions:
   * [Semantic Versioning](https://semver.org/), and
   * [Simple Release Cycle](http://tusculum.pythonanywhere.com/techblog/2018-09-14-simple-release-cycle).
 
+Everything in this repository is free and unencumbered software released in
+to the public domain. For more information, please visit
+<http://unlicense.org>.
+
 ### Work Cycle
 
   (see https://tusculum.pythonanywhere.com/techblog/2018-09-14-simple-release-cycle)
