@@ -10,7 +10,7 @@ pbscore.css*
 pybp
 pytest.ini
 __pycache__
-venv
+venv*
 README.html
 *.db
 *.pyc
