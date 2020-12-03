@@ -3,7 +3,7 @@
 ## Description
 
 I'm using pythonanywhere.com as a low cost (i.e., free) hosting solution
-for my personal home page by serving the stuff I'm working on as a flask
+for a personal home page by serving the stuff I'm working on as a flask
 app. If I ever figure out a way to monetize something here, I'll start
 sending some of the bucks along to pythonanywhere so I can have a premium
 account.
